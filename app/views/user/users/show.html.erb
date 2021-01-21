@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="field">
+                <%= label_tag :プロフィール画像 %><br />
+                <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg", format: 'jpg') %>
+            </div>
+            <div class="field">
+                <%= label_tag :ニックネーム： %>
+                <%= @user.name %>
+            </div>
+            <div class="field">
+                 <%= label_tag :自己紹介： %>
+                <%= @user.introduction %>
+            </div>
+            <% if @user == current_user %>
+            <div class="field">
+                <%= link_to '編集', edit_user_path %>
+            </div>
+            <div class="field">
+                <%= link_to '退会はこちらから', user_path, method: :delete, "data-confirm" => '本当に退会しますか？' %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
