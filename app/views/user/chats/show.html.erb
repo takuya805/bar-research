@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="message">
+              <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user %>"><%= @user.name %>さんとのチャット</h3>
+              <div>
+              <%= form_with model: @chat do |chat| %>
+                <%= chat.text_field :message %>
+                <%= chat.hidden_field :room_id %>
+                <%= chat.submit "送信" %>
+              <% end %>
+              </div>
+              <% @chats.each do |chat| %>
+                <% if chat.user_id == current_user.id && chat.is_deleted == false %>
+                  <p style="text-align: right;"><%= chat.message %></p>
+                <% elsif chat.is_deleted == false %>
+                  <p style="text-align: left;"><%= chat.message %></p>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>

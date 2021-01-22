@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <%= link_to 'チャット一覧', chats_path %>
             <div class="field">
                 <%= label_tag :プロフィール画像 %><br />
                 <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg", format: 'jpg') %>
@@ -10,9 +11,13 @@
                 <%= @user.name %>
             </div>
             <div class="field">
-                 <%= label_tag :自己紹介： %>
+                <%= label_tag :自己紹介： %>
                 <%= @user.introduction %>
             </div>
+            <% unless @user == current_user %>
+                <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
+            <% end %>
+
             <% if @user == current_user %>
             <div class="field">
                 <%= link_to '編集', edit_user_path %>
