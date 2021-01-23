@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_052827) do
+ActiveRecord::Schema.define(version: 2021_01_23_074534) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", null: false
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_01_23_052827) do
     t.string "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_deleted", default: false
   end
 
   create_table "rooms", force: :cascade do |t|
