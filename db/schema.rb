@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_034017) do
+ActiveRecord::Schema.define(version: 2021_01_22_111126) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "chats", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -22,6 +28,26 @@ ActiveRecord::Schema.define(version: 2021_01_22_034017) do
   end
 
   create_table "rooms", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.string "image_id"
+    t.string "name", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.string "station", null: false
+    t.integer "phone", null: false
+    t.string "openhour", null: false
+    t.string "holiday", null: false
+    t.integer "budget", null: false
+    t.integer "seat", null: false
+    t.string "explain", null: false
+    t.string "hplink"
+    t.integer "booking", null: false
+    t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

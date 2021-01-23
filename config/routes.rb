@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy]
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]
+    get '/shops/search' => 'shops#search'
+    resources :shops, only: [:index, :show]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

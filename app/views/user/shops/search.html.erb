@@ -1,0 +1,6 @@
+<h2>検索</h2>
+<%= form_with model: @shop, url: shops_path, method: :get, local: true do |f| %>
+<%= f.select :search , options_for_select([['キーワードで検索', '1'], ['駅名', '2'], ['店名', '3']]) %>
+<%= f.text_field :word, placeholder: "駅名、キーワードなどを入力" %>
+<%= f.submit '検索' %>
+<% end %>

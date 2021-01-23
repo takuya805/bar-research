@@ -13,7 +13,7 @@
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id && chat.is_deleted == false %>
                   <p style="text-align: right;"><%= chat.message %></p>
-                <% elsif chat.is_deleted == false %>
+                <% elsif chat.user_id != current_user.id %>
                   <p style="text-align: left;"><%= chat.message %></p>
                 <% end %>
               <% end %>
