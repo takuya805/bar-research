@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 2021_01_22_111126) do
     t.string "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_deleted", default: false
   end
 
   create_table "rooms", force: :cascade do |t|
