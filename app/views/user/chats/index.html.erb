@@ -1,8 +1,7 @@
 <% @rooms.each do |room| %>
   <% other_user = room.user_rooms.where.not(user_id: current_user.id).first.user %>
-  <% my_user = room.user_rooms.where(user_id: current_user.id).first.user %>
     <% latest_chat = room.chats.last %>
-      <% if latest_chat.is_deleted == false && current_user == my_user %>
+      <% if @chat.nil? %>
           <%= link_to chat_path(other_user) do %>
             <h5><%= other_user.name %></h5>
                 <%= latest_chat.message %>

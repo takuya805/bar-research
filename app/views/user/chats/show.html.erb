@@ -11,9 +11,9 @@
               <% end %>
               </div>
               <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id && chat.is_deleted == false %>
+                <% if chat.user_id == current_user.id %>
                   <p style="text-align: right;"><%= chat.message %></p>
-                <% elsif chat.user_id != current_user.id %>
+                <% else %>
                   <p style="text-align: left;"><%= chat.message %></p>
                 <% end %>
               <% end %>
