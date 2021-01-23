@@ -14,6 +14,9 @@
                 <%= label_tag :自己紹介： %>
                 <%= @user.introduction %>
             </div>
+            <div class="field">
+                <%= link_to 'バーを探す', shops_search_path %>
+            </div>
             <% unless @user == current_user %>
                 <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
             <% end %>
