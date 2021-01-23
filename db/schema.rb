@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_111126) do
+ActiveRecord::Schema.define(version: 2021_01_23_052827) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_deletes", force: :cascade do |t|
+    t.integer "chat_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

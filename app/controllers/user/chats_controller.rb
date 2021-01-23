@@ -1,6 +1,11 @@
 class User::ChatsController < ApplicationController
   def index
       @rooms = current_user.rooms
+       @rooms.each do |room|
+        room.chats.each do |chat|
+          @chat  = chat.chat_deletes.find_by(user_id: current_user.id)
+        end
+      end
   end
 
   def show
@@ -15,7 +20,10 @@ class User::ChatsController < ApplicationController
     else
       @room = user_rooms.room
     end
-    @chats = @room.chats
+
+    @chats = @room.chats.reject do |chat| #rejectでchat_deleteが作成されてないchatを選択（偽であるものを集めて返す）
+      chat.chat_deletes.find_by(user: current_user)
+    end
     @chat = Chat.new(room_id: @room.id)
   end
 
@@ -27,7 +35,9 @@ class User::ChatsController < ApplicationController
   def exit
     @room = Room.find(params[:id])
     @chats = @room.chats
-    @chats.update_all(is_deleted: true)
+    @chats.each do |chat|
+      chat.chat_deletes.find_or_create_by(user: current_user) #each文の中で作成されてないchatだけを選択して作成する
+    end
     redirect_to chats_path
   end
 
