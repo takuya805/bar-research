@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]
     get '/shops/search' => 'shops#search'
-    resources :shops, only: [:index, :show]
+    resources :shops, only: [:index, :show] do
+        resources :reviews, only: [:create, :destroy]
+      end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

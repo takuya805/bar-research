@@ -7,14 +7,14 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.string :postcode, null: false
       t.string :address, null: false
       t.string :station, null: false
-      t.integer :phone, null: false
+      t.string :phone, null: false
       t.string :openhour, null: false
       t.string :holiday, null: false
       t.integer :budget, null: false
       t.integer :seat, null: false
       t.string :explain, null: false
       t.string :hplink
-      t.integer :booking, null: false
+      t.boolean :booking, default: false
       t.boolean :is_deleted, default: false
       t.timestamps
     end

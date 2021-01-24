@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_074534) do
+ActiveRecord::Schema.define(version: 2021_01_23_103500) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category", null: false
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 2021_01_23_074534) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shop_id", null: false
+    t.text "post", null: false
+    t.float "star", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,14 +55,14 @@ ActiveRecord::Schema.define(version: 2021_01_23_074534) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "station", null: false
-    t.integer "phone", null: false
+    t.string "phone", null: false
     t.string "openhour", null: false
     t.string "holiday", null: false
     t.integer "budget", null: false
     t.integer "seat", null: false
     t.string "explain", null: false
     t.string "hplink"
-    t.integer "booking", null: false
+    t.boolean "booking", default: false
     t.boolean "is_deleted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
