@@ -24,6 +24,9 @@
   <%= label_tag :口コミ %><%= review.post %><br />
   <%= label_tag :投稿写真 %><%= attachment_image_tag(review, :image, size: '100x100') %><br />
   <%= render 'user/reviews/star', review: review %>
+  <div id="favorites_buttons_<%= review.id %>">
+    <%= render partial: 'user/reviews/favorite', locals: {review: review} %>
+  </div>
   <% if current_user == review.user %>
     <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>

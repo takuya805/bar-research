@@ -68,4 +68,5 @@ Rails.application.configure do
 #     :password => Settings.gmail[:password], #gmailパスワード
 #     :authentication => 'login',
 # }
+ config.web_console.whitelisted_ips = '131.147.38.65'
  end
