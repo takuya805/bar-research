@@ -4,7 +4,7 @@
             <%= link_to 'チャット一覧', chats_path %>
             <div class="field">
                 <%= label_tag :プロフィール画像 %><br />
-                <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg", format: 'jpg') %>
+                <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
             </div>
             <div class="field">
                 <%= label_tag :ニックネーム： %>

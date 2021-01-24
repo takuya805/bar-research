@@ -61,7 +61,7 @@ Shop.create!(
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: 1
+  booking: false
   )
 
 Shop.create!(
@@ -76,5 +76,5 @@ Shop.create!(
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: 1
+  booking: false
   )
