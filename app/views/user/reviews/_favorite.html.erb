@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <% if review.favorited_by?(current_user) %>
-  <p><span>お気に入り解除：</span><%= link_to review_favorite_path(review.id), remote: true, method: :delete do %>
+  <p><span>お気に入り解除：</span><%= link_to review_favorites_path(review_id: review.id), remote: true, method: :delete do %>
     ♥<%= review.favorites.count %></p>
      <% end %>
   <% else %>
