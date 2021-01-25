@@ -17,7 +17,7 @@
 <% else %>
   <p>予約不可</p>
 <% end %>
-<div id="bookmarks_buttons_<%=@shop %>">
+<div id="bookmarks_buttons_<%=@shop.id %>">
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
 </div>
 

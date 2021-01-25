@@ -1,2 +1,2 @@
 /*global $*/
-$('#bookmarks_buttons_<%=@shop %>').html("<%= j(render partial: 'user/bookmarks/bookmark', locals: {shop: @shop}) %>");
+$('#bookmarks_buttons_<%=@shop.id %>').html("<%= j(render partial: 'user/bookmarks/bookmark', locals: {shop: @shop}) %>");
