@@ -11,8 +11,9 @@ class Shop < ApplicationRecord
   end
 
   has_many :reviews, dependent: :destroy
-  attachment :image
+  has_many :bookmarks, dependent: :destroy
   belongs_to :category
+  attachment :image
   enum budget: {
     '予算目安': 0,
     '3,000円以下': 1,
@@ -22,4 +23,8 @@ class Shop < ApplicationRecord
     '10,000円以上~20,000円未満': 5,
     '20,000円以上~': 6
   }
+
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user.id).exists?
+  end
 end
