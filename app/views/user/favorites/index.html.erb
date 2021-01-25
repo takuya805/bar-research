@@ -1,0 +1,4 @@
+<% @favorites.each do |favorite| %>
+  <%= favorite.review.user.name %><br >
+  <%= link_to favorite.review.post, shop_path(favorite.review.shop) %>
+<% end %>

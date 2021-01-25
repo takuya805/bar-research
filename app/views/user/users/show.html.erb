@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <%= link_to 'チャット一覧', chats_path %>
+            <%= link_to 'チャット一覧', chats_path %><br />
+            <%= link_to 'ブックマーク一覧', user_bookmarks_path(@user) %><br />
+            <%= link_to '記事一覧', user_favorites_path(@user) %>
             <div class="field">
                 <%= label_tag :プロフィール画像 %><br />
                 <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
