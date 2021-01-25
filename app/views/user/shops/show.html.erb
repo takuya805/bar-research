@@ -17,6 +17,9 @@
 <% else %>
   <p>予約不可</p>
 <% end %>
+<div id="bookmarks_buttons_<%=@shop %>">
+  <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
+</div>
 
 <% @reviews.each do |review| %>
   <%= label_tag :評価 %><%= review.star %>点<br />
@@ -25,7 +28,7 @@
   <%= label_tag :投稿写真 %><%= attachment_image_tag(review, :image, size: '100x100') %><br />
   <%= render 'user/reviews/star', review: review %>
   <div id="favorites_buttons_<%= review.id %>">
-    <%= render partial: 'user/reviews/favorite', locals: {review: review} %>
+    <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
   </div>
   <% if current_user == review.user %>
     <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
