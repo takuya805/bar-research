@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_032545) do
+ActiveRecord::Schema.define(version: 2021_01_26_104820) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2021_01_25_032545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "owners", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_owners_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_owners_on_reset_password_token", unique: true
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "shop_id", null: false
@@ -62,15 +79,21 @@ ActiveRecord::Schema.define(version: 2021_01_25_032545) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shop_pictures", force: :cascade do |t|
+    t.integer "shop_id", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.integer "category_id", null: false
-    t.string "image_id"
+    t.integer "owner_id", null: false
     t.string "name", null: false
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "station", null: false
     t.string "phone", null: false
-    t.string "openhour", null: false
     t.string "holiday", null: false
     t.integer "budget", null: false
     t.integer "seat", null: false

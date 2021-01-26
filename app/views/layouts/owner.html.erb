@@ -15,20 +15,20 @@
     <header>
       <nav class="navbar navbar-expand p-5">
       <ul class="navbar-nav" >
-    <% if user_signed_in? %>
+    <% if owner_signed_in? %>
         <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <%= link_to "マイページ", user_path(current_user) %>
+          <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
+
         </li>
       <% else %>
         <li>
-          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to "新規登録", new_owner_registration_path %>
         </li>
         <li>
-          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "ログイン", new_owner_session_path %>
         </li>
         <li>
-          <%= link_to "サイトについて", homes_about_path %>
+          <%= link_to "サイト紹介", owner_homes_about_path %>
         </li>
       <% end %>
       </ul>
