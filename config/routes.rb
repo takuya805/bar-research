@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
   root to: 'homes#top'
   get 'homes/about' => 'homes#about'
 
@@ -22,5 +24,17 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
   end
+
+  devise_for :owners, controllers: {
+    sessions: 'owners/sessions',
+    registrations: 'owners/registrations'
+  }
+
+   namespace :owner do
+    get 'homes/top' =>'homes/top'
+    get 'homes/about' => 'homes#about'
+    resources :shops, only: [:index, :new, :create, :edit, :update, :destroy]
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
