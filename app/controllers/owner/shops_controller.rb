@@ -11,6 +11,7 @@ class Owner::ShopsController < ApplicationController
 
   def create
     @shop = current_owner.shops.build(shop_params)
+
     @shop.save
     redirect_to owner_shops_path, notice: "#{@shop.name}の情報を登録しました。"
   end
@@ -37,6 +38,6 @@ class Owner::ShopsController < ApplicationController
       params.require(:shop).permit(:category_id, :name, :postcode,
                                    :address, :phone, :station,
                                    :holiday, :budget, :seat, :explain,
-                                   :hplink,:booking, :is_deleted, shop_pictures_images: [])
+                                   :hplink,:booking, :open_time, :close_time, shop_pictures_images: [])
     end
 end

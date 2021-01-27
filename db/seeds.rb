@@ -49,32 +49,49 @@ Category.create!(
   category: "ダーツバー"
   )
 
+ Owner.create!(
+  name: '鈴木',
+  email: 'suzuki@gmail.com',
+  password: '123456'
+  )
+
+ Owner.create!(
+  name: '青木',
+  email: 'aoki@gmail.com',
+  password: '123456'
+  )
+
 Shop.create!(
   category_id: 1,
+  owner_id: 1,
   name: "グランシャリオ",
   postcode: "116-0013",
   address: "東京都荒川区西日暮里２",
   station: "日暮里",
   phone: "03-1234-5678",
-  openhour: "平日、休日17:00~20:00",
-  holiday: "日",
+  holiday: 8,
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: false
+  booking: false,
+  open_time: '19:00' ,
+  close_time: '23:00'
   )
 
 Shop.create!(
   category_id: 1,
+  owner_id: 2,
   name: "グランシャリオ",
   postcode: "116-0013",
   address: "東京都港区２",
   station: "浜松町",
   phone: "03-1234-5678",
-  openhour: "平日、休日17:00~20:00",
-  holiday: "日",
+  holiday: 8,
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: false
+  booking: false,
+  open_time: '20:00',
+  close_time: '25:00'
   )
+
