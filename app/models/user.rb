@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_many :rooms, through: :user_rooms
+  has_many :reviews, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy

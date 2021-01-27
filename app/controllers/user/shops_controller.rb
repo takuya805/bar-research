@@ -13,5 +13,6 @@ class User::ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     @review = Review.new
     @reviews = @shop.reviews
+    gon.shop = @shop
   end
 end

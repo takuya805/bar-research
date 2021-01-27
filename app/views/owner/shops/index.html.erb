@@ -12,5 +12,6 @@
               <% end %>
             <%= link_to '編集する', edit_owner_shop_path(shop) %>
             <%= link_to '店舗情報を削除する', owner_shop_path(shop), method: :delete, "data-confirm" =>'本当に削除しますか？'%>
+            <p><%= link_to '店舗情報を追加する', new_owner_shop_path %></p>
   <% end %>
 <% end %>

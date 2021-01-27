@@ -1,6 +1,8 @@
 <% unless @bookmarks == [] %>
   <% @bookmarks.each do |bookmark| %>
-    <%= attachment_image_tag bookmark.shop, :image, size: '100x100' %>
+    <% bookmark.shop.shop_pictures.each do |shop_picture| %>
+    <%= attachment_image_tag bookmark.shop.shop_picture, :image, size: '100x100' %>
+    <% end %>
     <%= link_to bookmark.shop.name, shop_path(bookmark.shop.id) %>
   <% end %>
 <% else %>

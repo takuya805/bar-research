@@ -16,6 +16,8 @@ class Shop < ApplicationRecord
   belongs_to :owner
   has_many :shop_pictures, dependent: :destroy
   accepts_attachments_for :shop_pictures, attachment: :image
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   enum budget: {
     '予算目安を選択してください': 0,

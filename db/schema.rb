@@ -118,6 +118,8 @@ ActiveRecord::Schema.define(version: 2021_01_27_050131) do
     t.string "name", null: false
     t.string "postcode", null: false
     t.string "address", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "station", null: false
     t.string "phone", null: false
     t.integer "holiday", null: false
