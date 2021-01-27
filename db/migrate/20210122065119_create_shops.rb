@@ -13,7 +13,7 @@ class CreateShops < ActiveRecord::Migration[5.2]
       t.integer :seat, null: false
       t.string :explain, null: false
       t.string :hplink
-      t.boolean :booking, default: false
+      t.boolean :booking, default: true
       t.string :open_time, null: false
       t.string :close_time, null: false
       t.timestamps
