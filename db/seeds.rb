@@ -73,7 +73,7 @@ Shop.create!(
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: false,
+  booking: true,
   open_time: '19:00' ,
   close_time: '23:00'
   )
@@ -90,8 +90,9 @@ Shop.create!(
   budget: 1 ,
   seat: 20 ,
   explain: "静かに飲みたいを追及して",
-  booking: false,
+  booking: true,
   open_time: '20:00',
   close_time: '25:00'
   )
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -12,7 +12,7 @@
 <% unless @shop.hplink == [] %>
 <p>ホームページ<br /><%= @shop.hplink %></p>
 <% end %>
-<% if @shop.booking == false %>
+<% if @shop.booking == true %>
   <p>予約可</p>
 <% else %>
   <p>予約不可</p>
