@@ -2,7 +2,11 @@
 <% @shops.each do |shop| %>
 <%= link_to shop.name, shop_path(shop) %><br />
 <%= shop.category.category %><br />
-<%= attachment_image_tag(shop, :image, size: '100x100', format: 'jpg') %><br />
+<% unless shop.shop_pictures == [] %>
+    写真：<% shop.shop_pictures.each do |shop_picture| %>
+        <%= attachment_image_tag shop_picture, :image, size: '50x50' %>
+        <% end %><br />
+        <% end %>
 <%= shop.explain %><br />
 <%= shop.station %><br />
 <%= shop.budget %><br />

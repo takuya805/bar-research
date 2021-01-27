@@ -94,13 +94,14 @@ ActiveRecord::Schema.define(version: 2021_01_26_104820) do
     t.string "address", null: false
     t.string "station", null: false
     t.string "phone", null: false
-    t.string "holiday", null: false
+    t.integer "holiday", null: false
     t.integer "budget", null: false
     t.integer "seat", null: false
     t.string "explain", null: false
     t.string "hplink"
     t.boolean "booking", default: false
-    t.boolean "is_deleted", default: false
+    t.string "open_time", null: false
+    t.string "close_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,5 +1,5 @@
 <% if @shops == [] %>
-  <p><%= link_to '店舗の新規登録を始める', new_owner_shops_path %></p>
+  <p><%= link_to '店舗の新規登録を始める', new_owner_shop_path %></p>
 <% else %>
   <% @shops.each do |shop| %><br />
   <p>店舗名：<%= shop.name %></p>
