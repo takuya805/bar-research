@@ -1,0 +1,2 @@
+/*global $*/
+$('#relationships_buttons_<%= @follow.id %>').html("<%= j(render partial: 'user/relationships/relationship', locals: {user: @user}) %>");

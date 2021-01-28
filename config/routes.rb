@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy] do
       get '/bookmarks' => 'bookmarks#index'
       get '/favorites' => 'favorites#index'
+      resource :relationships, only: [:create, :destroy]
+      get :follows, on: :member
+      get :followers, on: :member
     end
+
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]
     get '/shops/search' => 'shops#search'

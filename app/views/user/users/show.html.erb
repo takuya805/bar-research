@@ -9,6 +9,14 @@
                 <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
             </div>
             <div class="field">
+                <%= link_to follows_user_path do %>
+                <span>フォロー</span><%= @user.followings.count %>
+                <% end %>
+                <%= link_to followers_user_path do %>
+                <span>フォロワー</span><%= @user.followers.count %>
+                <% end %>
+            </div>
+            <div class="field">
                 <%= label_tag :ニックネーム： %>
                 <%= @user.name %>
             </div>
@@ -20,7 +28,9 @@
                 <%= link_to 'バーを探す', shops_search_path %>
             </div>
             <% unless @user == current_user %>
+                <% if user.followed_by?(current_user) %>
                 <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
+                <% end %>
             <% end %>
 
             <% if @user == current_user %>
