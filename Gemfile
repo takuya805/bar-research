@@ -76,3 +76,6 @@ gem 'activeadmin'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'gon'
+group :production do
+  gem 'mysql2'
+end
