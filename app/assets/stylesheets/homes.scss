@@ -1,3 +1,49 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top-main{
+    // position: relative;
+      background-image: image-url('bar-top.jpg');
+      height: 450px;
+      background-size: cover;
+      background-position: 0px;
+}
+#main-visual {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.search {
+    padding-top: 0px;
+    padding-left: 550px;
+    // position: absolute;
+    // top: 0px;
+    // left: 0px;
+}
+.submit {
+    background-color: #FF773E;
+}
+.fa-search{
+    color: white;
+}
+.title {
+    // position: absolute;
+    padding-top: 50px;
+    padding-left: 550px;
+    font-size: 70px;
+    font-family: 800;
+    display        : inline-block;
+    color          : white;            /* 文字の色 */
+    font-size      : 75px;               /* 文字のサイズ */
+    letter-spacing : 4px;                /* 文字間 */
+    text-shadow    :
+       2px  2px 1px #003366,
+      -2px  2px 1px #003366,
+       2px -2px 1px #003366,
+      -2px -2px 1px #003366,
+       2px  0px 1px #003366,
+       0px  2px 1px #003366,
+      -2px  0px 1px #003366,
+       0px -2px 1px #003366;
+    // top: 0px;
+    // left: 0px;
+}

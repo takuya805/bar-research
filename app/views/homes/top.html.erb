@@ -1,4 +1,11 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
-
-<%= link_to 'オーナーの方はこちらへ', owner_homes_top_path %>
+<div class="top-main">
+  <div id="main-visual">
+    <div class="title">
+      <p>Bar-Research</p>
+     </div>
+        <div class="search">
+          <%= render 'user/shops/search', shop: @shop %>
+          <%= link_to 'オーナーの方はこちらへ', owner_homes_top_path, class: 'btn mt-5' %>
+        </div>
+  </div>
+</div>
