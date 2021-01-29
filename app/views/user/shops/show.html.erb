@@ -77,7 +77,7 @@
     <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% else %>
     <div id="relationships_buttons_<%= review.user.id %>">
-      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
+      <%= render partial: 'user/relationships/relationship', locals: {review: review, i: 1} %>
     </div>
   <% end %>
 <% end %>

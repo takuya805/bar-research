@@ -1,2 +1,6 @@
-/*global $*/
-$('#relationships_buttons_<%= @follow.id %>').html("<%= j(render partial: 'user/relationships/relationship', locals: {user: @user}) %>");
+/*global $*/ /*global request*/
+ if (request.referer){
+  $('#relationships_buttons_<%= @review.user.id %>').html("<%= j(render partial: 'user/relationships/relationship', locals: {review: @review}) %>");
+ }
+
+
