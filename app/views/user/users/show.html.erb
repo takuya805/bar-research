@@ -1,36 +1,88 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <%= link_to 'チャット一覧', chats_path %><br />
-            <%= link_to 'ブックマーク一覧', user_bookmarks_path(@user) %><br />
-            <%= link_to '記事一覧', user_favorites_path(@user) %>
-            <div class="field">
-                <%= label_tag :プロフィール画像 %><br />
-                <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
-            </div>
-            <div class="field">
-                <%= label_tag :ニックネーム： %>
-                <%= @user.name %>
-            </div>
-            <div class="field">
-                <%= label_tag :自己紹介： %>
-                <%= @user.introduction %>
-            </div>
-            <div class="field">
-                <%= link_to 'バーを探す', shops_search_path %>
-            </div>
-            <% unless @user == current_user %>
-                <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
+<div class=mypage>
+<aside>
+    <nav>
+        <ul>
+            <li class="mb-5">Menu</li>
+            <%= link_to user_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-home"></i>Home</span>
+            </li>
             <% end %>
-
-            <% if @user == current_user %>
-            <div class="field">
-                <%= link_to '編集', edit_user_path %>
-            </div>
-            <div class="field">
-                <%= link_to '退会はこちらから', user_path, method: :delete, "data-confirm" => '本当に退会しますか？' %>
-            </div>
+            <%= link_to  chats_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-sms"></i>Chats</span>
+            </li>
             <% end %>
-        </div>
+            <%= link_to user_bookmarks_path(@user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-bookmark"></i>Bookmarks</span>
+            </li>
+            <% end %>
+            <%= link_to user_favorites_path(@user) do %>
+            <li class="menu mb-5">
+             <span><i class="fas fa-file-pdf"></i>Reviews</span>
+            </li>
+            <% end %>
+            <%= link_to user_favorites_path(@user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-heart"></i>Favorites</span>
+            </li>
+            <% end %>
+            <%= link_to shops_search_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-search-dollar"></i>Bar search</span>
+            </li>
+            <% end %>
+        </ul>
+    </nav>
+    <div class="sidefotter">
+         <%= link_to 'Exit', user_path, method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva';" %>
     </div>
+</aside>
+
+<main>
+   <div class="field" style="color:#A2CA36; font-size:50px;font-family: 'Monotype Corsiva';">Mypage</div>
+    <div class="mine">
+
+     <div class="profile">
+
+        <div class="field mb-3">
+            <%= label_tag :'プロフィール' %><br />
+            <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
+        </div>
+        <div class="field mb-3">
+            <%= label_tag :'ニックネーム' %>
+            <%= @user.name %>
+        </div>
+        <div class="field mb-3">
+            <%= label_tag :'自己紹介' %><br />
+            <%= @user.introduction %>
+        </div>
+
+         <% if @user == current_user %>
+        <div class="field">
+            <%= link_to '編集', edit_user_path, class: "mb-3" %>
+        </div>
+        <% end %>
+         </div>
+
+        <table class="table" style="color: white;">
+            <tr>
+                <td>投稿したレビュー</td><td><%= current_user.reviews.count %>件</td>
+            </tr>
+            <tr>
+                <td>お気に入り登録したレビュー</td><td><%= current_user.favorites.count %>件</td>
+            </tr>
+            <tr>
+                <td>ブックマークしたバー</td><td><%= current_user.bookmarks.count %>件</td>
+            </tr>
+            <tr>
+                <td>チャットした人数</td><td><%= current_user.rooms.count %>件</td>
+            </tr>
+        </table>
+        <% unless @user == current_user %>
+            <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
+        <% end %>
+    </div>
+</main>
 </div>

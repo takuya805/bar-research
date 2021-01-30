@@ -18,12 +18,17 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
 
 body{
-  min-height: 100vh;
-  color: black;
-
-  font-family: sans-serif;
+ min-height: 100vh;
+ width: 100%;
+ color: white;
+ background-color: #06101B;
 }
 
 .notification:not(:last-child){
@@ -31,6 +36,9 @@ body{
 }
 
 a{
-  color: black;
+  color: white;
   text-decoration: none;
+}
+ul {
+     text-align: right;
 }

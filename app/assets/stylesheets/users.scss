@@ -1,3 +1,52 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.mypage{
+  display: flex;
+  min-height: 100vh;
+}
+main{
+  // flex: 1;
+  width: 700px;
+  margin: 0 auto;
+}
+aside{
+  width: 15%;
+  min-width: 50px;
+  display: flex;
+  flex-direction: column;
+
+}
+ul li{
+  font-size: 30px;
+  color:  #A2CA36;
+  text-align: left;
+  font-family: 'Monotype Corsiva';
+}
+
+.sidefotter{
+  height: 300px;
+  margin-top: 150px;
+}
+
+
+.profile{
+  font-size: 20px;
+  display: inline-block;
+  width: 40%;
+  font-weigh: bold;
+}
+.table{
+  width: 60%;
+  display: flex-end;
+
+}
+
+.mine{
+  display: flex;
+  font-size: 20px;
+  font-family: 'Monotype Corsiva';
+  width: 500px;
+
+}
