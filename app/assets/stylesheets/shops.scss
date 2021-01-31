@@ -2,3 +2,68 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.mysearch{
+  margin: 0 auto;
+}
+.shop-index{
+  border-bottom: 1px solid gray;
+
+}
+.shop-index span{
+  padding-right: 30px;
+}
+.shop-border{
+  background-color: #DDDDDD;
+  margin-bottom: 50px;
+  color: #06101B;
+  border-radius: 10px;
+}
+.shop-border div{
+  padding: 5px;
+}
+.shopbtn {
+ text-align: right;
+}
+.shopshow{
+   background-color: #DDDDDD;
+   border-radius: 10px;
+   color: black;
+   padding: 5px;
+}
+
+.table .info{
+  background-color: gray;
+}
+.table .book{
+  border: none;
+}
+.infomartion .table{
+
+}
+#map{
+  margin: 0 auto;
+}
+.bookmark{
+  margin-left: auto;
+}
+
+.favorite{
+  color: #FF3366;
+}
+.review-delete{
+  text-align: right;
+  margin-right: 120px;
+}
+
+.review-form > h2{
+  margin-top: 40px;
+}
+.bookmark > a{
+  color: #006400;
+}
+.bookmark > p{
+  color: black;
+}
+.review-index{
+  margin-left: 200px;
+}

@@ -1,10 +1,29 @@
-<% unless @bookmarks == [] %>
-  <% @bookmarks.each do |bookmark| %>
-    <% bookmark.shop.shop_pictures.each do |shop_picture| %>
-    <%= attachment_image_tag bookmark.shop.shop_picture, :image, size: '100x100' %>
-    <% end %>
-    <%= link_to bookmark.shop.name, shop_path(bookmark.shop.id) %>
-  <% end %>
-<% else %>
-<p>まだブックマークはありません。</p>
-<% end %>
+<div class=mypage>
+  <%= render 'user/users/sidebar', user: @user %>
+<main class="bookmarks">
+    <h3>ブックマーク一覧</h3>
+  <div class="row">
+
+      <% if @bookmarks.present? %>
+        <% @bookmarks.each do |bookmark| %>
+          <% bookmark.shop.shop_pictures.each do |shop_picture| %>
+          <%= attachment_image_tag bookmark.shop.shop_picture, :image, size: '100x100' %>
+          <% end %>
+          <div class="bookmark-index col-md-4" style="padding-left: 0px;">
+            <%= link_to shop_path(bookmark.shop.id) do %>
+              <table class="table mb-5" style="color: white;">
+                <tr><td style="background-color: #696969;">店舗名</td><td><%= bookmark.shop.name %></td></tr>
+                <tr><td style="background-color: #696969;">ジャンル</td><td><%= bookmark.shop.category.category %></td></tr>
+                <tr><td style="background-color: #696969;">最寄り駅</td><td><%= bookmark.shop.station %></td></tr>
+              </table>
+            <% end %>
+            </div>
+        <% end %>
+      <% else %>
+      <p>まだブックマークはありません。</p>
+      <% end %>
+  </div>
+  </main>
+</div>
+
+

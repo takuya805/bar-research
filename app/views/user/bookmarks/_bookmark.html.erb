@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <% if shop.bookmarked_by?(current_user) %>
-    <p><span>ブックマーク削除：</span><%= link_to shop_bookmarks_path(shop_id: shop.id), remote: true, method: :delete do %>★</p>
+    <p class="bookmark"><span>ブックマーク削除：</span><%= link_to shop_bookmarks_path(shop_id: shop.id), remote: true, method: :delete, class: "bookmark" do %>★</p>
        <% end %>
   <% else %>
-    <p><span>ブックマーク追加：</span><%= link_to shop_bookmarks_path(shop_id: shop.id), remote: true, method: :post do %>☆</p>
+    <p class="bookmark"><span>ブックマーク追加：</span><%= link_to shop_bookmarks_path(shop_id: shop.id), remote: true, method: :post, class: "bookmark" do %>☆</p>
       <% end %>
   <% end %>
 <% end %>

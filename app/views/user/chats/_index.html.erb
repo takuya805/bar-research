@@ -1,0 +1,11 @@
+<% @rooms.each do |room| %>
+  <% other_user = room.user_rooms.where.not(user_id: current_user.id).first.user %>
+    <% latest_chat = room.chats.last %>
+      <% if @chat.nil? %>
+          <%= link_to chat_path(other_user) do %>
+            <h5><%= other_user.name %></h5>
+            <%= latest_chat.message %>
+          <% end %>
+          <%= link_to "削除", chats_exit_path(id: room.id), "data-confirm" => "本当に削除しますか？", class: 'btn btn-outline-danger' %>
+      <% end %>
+<% end %>

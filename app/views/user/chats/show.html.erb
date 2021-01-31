@@ -1,6 +1,12 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6">
+<div class="mypage">
+<%= render 'user/users/sidebar', user: @user %>
+      <div class="col-md-2 offset-md-1">
+        <div class="chat" style="width:100%;">
+           <h4>チャット履歴一覧</h4>
+          <%= render 'user/chats/index', rooms: @rooms, chat: @chat %>
+        </div>
+      </div>
+       <div class="col-md-6 offset-md-1">
             <div class="message">
               <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user %>"><%= @user.name %>さんとのチャット</h3>
               <div>
@@ -10,14 +16,35 @@
                 <%= chat.submit "送信" %>
               <% end %>
               </div>
+               <table class="message mt-5">
+              <thead>
+                <tr>
+                  <th style="text-align: left; font-size: 20px;"><%= attachment_image_tag current_user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= current_user.name %></th>
+                  <th style="text-align: right; font-size: 20px; padding-left: 100px;"><%= attachment_image_tag @user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= @user.name %></th>
+                </tr>
+              </thead>
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id %>
-                  <p style="text-align: right;"><%= chat.message %></p>
+                <tbody>
+                  <tr>
+                    <th>
+                  <p class="arrow_box" style="text-align: right;"><%= chat.message %></p>
+                   </th>
+                    <th></th>
+                  </tr>
+                </tbody>
                 <% else %>
-                  <p style="text-align: left;"><%= chat.message %></p>
+                 <tbody>
+                  <tr>
+                    <th></th>
+                    <th>
+                  <p style="text-align: left; background:white; color:black;"><%= chat.message %></p>
+                     </th>
+                  </tr>
+                </tbody>
                 <% end %>
               <% end %>
+              </table>
             </div>
         </div>
-    </div>
-</div>
+      </div>
