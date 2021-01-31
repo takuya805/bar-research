@@ -36,17 +36,36 @@ ul li{
   display: inline-block;
   width: 40%;
   font-weigh: bold;
+
 }
+
 .table{
   width: 60%;
   display: flex-end;
-
+}
+.table tr{
+  border-bottom: solid;
 }
 
 .mine{
   display: flex;
   font-size: 20px;
   font-family: 'Monotype Corsiva';
-  width: 500px;
-
+  width: 600px;
+  background-color: #DDDDDD;
+  color: black;
+  padding: 30px;
+  border-radius: 40px;
+}
+.mine a{
+  color: black;
+}
+.title{
+  color:#A2CA36;
+  font-size: 35px;
+  font-family: 'Monotype Corsiva';
+  margin: 0 auto;
+  margin-right: auto;
+  display: block;
+  text-align: left;
 }

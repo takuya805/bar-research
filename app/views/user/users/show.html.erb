@@ -41,32 +41,31 @@
 </aside>
 
 <main>
-   <div class="field" style="color:#A2CA36; font-size:50px;font-family: 'Monotype Corsiva';">Mypage</div>
+   <div class="field mb-5" style="color:#A2CA36; font-size:50px;font-family: 'Monotype Corsiva';">Mypage</div>
+   <div class="title">MyProfile</div>
     <div class="mine">
-
      <div class="profile">
-
         <div class="field mb-3">
-            <%= label_tag :'プロフィール' %><br />
+            <%= label_tag :'イメージ' %><br />
             <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
         </div>
-        <div class="field mb-3">
-            <%= label_tag :'ニックネーム' %>
+        <div class="field mb-3" style= "border-bottom: solid;">
+            <%= label_tag :'ニックネーム' %><br />
             <%= @user.name %>
         </div>
-        <div class="field mb-3">
+        <div class="field mb-3" style="border-bottom: solid;">
             <%= label_tag :'自己紹介' %><br />
             <%= @user.introduction %>
         </div>
 
          <% if @user == current_user %>
         <div class="field">
-            <%= link_to '編集', edit_user_path, class: "mb-3" %>
+            <%= link_to '編集', edit_user_path, class: "btn btn-outline-success mb-3" %>
         </div>
         <% end %>
          </div>
 
-        <table class="table" style="color: white;">
+        <table class="table ml-3">
             <tr>
                 <td>投稿したレビュー</td><td><%= current_user.reviews.count %>件</td>
             </tr>
