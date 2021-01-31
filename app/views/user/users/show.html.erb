@@ -1,48 +1,8 @@
 <div class=mypage>
-<aside>
-    <nav>
-        <ul>
-            <li class="mb-5">Menu</li>
-            <%= link_to user_path(current_user) do %>
-            <li class="menu mb-5">
-              <span><i class="fas fa-home"></i>Home</span>
-            </li>
-            <% end %>
-            <%= link_to  chats_path do %>
-            <li class="menu mb-5">
-              <span><i class="fas fa-sms"></i>Chats</span>
-            </li>
-            <% end %>
-            <%= link_to user_bookmarks_path(@user) do %>
-            <li class="menu mb-5">
-              <span><i class="fas fa-bookmark"></i>Bookmarks</span>
-            </li>
-            <% end %>
-            <%= link_to user_favorites_path(@user) do %>
-            <li class="menu mb-5">
-             <span><i class="fas fa-file-pdf"></i>Reviews</span>
-            </li>
-            <% end %>
-            <%= link_to user_favorites_path(@user) do %>
-            <li class="menu mb-5">
-              <span><i class="fas fa-heart"></i>Favorites</span>
-            </li>
-            <% end %>
-            <%= link_to shops_search_path do %>
-            <li class="menu mb-5">
-              <span><i class="fas fa-search-dollar"></i>Bar search</span>
-            </li>
-            <% end %>
-        </ul>
-    </nav>
-    <div class="sidefotter">
-         <%= link_to 'Exit', user_path, method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva';" %>
-    </div>
-</aside>
-
+  <%= render 'user/users/sidebar', user: @user %>
 <main>
    <div class="field mb-5" style="color:#A2CA36; font-size:50px;font-family: 'Monotype Corsiva';">Mypage</div>
-   <div class="title">MyProfile</div>
+   <div class="myprofile">MyProfile</div>
     <div class="mine">
      <div class="profile">
         <div class="field mb-3">

@@ -1,25 +1,53 @@
-<%= @shop.name %><br />
-<p>カテゴリー：<%= @shop.category.category %></p>
-<p><%= @shop.explain %></p>
-<p>最寄り駅：<%= @shop.station %></p>
-<p>住所<%= @shop.postcode %><br />
-<%= @shop.address %></p>
-<p>電話番号：<%= @shop.phone %></p>
-<p>営業時間：<%= @shop.open_time %>~<%= @shop.close_time %></p>
-<p>定休日：<%= @shop.holiday %></p>
-<p>予算目安：¥<%= @shop.budget %></p>
-<p>客席数：<%= @shop.seat %></p>
-<% unless @shop.hplink == [] %>
-<p>ホームページ<br /><%= @shop.hplink %></p>
-<% end %>
-<% if @shop.booking == true %>
-  <p>予約可</p>
-<% else %>
-  <p>予約不可</p>
-<% end %>
-<div id="bookmarks_buttons_<%=@shop.id %>">
+ <div class="mypage">
+  <%= render 'user/users/sidebar', user: @user %>
+  <main class="shopshow">
+<h4><%= @shop.name %></h4>
+<span class=bookmark><div id="bookmarks_buttons_<%=@shop.id %>" style="text-align:right; padding-right:20px;">
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
 </div>
+</span>
+<p>【<%= @shop.category.category %>】</p>
+<p><%= @shop.explain %></p>
+<div class="infomartion">
+  <table class="table">
+    <tr>
+      <td class="info">最寄り駅</td><td><%= @shop.station %></td>
+    </tr>
+    <tr>
+      <td class="info">住所</td><td><%= @shop.postcode %><%= @shop.address %></td>
+    </tr>
+    <tr>
+      <td class="info">電話番号</td><td><%= @shop.phone %></td>
+    </tr>
+    <tr>
+      <td class="info">営業時間</td><td><%= @shop.open_time %>~<%= @shop.close_time %></td>
+    </tr>
+    <tr>
+      <td class="info">定休日</td><td><%= @shop.holiday %></td>
+    </tr>
+    <tr>
+      <td class="info">予算目安</td><td>¥<%= @shop.budget %></td>
+    </tr>
+    <tr>
+      <td class="info">客席数</td><td><%= @shop.seat %>席</td>
+    </tr>
+      <% if @shop.hplink.present? %>
+      <tr>
+      <td class="info">ホームページ</td><td><%= @shop.hplink %></td>
+      </tr>
+      <% end %>
+      <% if @shop.booking == true %>
+      <tr class="book">
+        <td class="info">備考</td><td>予約可</td>
+      <% else %>
+        <td class="info">備考</td><td>予約不可</td>
+      </tr>
+      <% end %>
+  </table>
+
+</div>
+
+
 
 <script type="text/javascript">
   function initMap() {
@@ -57,13 +85,13 @@
  <!--表示するmapのcssです。ご自身でカスタマイズしてください。高さが設定されていないと表示されないことがあります。-->
 <style type="text/css">
   #map { height: 500px;
-         width: 40%;}
+         width: 80%;}
 </style>
 
 <% #mapの表示 %>
 <div id="map"></div>
 
-
+<div class="review-index">
 <% @reviews.each do |review| %>
   <%= label_tag :評価 %><%= review.star %>点<br />
   <div id="star-rate-<%= review.id %>"></div>
@@ -73,9 +101,16 @@
   <div id="favorites_buttons_<%= review.id %>">
     <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
   </div>
+  <div class="review-delete">
   <% if current_user == review.user %>
-    <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
   <% end %>
+  </div>
 <% end %>
+</div>
+<div class="review-form">
+  <h4>レビュー投稿</h4>
 <%= render 'user/reviews/review', review: @review, shop: @shop %>
-
+</div>
+</div>
+</main>
