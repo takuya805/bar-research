@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :edit, :update, :destroy] do
       get '/bookmarks' => 'bookmarks#index'
       get '/favorites' => 'favorites#index'
+      resource :user_contacts, only: [:create]
     end
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]
@@ -36,6 +37,7 @@ Rails.application.routes.draw do
     get 'homes/top' =>'homes/top'
     get 'homes/about' => 'homes#about'
     resources :shops, only: [:index, :new, :create, :edit, :update, :destroy]
+    resource :owner_contacts, only: [:create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
