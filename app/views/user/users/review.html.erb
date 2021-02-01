@@ -1,0 +1,26 @@
+<div class=mypage>
+  <%= render 'user/users/sidebar', user: @user %>
+    <main>
+      <h3>私のレビュー一覧</h3>
+       <div class="row">
+        <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+          <div class="col-md-4 favorite-review">
+            <% if review.image.present? %>
+              <div><%= attachment_image_tag(review, :image, size: '150x120') %></div>
+            <% end %>
+            <div class="favorites">Bar</div>
+            <div><%= review.shop.name %>
+                <%= link_to shop_path(review.shop) do %>
+                  <i class="fas fa-external-link-alt" style="color:#6600FF;"></i></div>
+                <% end %>
+            <div class="favorites">Title</div><div><%= review.title %></div>
+            <div class="favorites">Content</div><div><%= review.post %></div>
+          </div>
+        <% end %>
+        <% else %>
+          <p style="margin: 0 auto; margin-top:70px;">バーへ行ってレビューを書いてみよう！！</p>
+        <% end %>
+        </div>
+    </main>
+</div>

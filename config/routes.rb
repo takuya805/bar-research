@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get '/bookmarks' => 'bookmarks#index'
       get '/favorites' => 'favorites#index'
       resource :user_contacts, only: [:create]
+      get '/reviews' => 'users#review'
     end
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]

@@ -27,16 +27,16 @@
 
         <table class="table ml-3">
             <tr>
-                <td>投稿したレビュー</td><td><%= current_user.reviews.count %>件</td>
+                <td>投稿したレビュー</td><td><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
             </tr>
             <tr>
-                <td>お気に入り登録したレビュー</td><td><%= current_user.favorites.count %>件</td>
+                <td>お気に入り登録したレビュー</td><td><i class="fas fa-flag"></i><%= current_user.favorites.count %>件</td>
             </tr>
             <tr>
-                <td>ブックマークしたバー</td><td><%= current_user.bookmarks.count %>件</td>
+                <td>ブックマークした店舗</td><td><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>
             </tr>
             <tr>
-                <td>チャットした人数</td><td><%= current_user.rooms.count %>件</td>
+                <td>チャットした人数</td><td><i class="fas fa-flag"></i><%= current_user.rooms.count %>件</td>
             </tr>
         </table>
         <% unless @user == current_user %>

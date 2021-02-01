@@ -1,5 +1,9 @@
 class User::UsersController < ApplicationController
 
+  def review
+    @reviews = current_user.reviews
+  end
+
   def show
     @user = User.find(params[:id])
   end

@@ -17,9 +17,9 @@
               <span><i class="fas fa-bookmark"></i>Bookmarks</span>
             </li>
             <% end %>
-            <%= link_to user_favorites_path(current_user) do %>
+            <%= link_to user_reviews_path(current_user.id) do %>
             <li class="menu mb-5">
-             <span><i class="fas fa-file-pdf"></i>Reviews</span>
+             <span><i class="fas fa-file-pdf"></i>My reviews</span>
             </li>
             <% end %>
             <%= link_to user_favorites_path(current_user) do %>
