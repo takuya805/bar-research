@@ -92,24 +92,32 @@
 <div id="map"></div>
 
 <div class="review-index">
+ <h4 class="review-title">レビュー一覧</h4>
 <% @reviews.each do |review| %>
-  <%= label_tag :評価 %><%= review.star %>点<br />
-  <div id="star-rate-<%= review.id %>"></div>
-  <%= label_tag :口コミ %><%= review.post %><br />
-  <%= label_tag :投稿写真 %><%= attachment_image_tag(review, :image, size: '100x100') %><br />
+<div class="review-view">
+<h5 style="font-weight:bold;">”<%= review.title %>”</h5>
+<% if review.image.present? %>
+ <div> <%= attachment_image_tag(review, :image, size: '100x100') %></div>
+<% end %>
+  <div id="star-rate-<%= review.id %>" style="display:inline-block;"></div><span style="margin-left:20px;"><%= review.created_at.strftime('%Y/%m/%d') %>に投稿</span>
+  <div><%= review.post %></div>
   <%= render 'user/reviews/star', review: review %>
+
+  <div class="review-delete">
+  <% if current_user == review.user %>
+    <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
+  <% end %>
+  <% unless review.user_id == current_user.id %>
   <div id="favorites_buttons_<%= review.id %>">
     <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
   </div>
-  <div class="review-delete">
-  <% if current_user == review.user %>
-    <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
   <% end %>
   </div>
+</div>
 <% end %>
 </div>
+ <h4 class="review-title">レビュー投稿</h4>
 <div class="review-form">
-  <h4>レビュー投稿</h4>
 <%= render 'user/reviews/review', review: @review, shop: @shop %>
 </div>
 </div>

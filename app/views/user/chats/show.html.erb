@@ -1,12 +1,14 @@
 <div class="mypage">
 <%= render 'user/users/sidebar', user: @user %>
-      <div class="col-md-2 offset-md-1">
+<main>
+   <div class="row chat-index">
+      <div class="col-md-4" style="border-right:2px solid white;">
         <div class="chat" style="width:100%;">
            <h4>チャット履歴一覧</h4>
           <%= render 'user/chats/index', rooms: @rooms, chat: @chat %>
         </div>
       </div>
-       <div class="col-md-6 offset-md-1">
+       <div class="col-md-8">
             <div class="message">
               <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user %>"><%= @user.name %>さんとのチャット</h3>
               <div>
@@ -16,11 +18,11 @@
                 <%= chat.submit "送信" %>
               <% end %>
               </div>
-               <table class="message mt-5">
+               <table class="message mt-5" style="width:100%; margin:0 auto;">
               <thead>
                 <tr>
                   <th style="text-align: left; font-size: 20px;"><%= attachment_image_tag current_user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= current_user.name %></th>
-                  <th style="text-align: right; font-size: 20px; padding-left: 100px;"><%= attachment_image_tag @user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= @user.name %></th>
+                  <th style="text-align: right; font-size: 20px; "><%= attachment_image_tag @user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= @user.name %></th>
                 </tr>
               </thead>
               <% @chats.each do |chat| %>
@@ -28,7 +30,7 @@
                 <tbody>
                   <tr>
                     <th>
-                  <p class="arrow_box" style="text-align: right;"><%= chat.message %></p>
+                  <p class="arrow_box" style="text-align: left; font-size: 12px; color:white;"><%= chat.message %></p>
                    </th>
                     <th></th>
                   </tr>
@@ -38,7 +40,7 @@
                   <tr>
                     <th></th>
                     <th>
-                  <p style="text-align: left; background:white; color:black;"><%= chat.message %></p>
+                  <p style="font-size: 12px; text-align: right; color:white;"><%= chat.message %></p>
                      </th>
                   </tr>
                 </tbody>
@@ -47,4 +49,6 @@
               </table>
             </div>
         </div>
-      </div>
+        </div>
+  </main>
+</div>
