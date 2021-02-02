@@ -1,7 +1,14 @@
-<aside>
+<aside style="margin-left:50px;">
     <nav>
-        <ul>
+        <ul style="list-style:none;">
             <li class="mb-5">Menu</li>
+
+            <%= link_to root_path do %>
+            <li class="menu mb-5">
+            <span><i class="fas fa-clipboard"></i>Top page</span>
+            </li>
+            <% end %>
+
             <%= link_to user_path(current_user) do %>
             <li class="menu mb-5">
               <span><i class="fas fa-home"></i>Home</span>

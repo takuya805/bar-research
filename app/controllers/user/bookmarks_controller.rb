@@ -1,7 +1,7 @@
 class User::BookmarksController < ApplicationController
 
   def index
-    @bookmarks = current_user.bookmarks
+    @bookmarks = current_user.bookmarks.page(params[:page]).order(created_at: :desc).per(9)
   end
 
   def create

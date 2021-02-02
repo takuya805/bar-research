@@ -1,12 +1,34 @@
  <div class="mypage">
   <%= render 'user/users/sidebar', user: @user %>
+  <main style="margin:0 auto;">
+  <div class="row">
+   <div>
   <div class="mysearch">
-    <%= image_tag 'search.jpg',size: '300x200' %>
-    <h2>検索</h2>
-    <%= form_with model: @shop, url: shops_path, method: :get, local: true do |f| %>
-    <%= f.select :search , options_for_select([['キーワードで検索', '1'], ['駅名', '2'], ['店名', '3']]) %>
-    <%= f.text_field :word, placeholder: "駅名、キーワードなどを入力" %>
-    <%= f.submit '検索' %>
-    <% end %>
+    <%= image_tag 'search.jpg',size: '600x300',style: "opacity: 0.6;" %>
+    <div style="margin-left: 50px;">
+    <h2 class="myprofile mt-5" style="font-size:60px; text-align:center;">Search</h2>
+     <%= render 'user/shops/search', shop: @shop, style: "text-align:center;" %>
+    </div>
+    </div>
   </div>
+  </div>
+   <%= render 'user/shops/genre' %>
+    <p class="mt-5" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
+  <div class="row mt-5 mb-5">
+        <% @reviews.each do |review| %>
+          <div class="col-md-4 favorite-review">
+            <% if review.image.present? %>
+              <div><%= attachment_image_tag(review, :image, size: '150x120') %></div>
+            <% end %>
+            <div class="favorites">Bar</div>
+            <div><%= review.shop.name %>
+                <%= link_to shop_path(review.shop) do %>
+                  <i class="fas fa-external-link-alt" style="color:#6600FF;"></i></div>
+                <% end %>
+            <div class="favorites">Title</div><div><%= review.title %></div>
+            <div class="favorites">Content</div><div><%= review.post %></div>
+          </div>
+        <% end %>
+  </div>
+  </main>
 </div>
