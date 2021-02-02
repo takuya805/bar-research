@@ -90,7 +90,7 @@
 
 <% #mapの表示 %>
 <div id="map"></div>
-
+<div class="new-review">
 <div class="review-index">
  <h4 class="review-title">レビュー一覧</h4>
 <% @reviews.each do |review| %>
@@ -116,9 +116,19 @@
 </div>
 <% end %>
 </div>
+<div class="new-review">
  <h4 class="review-title">レビュー投稿</h4>
-<div class="review-form">
-<%= render 'user/reviews/review', review: @review, shop: @shop %>
+  <div class="review-form">
+    <%= render 'user/reviews/review', review: @review, shop: @shop %>
+  </div>
+  </div>
+  </div>
 </div>
-</div>
+ <div class="row">
+    <div class="col">
+      <div>
+       <%= paginate @reviews, style: "color:black;" %>
+      </div>
+    </div>
+  </div>
 </main>

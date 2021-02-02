@@ -22,6 +22,12 @@
     <div><span style=" padding-right: 46px;">定休日</span><%= shop.holiday %></div>
      </div>
     <% end %>
-
+ <div class="row">
+    <div class="col">
+      <div>
+       <%= paginate @shops, style: "color:white;" %>
+      </div>
+    </div>
+  </div>
 </main>
 </div>

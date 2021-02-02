@@ -1,7 +1,7 @@
 class User::UsersController < ApplicationController
 
   def review
-    @reviews = current_user.reviews
+    @reviews = current_user.reviews.page(params[:page]).order(created_at: :desc).per(9)
   end
 
   def show

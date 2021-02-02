@@ -27,6 +27,13 @@
       <p style="margin: 0 auto; margin-top:70px;">まだブックマークはありません。<br >バーを検索してブックマークをしてみよう！</p>
       <% end %>
   </div>
+   <div class="row">
+            <div class="col">
+              <div>
+               <%= paginate @bookmarks, style: "color:white;" %>
+              </div>
+            </div>
+          </div>
   </main>
 </div>
 
