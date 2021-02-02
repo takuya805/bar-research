@@ -1,5 +1,5 @@
 class Owner::ShopsController < ApplicationController
-
+   layout 'owner'
   def index
     @shops = current_owner.shops
   end
