@@ -20,6 +20,11 @@ User.create!(
   email: "kou@gmail.com",
   password: "123456"
   )
+  User.create!(
+  name: "テスト",
+  email: "test@gmail.com",
+  password: "123456"
+  )
 
 Category.create!(
   category: "ショットバー"

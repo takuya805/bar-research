@@ -12,4 +12,11 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :shops, through: :bookmarks, source: :shop
+
+  def self.guest
+    find_or_create_by(email: "test@gmail.com") do |user|
+      user.password = 123456
+    end
+  end
+
 end

@@ -31,7 +31,7 @@
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info ml-5" %>
         </li>
         <li>
-          <%= link_to "会員ページ", root_path, class: "btn btn-outline-info ml-5" %>
+          <%= link_to 'テストユーザー', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
         </li>
       <% end %>
       </ul>
