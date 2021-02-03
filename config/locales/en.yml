@@ -30,4 +30,14 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  devise:
+    failure:
+      deleted_account: "You've deleted your account. Thanks!"
+
+# ja:
+#   devise:
+#     failure:
+#       deleted_account: "このアカウントは既に削除されています。"
+#     sessions:
+#       owner:
+#         signed_in: "ログインに成功しました"
