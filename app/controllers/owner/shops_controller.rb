@@ -3,6 +3,10 @@ class Owner::ShopsController < ApplicationController
   def index
     @shops = current_owner.shops
   end
+  def show
+    @shop = Shop.find(params[:id])
+    @reviews = @shop.reviews
+  end
 
   def new
     @shop = Shop.new
@@ -11,7 +15,6 @@ class Owner::ShopsController < ApplicationController
 
   def create
     @shop = current_owner.shops.build(shop_params)
-
     @shop.save
     redirect_to owner_shops_path, notice: "#{@shop.name}の情報を登録しました。"
   end

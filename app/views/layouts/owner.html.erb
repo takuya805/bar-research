@@ -17,15 +17,17 @@
       <ul class="navbar-nav ml-auto" >
     <% if owner_signed_in? %>
         <li>
-          <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
-
+          <%= link_to "ログアウト", destroy_owner_session_path, method: :delete, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <li>
+          <%= link_to "トップへ戻る", owner_homes_top_path, class: "btn btn-outline-info ml-5" %>
         </li>
       <% else %>
         <li>
-          <%= link_to "新規登録", new_owner_registration_path %>
+          <%= link_to "新規登録", new_owner_registration_path, class: "btn btn-outline-info ml-5" %>
         </li>
         <li>
-          <%= link_to "ログイン", new_owner_session_path %>
+          <%= link_to "ログイン", new_owner_session_path, class: "btn btn-outline-info ml-5" %>
         </li>
       <% end %>
       </ul>
@@ -35,5 +37,8 @@
        <%= flash[:notice] %>
      </div>
       <%= yield %>
+      <fotter>
+
+      </fotter>
   </body>
 </html>

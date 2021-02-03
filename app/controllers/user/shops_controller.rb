@@ -10,8 +10,7 @@ class User::ShopsController < ApplicationController
       @shops  = @category.shops.page(params[:page]).order(created_at: :desc).per(10)
       return
     end
-    @shops = Shop.search_by_keyword(params[:search
-      ], params[:word]).page(params[:page]).order(created_at: :desc).per(10)
+    @shops = Shop.search_by_keyword(params[:search], params[:word]).page(params[:page]).order(created_at: :desc).per(10)
   end
 
   def show
