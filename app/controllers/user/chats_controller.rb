@@ -1,12 +1,7 @@
 class User::ChatsController < ApplicationController
-  def index
+   def index
       @rooms = current_user.rooms
-       @rooms.each do |room|
-        room.chats.each do |chat|
-          @chat  = chat.chat_deletes.find_by(user_id: current_user.id)
-        end
-      end
-  end
+   end
 
   def show
     @user = User.find(params[:id])

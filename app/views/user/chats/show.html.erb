@@ -18,7 +18,7 @@
                 <%= chat.submit "送信" %>
               <% end %>
               </div>
-               <table class="message mt-5" style="width:100%; margin:0 auto;">
+               <table id="message" class="mt-5" style="width:100%; margin:0 auto;">
               <thead>
                 <tr>
                   <th style="text-align: left; font-size: 20px;"><%= attachment_image_tag current_user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= current_user.name %></th>
@@ -31,7 +31,7 @@
 
                   <tr>
                     <th>
-                  <p class="arrow_box" style="text-align: left; font-size: 12px; color:white;"><%= chat.message %></p>
+                  <p style="text-align: left; font-size: 12px; color:white;"><%= chat.message %></p>
                    </th>
                     <th></th>
                   </tr>
