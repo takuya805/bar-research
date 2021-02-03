@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
    namespace :owner do
     get 'homes/top' =>'homes/top'
-    resources :shops, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]
     resource :owner_contacts, only: [:create]
   end
 
