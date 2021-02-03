@@ -14,7 +14,7 @@
 
     <header>
       <nav class="navbar navbar-expand p-5">
-      <ul class="navbar-nav" >
+      <ul class="navbar-nav ml-auto" >
     <% if owner_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_owner_session_path, method: :delete %>
@@ -26,9 +26,6 @@
         </li>
         <li>
           <%= link_to "ログイン", new_owner_session_path %>
-        </li>
-        <li>
-          <%= link_to "サイト紹介", owner_homes_about_path %>
         </li>
       <% end %>
       </ul>

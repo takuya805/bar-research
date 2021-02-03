@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   }
 
   root to: 'homes#top'
-  get 'homes/about' => 'homes#about'
 
   scope module: :user do
     resources :users, only: [:show, :edit, :update, :destroy] do
@@ -17,16 +16,20 @@ Rails.application.routes.draw do
       resource :user_contacts, only: [:create]
       get '/reviews' => 'users#review'
     end
+
     get '/chats/exit' => 'chats#exit'
     resources :chats, only: [:index, :show, :create]
     get '/shops/search' => 'shops#search'
+
     resources :shops, only: [:index, :show] do
       resources :reviews, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
+
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
     end
+
   end
 
   devise_for :owners, controllers: {
@@ -36,7 +39,6 @@ Rails.application.routes.draw do
 
    namespace :owner do
     get 'homes/top' =>'homes/top'
-    get 'homes/about' => 'homes#about'
     resources :shops, only: [:index, :new, :create, :edit, :update, :destroy]
     resource :owner_contacts, only: [:create]
   end

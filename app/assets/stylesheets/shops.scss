@@ -50,7 +50,6 @@
 }
 .review-delete{
   text-align: right;
-  margin-right: 120px;
 }
 
 .review-form > h2{
@@ -61,4 +60,12 @@
 }
 .bookmark > p{
   color: black;
+}
+.review-view{
+  display: flex;
+}
+.star-count{
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
 }

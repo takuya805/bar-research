@@ -1,17 +1,23 @@
-<% if @shops == [] %>
-  <p><%= link_to '店舗の新規登録を始める', new_owner_shop_path %></p>
-<% else %>
-  <% @shops.each do |shop| %><br />
-  <p>店舗名：<%= shop.name %></p>
-              <% if shop.shop_pictures == [] %>
-                <p>写真：写真はありません</p>
-              <% else %>
-          写真：<% shop.shop_pictures.each do |shop_picture| %>
-              <%= attachment_image_tag shop_picture, :image, size: '50x50' %>
-              <% end %><br />
-              <% end %>
-            <%= link_to '編集する', edit_owner_shop_path(shop) %>
-            <%= link_to '店舗情報を削除する', owner_shop_path(shop), method: :delete, "data-confirm" =>'本当に削除しますか？'%>
-            <p><%= link_to '店舗情報を追加する', new_owner_shop_path %></p>
-  <% end %>
-<% end %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-4">
+        <% if @shops===[] %>
+          <p><%= link_to '店舗の新規登録を始める', new_owner_shop_path %></p>
+        <% else %>
+          <% @shops.each do |shop| %><br />
+          <p>店舗名：<%= shop.name %></p>
+                      <% if shop.shop_pictures == [] %>
+                        <p>写真：写真はありません</p>
+                      <% else %>
+                  写真：<% shop.shop_pictures.each do |shop_picture| %>
+                      <%= attachment_image_tag shop_picture, :image, size: '50x50' %>
+                      <% end %><br />
+                      <% end %>
+                    <%= link_to '編集する', edit_owner_shop_path(shop) %>
+                    <%= link_to '店舗情報を削除する', owner_shop_path(shop), method: :delete, "data-confirm" =>'本当に削除しますか？'%>
+                    <p><%= link_to '店舗情報を追加する', new_owner_shop_path %></p>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

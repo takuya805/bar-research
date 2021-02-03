@@ -40,7 +40,7 @@
             </tr>
         </table>
         <% unless @user == current_user %>
-            <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
+            <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks": false %>
         <% end %>
     </div>
     <div class="mt-5">
