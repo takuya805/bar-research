@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2021_02_01_005333) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.string "name", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_owners_on_email", unique: true
