@@ -9,4 +9,7 @@ class Review < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
+  validates :title, presence: true
+  validates :post, presence: true
+  validates :star, presence: true
 end

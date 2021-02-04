@@ -1,5 +1,7 @@
  <div class="mypage">
+  <% if user_signed_in? %>
   <%= render 'user/users/sidebar', user: @user %>
+  <% end %>
   <main class="shopshow">
 <h4><%= @shop.name %></h4>
 <span class=bookmark><div id="bookmarks_buttons_<%=@shop.id %>" style="text-align:right; padding-right:20px;">
@@ -83,13 +85,14 @@
               src="https://maps.googleapis.com/maps/api/js?v=3.exp&key= <%= ENV['API_KEY'] %>&callback=initMap">
 </script>
  <!--表示するmapのcssです。ご自身でカスタマイズしてください。高さが設定されていないと表示されないことがあります。-->
-<style type="text/css">
+<style class= "mb-5" type="text/css">
   #map { height: 500px;
          width: 80%;}
 </style>
 
 <% #mapの表示 %>
 <div id="map"></div>
+<% if user_signed_in? %>
 <div class="new-review">
 <div class="review-index">
  <h4 class="review-title">レビュー一覧</h4>
@@ -117,9 +120,23 @@
 </div>
 <% end %>
 </div>
+<% end %>
+
+<% if user_signed_in? %>
 <div class="new-review">
  <h4 class="review-title">レビュー投稿</h4>
   <div class="review-form">
+    <% if @review.errors.any? %>
+    <div class="notification is-danger">
+      <h2><%= @review.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
     <%= render 'user/reviews/review', review: @review, shop: @shop %>
   </div>
   </div>
@@ -132,4 +149,6 @@
       </div>
     </div>
   </div>
+<% end %>
 </main>
+</div>

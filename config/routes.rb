@@ -43,6 +43,12 @@ Rails.application.routes.draw do
     registrations: 'owners/registrations'
   }
 
+   devise_scope :owner do
+    get "sign_in", :to => "owners/sessions#new"
+    get "sign_out", :to => "owners/sessions#destroy"
+    post 'owners/guest_sign_in', to: 'owners/sessions#new_guest'
+  end
+
    namespace :owner do
     get 'homes/top' =>'homes/top'
     resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]

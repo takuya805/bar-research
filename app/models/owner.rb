@@ -19,4 +19,10 @@ class Owner < ApplicationRecord
   def inactive_message
     !deleted_at ? super : :deleted_account
   end
+
+   def self.guest
+    find_or_create_by(email: "owner_test@example.com") do |owner|
+      owner.password = "abcdef"
+    end
+   end
 end

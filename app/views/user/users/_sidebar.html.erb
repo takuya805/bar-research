@@ -1,14 +1,41 @@
 <aside style="margin-left:50px;">
-    <nav>
-        <ul style="list-style:none;">
-            <li class="mb-5">Menu</li>
-
-            <%= link_to root_path do %>
+    <nav style="color:#A2CA36;">
+        <ul class="mysidebar" style="list-style:none;" id="desktop-menu">
+            <li class="mb-5"><i class="fas fa-clipboard"></i>Menu</li>
+            <%= link_to user_path(current_user) do %>
             <li class="menu mb-5">
-            <span><i class="fas fa-clipboard"></i>Top page</span>
+              <span><i class="fas fa-home"></i>Home</span>
             </li>
             <% end %>
+            <%= link_to  chats_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-sms"></i>Chats</span>
+            </li>
+            <% end %>
+            <%= link_to user_bookmarks_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-bookmark"></i>Bookmarks</span>
+            </li>
+            <% end %>
+            <%= link_to user_reviews_path(current_user.id) do %>
+            <li class="menu mb-5">
+             <span><i class="fas fa-file-pdf"></i>My reviews</span>
+            </li>
+            <% end %>
+            <%= link_to user_favorites_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-heart"></i>Favorites</span>
+            </li>
+            <% end %>
+            <%= link_to shops_search_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-search-dollar"></i>Bar search</span>
+            </li>
+            <% end %>
+        </ul>
 
+         <ul class="mysidebar" style="list-style:none;" id="sp-menu">
+            <li class="mb-5"><i class="fas fa-clipboard"></i>Menu</li>
             <%= link_to user_path(current_user) do %>
             <li class="menu mb-5">
               <span><i class="fas fa-home"></i>Home</span>
@@ -42,6 +69,21 @@
         </ul>
     </nav>
     <div class="sidefotter">
-         <%= link_to 'Exit', user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva';" %>
+       <% unless current_user.email == "test@gmail.com" %>
+        <%= link_to user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva'; color:#A2CA36;" do %>
+          <span><i style="color:#A2CA36;"class="fas fa-times-circle"></i>Quit</span>
+        <% end %>
+       <% end %>
     </div>
 </aside>
+
+
+<!-- ハンバーガーメニューのアイコン -->
+<div id="hamburger">
+　<!-- 1番上の線 -->
+  <span class="inner_line" id="line1"></span>
+　<!-- 真ん中の線 -->
+  <span class="inner_line" id="line2"></span>
+　<!-- 1番下の線 -->
+  <span class="inner_line" id="line3"></span>
+</div>

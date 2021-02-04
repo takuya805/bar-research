@@ -1,9 +1,12 @@
 <div class="mypage">
-  <%= render 'user/users/sidebar', user: @user %>
+  <% if user_signed_in? %>
+    <%= render 'user/users/sidebar', user: @user %>
+  <% end %>
 <main>
     <% @shops.each do |shop| %>
     <div class="shop-border">
     <h4><%= shop.name %></h4>
+    <div><%= shop.avg_score %>点(<%= shop.reviews.count %>件のレビュー)</div>
     <div class="shopbtn">
     <%= link_to '詳細を見る', shop_path(shop), class: 'btn btn-warning' %>
     </div>

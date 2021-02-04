@@ -16,13 +16,18 @@ aside{
   min-width: 50px;
   display: flex;
   flex-direction: column;
-
 }
 ul li{
-  font-size: 30px;
-  color:  #A2CA36;
   text-align: left;
+  list-style: none;
+}
+
+aside{
+  font-size: 30px;
   font-family: 'Monotype Corsiva';
+}
+.mysidebar > a{
+  color:#A2CA36;
 }
 
 .sidefotter{
@@ -81,5 +86,8 @@ ul li{
   padding-left: 20px;
 }
 
+#sp-menu{
+    display: none;
+}
 
 

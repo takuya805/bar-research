@@ -21,7 +21,7 @@ User.create!(
   password: "123456"
   )
   User.create!(
-  name: "テスト",
+  name: "ゲスト",
   email: "test@gmail.com",
   password: "123456"
   )
@@ -64,6 +64,11 @@ Category.create!(
   name: '青木',
   email: 'aoki@gmail.com',
   password: '123456'
+  )
+  Owner.create!(
+  name: 'ゲスト',
+  email: 'owner_test@example.com',
+  password: 'abcdef'
   )
 
 Shop.create!(
