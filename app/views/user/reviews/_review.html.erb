@@ -1,7 +1,7 @@
 <%= form_with(model: [shop, review], url: shop_reviews_path(shop, review), local: true) do |f| %>
    <div class="form-group">
       <%= f.label :'タイトル' %><br />
-      <%= f.text_field :title, placeholder: '口コミを投稿しましょう' %><br />
+      <%= f.text_field :title, placeholder: 'タイトルを入力して下さい' %><br />
   </div>
   <div class="form-group">
       <%= f.label :'投稿写真' %><br />
@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <%= f.label :'口コミ内容' %><br />
-    <%= f.text_field :post, placeholder: '口コミを投稿しましょう', style: "height:80px; width: 300px; font-size:15px; border-radius: 10px;" %>
+    <%= f.text_field :post, placeholder: '内容を入力して下さい', class: "textarea" ,style: "height:80px; width: 300px; font-size:15px; border-radius: 10px;" %>
   </div>
   <%= f.submit '投稿する', class: 'btn btn-success', style: 'color:white;' %>
 <% end %>

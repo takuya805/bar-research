@@ -1,5 +1,5 @@
  <div class="mypage">
-  <%= render 'user/users/sidebar', user: @user %>
+    <%= render 'user/users/sidebar', user: @user %>
   <main style="margin:0 auto;">
   <div class="row">
    <div>
@@ -13,7 +13,20 @@
   </div>
   </div>
    <%= render 'user/shops/genre' %>
-    <p class="mt-5" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
+    <p class="mt-5" style="font-size: 30px; text-align: center;">ランキングから探す</p>
+
+      <% @all_ranks.each.with_index(1) do |shop, i| %>
+        <%= link_to shop_path(shop) do %>
+        <div class=" col-md-3">
+        <div style="text-align: center;">
+          <div><i class="fas fa-crown"></i></div>
+          <div>第<%= i %>位</div>
+          <div><%= shop.name %></div>
+        </div>
+        </div>
+        <% end %>
+      <% end %>
+  <p class="mt-5" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
   <div class="row mt-5 mb-5">
         <% @reviews.each do |review| %>
           <div class="col-md-4 favorite-review">

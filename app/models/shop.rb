@@ -57,4 +57,21 @@ class Shop < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
+
+  def avg_score
+    unless self.reviews.empty?
+      reviews.average(:star).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  # def review_score_percentage
+  #   unless self.reviews.empty?
+  #     reviews.average(:star).round(1).to_f*(100/5)
+  #   else
+  #     0.0
+  #   end
+  # end
+
 end

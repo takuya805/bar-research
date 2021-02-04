@@ -56,7 +56,7 @@
         <div><%= f.text_area :message, placeholder: '内容を入力してください',style: 'width:70%;' %></div>
     </div>
     <div class="field" style="text-align: right; margin-top: 20px; margin-right:160px;">
-        <%= f.submit '送信する', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
+        <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
     </div>
     <% end %>
     </div>
