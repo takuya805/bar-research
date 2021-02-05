@@ -2,11 +2,11 @@
   <nav class="mb-2" style="height:30px;">
     <%= link_to '店舗一覧ページ', owner_shops_path %><span class="mr-3 ml-3">/</span><%= link_to 'レビューページ', owner_shop_path %>
   </nav>
-    <div class="row owner-image">
+    <div class="row">
       <div class="col-md-6" style="margin:0 auto;">
         <% if @reviews.present? %>
         <% @reviews.each do |review| %>
-          <div class="review-view">
+          <div class="owner-review-view">
             <div style="width:75%;">
               <h5 style="font-weight:bold;">”<%= review.title %>”</h5>
               <% if review.image.present? %>
@@ -23,4 +23,11 @@
         <% end %>
       </div>
     </div>
+  <div class="row">
+    <div class="col">
+      <div>
+       <%= paginate @reviews, style: "color:white;" %>
+      </div>
+    </div>
+  </div>
 </div>

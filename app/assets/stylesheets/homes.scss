@@ -56,4 +56,16 @@
     text-align: center;
 }
 
+@media screen and (max-width: 600px){
+.title{
+  padding-left: 0px !important;
+  text-align: center;
+ }
+ .search{
+   padding-left: 0px !important;
+ }
 
+ .search-word{
+   margin-top: 20px;
+ }
+}

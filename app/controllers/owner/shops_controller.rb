@@ -2,12 +2,12 @@ class Owner::ShopsController < ApplicationController
    layout 'owner'
 
   def index
-    @shops = current_owner.shops
+    @shops = current_owner.shops.page(params[:page]).order(created_at: :desc).per(5)
   end
 
   def show
     @shop = Shop.find(params[:id])
-    @reviews = @shop.reviews
+    @reviews = @shop.reviews.page(params[:page]).order(created_at: :desc).per(8)
   end
 
   def new

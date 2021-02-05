@@ -98,5 +98,26 @@
   .review-month{
     display: block;
   }
+  .review-favorite{
+    display: flex;
+  }
+  .review-chat{
+    margin-left: 10px;
+  }
 
+  .shop-review{
+    width: 200px !important;
+  }
+  #star{
+    width: 200px;
+  }
+  .form-content{
+    width: 200px !important;
+  }
+  .textarea{
+    width: 200px !important;
+  }
+  .shop-list{
+    width: 95%;
+  }
 }
