@@ -15,8 +15,12 @@
   <body>
   <header>
       <nav class="navbar navbar-expand p-3">
-        <%= link_to image_tag("logo.jpg", :size =>'100x80', class: "d-block mx-auto"), "/" %>
-      <ul class="navbar-nav ml-auto">
+        <span id="desktop-menu">
+        <%= link_to root_path do %>
+          <% image_tag("logo.jpg", size: '100x80', class: "d-block mx-auto") %>
+        <% end %>
+        </span>
+      <ul class="navbar-nav ml-auto" id="desktop-menu">
     <% if user_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-5"  %>
