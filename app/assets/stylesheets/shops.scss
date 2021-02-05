@@ -69,3 +69,55 @@
   font-size: 18px;
   font-weight: bold;
 }
+
+@media screen and (max-width: 600px){
+  .shoptop{
+    width: 95%;
+    margin: 0 auto;
+  }
+  .shopshow{
+    width: 95%;
+  }
+  .infomartion > .table{
+    font-size: 12px;
+  }
+  #map{
+    height: 300px !important;
+    width: 80%;
+  }
+  .new-review {
+    width: 100%;
+    margin: 0px !important;
+  }
+  .review-view{
+    display: block;
+  }
+  .review-new{
+    width: 100% !important;
+  }
+  .review-month{
+    display: block;
+  }
+  .review-favorite{
+    display: flex;
+  }
+  .review-chat{
+    margin-left: 10px;
+  }
+
+  .shop-review{
+    width: 200px !important;
+  }
+  #star{
+    width: 200px;
+  }
+  .form-content{
+    width: 200px !important;
+  }
+  .textarea{
+    width: 200px !important;
+  }
+  .shop-list{
+    width: 95%;
+  }
+}

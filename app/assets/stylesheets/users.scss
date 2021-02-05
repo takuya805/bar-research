@@ -170,4 +170,21 @@ aside{
   #desktop-menu{
     display: none;
   }
+  .mine{
+    display: block;
+    text-align: center;
+    width: 90%;
+    font-size: 18px;
+    margin: 0 auto;
+  }
+  .profile{
+    width: 100%;
+  }
+  .siteform{
+    margin: 0 auto;
+    width: 90%;
+  }
+  .profile-left{
+    padding-left: 0 !important;
+  }
 }

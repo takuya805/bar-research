@@ -15,17 +15,17 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
+      flash[:notice] = "You have updated user successfully"
       redirect_to user_path(current_user)
     else
-      render 'edit'
+      render 'user/users/edit'
     end
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to root_path
+    redirect_to root_path, notice: 'See you again'
   end
 
   private

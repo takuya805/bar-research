@@ -1,8 +1,12 @@
- <div class="mypage">
-  <% if user_signed_in? %>
-  <%= render 'user/users/sidebar', user: @user %>
-  <% end %>
-  <main class="shopshow">
+<div class="mypage page-top">
+<% if user_signed_in? %>
+<%= render 'user/users/sidebar', user: @user %>
+<% end %>
+<div class="shoptop" style="margin:0 auto;">
+<nav class="mb-2" style="height:30px;">
+   <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %><span class="mr-3 ml-3">/</span><%= link_to 'Bar一覧', shops_path %><span class="mr-3 ml-3">/</span><%= link_to @shop.name, shop_path(@shop.id) %>
+</nav>
+<main class="shopshow">
 <h4><%= @shop.name %></h4>
 <span class=bookmark><div id="bookmarks_buttons_<%=@shop.id %>" style="text-align:right; padding-right:20px;">
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
@@ -98,12 +102,16 @@
  <h4 class="review-title">レビュー一覧</h4>
 <% @reviews.each do |review| %>
 <div class="review-view">
-  <div style="width:75%;">
+  <div class="review-new" style="width:75%;">
     <h5 style="font-weight:bold;">”<%= review.title %>”</h5>
     <% if review.image.present? %>
-     <div> <%= attachment_image_tag(review, :image, size: '100x100') %></div>
+     <div><%= attachment_image_tag(review, :image, size: '100x100') %></div>
     <% end %>
-      <div id="star-rate-<%= review.id %>" style="display:inline-block;"></div><span class="star-count ml-1"><%= review.star %></span><span style="margin-left:20px;"><%= review.created_at.strftime('%Y/%m/%d') %>に投稿</span>
+    <div><%= link_to user_path(review.user), style: "color:black;" do %>
+         <%= review.user.name %>さん
+         <% end %>
+    </div>
+      <div id="star-rate-<%= review.id %>" style="display:inline-block;"></div><span class="star-count ml-1"><%= review.star %></span><span class="review-month" style="margin-left:20px;"><%= review.created_at.strftime('%Y/%m/%d') %>に投稿</span>
       <div><%= review.post %></div>
       <%= render 'user/reviews/star', review: review %>
   </div>
@@ -113,8 +121,15 @@
     </div>
     <% end %>
     <% unless review.user_id == current_user.id %>
-    <div id="favorites_buttons_<%= review.id %>", style="width:25%;">
+    <div class="review-favorite">
+    <div id="favorites_buttons_<%= review.id %>">
       <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
+    </div>
+     <div class="review-chat">
+        <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
+        <span style="color:#228B22; font-weight: bold;"><i class="fas fa-sms"></i><%= review.user.name %>さんに<br />&emsp;チャットする</span>
+        <% end %>
+      </div>
     </div>
     <% end %>
 </div>
@@ -151,4 +166,5 @@
   </div>
 <% end %>
 </main>
+</div>
 </div>

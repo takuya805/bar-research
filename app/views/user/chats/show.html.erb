@@ -1,14 +1,11 @@
-<div class="mypage">
+<div class="mypage page-top">
 <%= render 'user/users/sidebar', user: @user %>
 <main>
+  <nav class="mb-2" style="height:30px;">
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %><span class="mr-3 ml-3">/</span><%= link_to "#{@user.name}さんとのチャット", chat_path(@room.id) %>
+  </nav>
    <div class="row chat-index">
-      <div class="col-md-4" style="border-right:2px solid white;">
-        <div class="chat" style="width:100%;">
-           <h4>チャット履歴一覧</h4>
-          <%= render 'user/chats/index', rooms: @rooms, chat: @chat %>
-        </div>
-      </div>
-       <div class="col-md-8">
+       <div class="col-md-8" style="width:100%;">
             <div class="message">
               <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user %>"><%= @user.name %>さんとのチャット</h3>
               <div>

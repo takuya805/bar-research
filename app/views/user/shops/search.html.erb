@@ -1,6 +1,9 @@
  <div class="mypage">
     <%= render 'user/users/sidebar', user: @user %>
   <main style="margin:0 auto;">
+    <nav class="mb-2" style="height:30px;">
+     <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %>
+   </nav>
   <div class="row">
    <div>
   <div class="mysearch">
@@ -14,18 +17,35 @@
   </div>
    <%= render 'user/shops/genre' %>
     <p class="mt-5" style="font-size: 30px; text-align: center;">ランキングから探す</p>
-
+      <div class="row">
       <% @all_ranks.each.with_index(1) do |shop, i| %>
+      <div class="col-md-4">
         <%= link_to shop_path(shop) do %>
-        <div class=" col-md-3">
         <div style="text-align: center;">
-          <div><i class="fas fa-crown"></i></div>
-          <div>第<%= i %>位</div>
-          <div><%= shop.name %></div>
+          <% if i==1 %>
+            <div style="color:#DBB400;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% elsif i==2 %>
+            <div style="color:#AEB3B5;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% elsif i==3 %>
+            <div style="color:#BA6E40;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% end %>
         </div>
-        </div>
-        <% end %>
+         <% end %>
+      </div>
       <% end %>
+      </div>
   <p class="mt-5" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
   <div class="row mt-5 mb-5">
         <% @reviews.each do |review| %>
