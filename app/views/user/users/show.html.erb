@@ -15,8 +15,13 @@
         </div>
         <div class="field mb-3" style="border-bottom: solid;">
             <%= label_tag :'自己紹介' %><br />
-            <%= @user.introduction %>
+            <div style="font-size: 13px;"><%= @user.introduction %></div>
         </div>
+        <% unless @user == current_user %>
+        <div class="field mb-3" style="border-bottom: solid;">
+             <%= link_to 'チャットする',chat_path(@user), style: "color: black;", "data-turbolinks": false %>
+        </div>
+        <% end %>
 
          <% if @user == current_user %>
         <div class="field">
@@ -27,23 +32,20 @@
 
         <table class="table ml-3">
             <tr>
-                <td>投稿したレビュー</td><td><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
+                <td>投稿したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
             </tr>
             <tr>
-                <td>お気に入り登録したレビュー</td><td><i class="fas fa-flag"></i><%= current_user.favorites.count %>件</td>
+                <td>お気に入り登録したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.favorites.count %>件</td>
             </tr>
             <tr>
-                <td>ブックマークした店舗</td><td><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>
+                <td>ブックマークした店舗</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>
             </tr>
             <tr>
-                <td>チャットした人数</td><td><i class="fas fa-flag"></i><%= current_user.rooms.count %>件</td>
+                <td>チャットした人数</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.rooms.count %>件</td>
             </tr>
         </table>
-        <% unless @user == current_user %>
-            <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks": false %>
-        <% end %>
     </div>
-    <div class="mt-5">
+    <div class="user-form mt-5">
     <h2 style="color:#A2CA36; font-family: Monotype Corsiva;">Information about site</h2>
     <div class="siteform">
     <%= form_with model: @user_contact, url: user_user_contacts_path(current_user.id), local: true do |f| %>
@@ -55,9 +57,11 @@
         <div><%= f.label :'問い合わせ内容' %></div>
         <div><%= f.text_area :message, placeholder: '内容を入力してください',style: 'width:70%;' %></div>
     </div>
+    <% if @user == current_user %>
     <div class="field" style="text-align: right; margin-top: 20px; margin-right:160px;">
         <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
     </div>
+    <% end %>
     <% end %>
     </div>
     </div>

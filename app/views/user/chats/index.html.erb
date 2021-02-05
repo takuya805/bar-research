@@ -1,6 +1,9 @@
- <div class="mypage">
+ <div class="mypage page-top">
   <%= render 'user/users/sidebar', user: @user %>
   <main>
+   <nav class="mb-2" style="height:30px;">
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %>
+  </nav>
     <div class="row chat-index">
       <div class="col-md-4">
        <h3>チャット一覧</h3>
@@ -10,8 +13,8 @@
          <%= render 'user/chats/index', rooms: @rooms, chat: @chat, class: 'mt-5'%>
       </div>
       <div class="col-md-8">
-        <h1><i class="fas fa-envelope" style="text-align:center;"></i></h1>
-        <h2>メッセージ</h2>
+        <h1 class="chat-res"><i class="fas fa-envelope" style="text-align:center;"></i></h1>
+        <h2 class="chat-message">メッセージ</h2>
         <span>Barのreviewを書いた人にメッセージを送信できます。</span>
       </div>
 

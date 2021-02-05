@@ -1,6 +1,9 @@
 <div class=mypage>
   <%= render 'user/users/sidebar', user: @user %>
 <main class="bookmarks">
+   <nav class="mb-2" style="height:30px;">
+     <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Favorites', user_favorites_path %>
+   </nav>
     <h3>お気に入りレビュー</h3>
   <div class="row">
       <% if @favorites.present? %>

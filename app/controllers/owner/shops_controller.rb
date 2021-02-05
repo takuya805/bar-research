@@ -1,8 +1,10 @@
 class Owner::ShopsController < ApplicationController
    layout 'owner'
+
   def index
     @shops = current_owner.shops
   end
+
   def show
     @shop = Shop.find(params[:id])
     @reviews = @shop.reviews
@@ -15,8 +17,13 @@ class Owner::ShopsController < ApplicationController
 
   def create
     @shop = current_owner.shops.build(shop_params)
-    @shop.save
-    redirect_to owner_shops_path, notice: "#{@shop.name}の情報を登録しました。"
+
+      if @shop.save
+        redirect_to owner_shops_path, notice: "Registration was successful your bar"
+      else
+        @categories = Category.all
+        render 'owner/shops/new'
+      end
   end
 
   def edit
@@ -26,14 +33,22 @@ class Owner::ShopsController < ApplicationController
 
   def update
     @shop = current_owner.shops.find_by(id: params[:id])
-    @shop.update(shop_params)
-    redirect_to owner_shops_path
+    if @shop.update(shop_params)
+      redirect_to owner_shops_path, notice: "Update was successful your bar"
+    else
+      @categories = Category.all
+      render 'owner/shops/edit'
+    end
   end
 
   def destroy
     @shop = current_owner.shops.find_by(id: params[:id])
-    @shop.destroy
-    redirect_to owner_homes_top_path
+    if @shop.destroy
+     redirect_to owner_shops_path, notice: "Delete was successful your bar"
+    else
+      @shops = current_owner.shops
+      render 'owner/shops/index'
+    end
   end
 
   private

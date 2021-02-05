@@ -14,7 +14,7 @@
 
     <header>
       <nav class="navbar navbar-expand p-5">
-      <ul class="navbar-nav ml-auto" >
+      <ul class="navbar-nav ml-auto" id="desktop-menu" >
     <% if owner_signed_in? %>
         <li>
           <%= link_to "ログアウト", destroy_owner_session_path, method: :delete, class: "btn btn-outline-info ml-5" %>
@@ -42,6 +42,42 @@
         </li>
       <% end %>
       </ul>
+       <ul class="navbar-nav ml-auto" id="sp-menu" >
+      <% if owner_signed_in? %>
+        <li>
+          <%= link_to "ログアウト", destroy_owner_session_path, method: :delete, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <li>
+          <%= link_to "トップへ戻る", owner_homes_top_path, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <% unless current_owner.email == "owner_test@example.com" %>
+        <li>
+          <%= link_to '退会する', owner_registration_path, method: :delete,  "data-confirm" => '本当に退会しますか？', class: "btn btn-outline-info ml-5" %>
+        </li>
+        <% end %>
+      <% else %>
+        <li>
+          <%= link_to "会員へ戻る", root_path, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <li>
+          <%= link_to "新規登録", new_owner_registration_path, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <li>
+          <%= link_to "ログイン", new_owner_session_path, class: "btn btn-outline-info ml-5" %>
+        </li>
+        <li>
+           <%= link_to 'ゲストログイン', owners_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
+        </li>
+      <% end %>
+      </ul>
+      <div id="hm-icon">
+        <a class="menu-trigger" href="">
+          <span></span>
+          <span></span>
+          <span></span>
+        </a>
+      </div>
+
       </nav>
     </header>
      <div>

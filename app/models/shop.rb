@@ -66,12 +66,21 @@ class Shop < ApplicationRecord
     end
   end
 
-  # def review_score_percentage
-  #   unless self.reviews.empty?
-  #     reviews.average(:star).round(1).to_f*(100/5)
-  #   else
-  #     0.0
-  #   end
-  # end
+  with_options presence: true do
+    validates :category_id
+    validates :name
+    validates :postcode
+    validates :address
+    validates :station
+    validates :phone
+    validates :holiday
+    validates :budget
+    validates :seat
+    validates :explain
+    validates :open_time
+    validates :close_time
+  end
+
+
 
 end

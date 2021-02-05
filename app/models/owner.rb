@@ -4,6 +4,7 @@ class Owner < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable #:confirmable
   has_many :shops, dependent: :destroy
+  validates :name, presence: true
 
   # 物理削除の代わりにユーザーの`deleted_at`をタイムスタンプで更新
   def soft_delete

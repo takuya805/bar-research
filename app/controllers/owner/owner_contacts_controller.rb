@@ -4,8 +4,12 @@ class Owner::OwnerContactsController < ApplicationController
     @owner_contact.owner_id = current_owner.id
     if @owner_contact.save
       UserContactMailer.owner_mail(@owner_contact).deliver
+      redirect_to owner_shops_path(current_owner), notice: "Your message send successful!!"
+    else
+      @shops = current_owner.shops
+      render 'owner/shops/index'
     end
-    redirect_to owner_shops_path(current_owner)
+
   end
 
   private
