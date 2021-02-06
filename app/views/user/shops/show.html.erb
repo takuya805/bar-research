@@ -7,6 +7,16 @@
    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %><span class="mr-3 ml-3">/</span><%= link_to 'Bar一覧', shops_path %><span class="mr-3 ml-3">/</span><%= link_to @shop.name, shop_path(@shop.id) %>
 </nav>
 <main class="shopshow">
+  <% if @review.errors.any? %>
+    <div class="notification">
+      <h2><%= @review.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
 <h4><%= @shop.name %></h4>
 <span class=bookmark><div id="bookmarks_buttons_<%=@shop.id %>" style="text-align:right; padding-right:20px;">
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
@@ -141,16 +151,6 @@
 <div class="new-review">
  <h4 class="review-title">レビュー投稿</h4>
   <div class="review-form">
-    <% if @review.errors.any? %>
-    <div class="notification is-danger">
-      <h2><%= @review.errors.count %>件のエラーがあります。</h2>
-      <ul>
-        <% @review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
 
     <%= render 'user/reviews/review', review: @review, shop: @shop %>
   </div>

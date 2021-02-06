@@ -5,6 +5,16 @@
           <%= link_to '店舗一覧ページ', owner_shops_path %><span class="mr-3 ml-3">/</span><%= link_to '店舗追加ページ', new_owner_shop_path %>
         </nav>
         <div class="owner-new">
+           <% if @shop.errors.any? %>
+            <div class="notification">
+              <h2><%= @shop.errors.count %>件のエラーがあります。</h2>
+              <ul>
+                <% @shop.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+           <% end %>
         <%= form_with model: @shop, url: owner_shops_path, class: "shop-new", local: true do |f| %>
           <div class="form-group mb-3 pb-4">
             <div class="must"><%= f.label '(必須項目)' %></div>

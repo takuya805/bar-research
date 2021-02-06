@@ -1,4 +1,5 @@
 class User::FavoritesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @favorites = current_user.favorites.page(params[:page]).order(created_at: :desc).per(9)

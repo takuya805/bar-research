@@ -1,4 +1,5 @@
 class User::ReviewsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @shop = Shop.find(params[:shop_id])
@@ -14,8 +15,13 @@ class User::ReviewsController < ApplicationController
 
   def destroy
    review = Review.find_by(id: params[:id], shop_id: params[:shop_id], user_id: params[:user_id])
-   review.destroy
-   redirect_to shop_path(params[:shop_id])
+   if review.destroy
+      redirect_to shop_path(params[:shop_id]), notice: 'successfull destroyed'
+   else
+     @shop = Shop.find(params[:shop_id])
+     @review = current_user.reviews
+     render 'user/shops/show'
+   end
   end
 
   private
