@@ -92,14 +92,15 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-#   config.action_mailer.default_url_options = { :host => 'http://54.250.6.215' }
-#   config.action_mailer.smtp_settings = {
-#     :enable_starttls_auto => true,
-#     :address => "smtp.gmail.com",
-#     :port => 587,
-#     :domain => 'smtp.gmail.com',
-#     :user_name => Settings.gmail[:user_name], #gmailアドレス
-#     :password => Settings.gmail[:password], #gmailパスワード
-#     :authentication => 'login',
-# }
+   config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_mailer.smtp_settings = {
+      :enable_starttls_auto => true,
+      :address => "smtp.gmail.com",
+      :port => 587,
+      :domain => 'smtp.gmail.com',
+      :user_name => Settings.gmail[:user_name], #gmailアドレス
+      :password => Settings.gmail[:password], #gmailパスワード
+      :authentication => 'login',
+  }
+  config.web_console.whitelisted_ips = '131.147.38.65'
 end
