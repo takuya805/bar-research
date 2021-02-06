@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     end
 
     get '/chats/exit' => 'chats#exit'
-    resources :chats, only: [:index, :show, :create]
+    resources :chats, only: [:index, :show, :create, :destroy]
     get '/shops/search' => 'shops#search'
 
     resources :shops, only: [:index, :show] do
