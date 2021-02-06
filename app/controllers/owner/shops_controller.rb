@@ -34,6 +34,7 @@ class Owner::ShopsController < ApplicationController
 
   def update
     @shop = current_owner.shops.find_by(id: params[:id])
+
     if @shop.update(shop_params)
       redirect_to owner_shops_path, notice: "Update was successful your bar"
     else
