@@ -3,9 +3,11 @@
     <%= render 'user/users/sidebar', user: @user %>
   <% end %>
 <main class="shop-list">
+  <% if user_signed_in? %>
   <nav class="mb-2" style="height:30px;">
      <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %><span class="mr-3 ml-3">/</span><%= link_to 'Bar一覧', shops_path %>
   </nav>
+  <% end %>
     <% @shops.each do |shop| %>
     <div class="shop-border">
     <h4><%= shop.name %></h4>
