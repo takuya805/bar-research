@@ -2,7 +2,7 @@ class User::ShopsController < ApplicationController
 
   def search
     @reviews = Review.all.first(6)
-    @all_ranks = Shop.find(Review.group(:shop_id).order(avg_score: :desc).limit(5).pluck(:shop_id))
+    @all_ranks = Shop.find(Review.group(:shop_id).order(avg_score: :desc).pluck(:shop_id))
   end
 
   def index

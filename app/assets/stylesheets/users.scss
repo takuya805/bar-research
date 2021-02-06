@@ -92,6 +92,12 @@ aside{
   color: red;
 }
 
+@media screen and (min-width: 601px){
+  #sp-menu{
+    display: none !important;
+  }
+
+}
 
 @media screen and (max-width: 600px){
   #sp-menu > nav > ul,li{
@@ -166,7 +172,7 @@ aside{
     margin-bottom: 30px;
   }
   #sp-menu a {
-    color: #fff;
+
     text-decoration: none;
     font-weight: bold;
   }

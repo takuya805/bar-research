@@ -12,7 +12,7 @@
               <%= form_with model: @chat do |chat| %>
                 <%= chat.text_field :message %>
                 <%= chat.hidden_field :room_id %>
-                <%= chat.submit "送信" %>
+                <%= chat.submit "送信", class: "btn btn-outline-info" %>
               <% end %>
               </div>
                <table id="message" class="mt-5" style="width:100%; margin:0 auto;">

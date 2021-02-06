@@ -55,6 +55,15 @@
     font-size: 20px;
     text-align: center;
 }
+.btn-owner, a.btn-owner{
+  color: white;
+  font-weight: bold;
+  background-color: #9966FF;
+}
+.btn-edit, a.btn-edit{
+  color: white;
+  background-color: green;
+}
 
 @media screen and (max-width: 600px){
 .title{
