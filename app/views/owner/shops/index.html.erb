@@ -3,6 +3,16 @@
       <div class="col-md-6" style="margin:0 auto;">
         <div>
            <div style="display:flex;"><h2 style="inline-block">現在の登録店舗数</h2>&emsp;<h2 style="inline-block"><strong><%= current_owner.shops.count %></strong>件</h2></div>
+            <% if @owner_contact.errors.any? %>
+            <div class="notification">
+              <h2><%= @owner_contact.errors.count %>件のエラーがあります。</h2>
+              <ul>
+                <% @owner_contact.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
         <% if @shops.present? %>
           <% @shops.each do |shop| %><br />
           <div class="owner-shop p-3">

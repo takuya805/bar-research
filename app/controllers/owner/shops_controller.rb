@@ -1,8 +1,10 @@
 class Owner::ShopsController < ApplicationController
+  before_action :authenticate_owner!
    layout 'owner'
 
   def index
     @shops = current_owner.shops.page(params[:page]).order(created_at: :desc).per(5)
+    @owner_contact = OwnerContact.new
   end
 
   def show
@@ -17,7 +19,6 @@ class Owner::ShopsController < ApplicationController
 
   def create
     @shop = current_owner.shops.build(shop_params)
-
       if @shop.save
         redirect_to owner_shops_path, notice: "Registration was successful your bar"
       else
