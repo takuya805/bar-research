@@ -37,6 +37,13 @@ class User::ChatsController < ApplicationController
     redirect_to chats_path
   end
 
+  def destroy
+    chat = Chat.find(params[:id])
+    chat.user_id = current_user.id
+    chat.destroy
+    redirect_to request.referer, notice: "Your message deleted successfully"
+  end
+
   private
     def chat_params
       params.require(:chat).permit(:message, :room_id)
