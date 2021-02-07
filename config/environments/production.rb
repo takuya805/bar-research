@@ -103,7 +103,7 @@ Rails.application.configure do
 # }
 config.active_record.dump_schema_after_migration = false
 
-config.action_mailer.default_url_options = { host: 'localhost:3000' }
+config.action_mailer.default_url_options = { host: ENV['URL_PROD'] }
 config.action_mailer.smtp_settings = {
    :enable_starttls_auto => true,
    :address => "smtp.gmail.com",

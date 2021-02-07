@@ -2,7 +2,7 @@ class Owner < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable #:confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
   has_many :shops, dependent: :destroy
   validates :name, presence: true
 
@@ -22,8 +22,8 @@ class Owner < ApplicationRecord
   end
 
    def self.guest
-    find_or_create_by(email: "owner_test@example.com") do |owner|
-      owner.password = "abcdef"
+    find_or_create_by(email: ENV['TEST_USER']) do |owner|
+      owner.password = ENV['TEST_PASSWORD']
     end
    end
 end

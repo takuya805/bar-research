@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable #:confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
   attachment :image
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
@@ -14,8 +14,8 @@ class User < ApplicationRecord
   has_many :shops, through: :bookmarks, source: :shop
 
   def self.guest
-    find_or_create_by(email: "test@gmail.com") do |user|
-      user.password = 123456
+    find_or_create_by(email: ENV['TEST_USER']) do |user|
+      user.password = ENV['TEST_PASSWORD']
     end
   end
 
