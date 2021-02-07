@@ -2,8 +2,9 @@
   <% unless current_user == user %>
     <% user.reviews.each do |review| %>
      <span id="relationships_buttons_<%= review.user.id %>">
-      <%= render partial: 'user/relationships/relationship', locals: {review: review, i: 3} %>
+      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
     </span>
+    <p style="color: black;"><%= review.user.name %></p>
     <% end %>
   <% end %>
 <% end %>

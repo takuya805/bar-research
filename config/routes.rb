@@ -2,33 +2,43 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    get "sign_in", :to => "users/sessions#new"
+    get "sign_out", :to => "users/sessions#destroy"
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 
   root to: 'homes#top'
-  get 'homes/about' => 'homes#about'
 
   scope module: :user do
     resources :users, only: [:show, :edit, :update, :destroy] do
       get '/bookmarks' => 'bookmarks#index'
       get '/favorites' => 'favorites#index'
+      resource :user_contacts, only: [:create]
+      get '/reviews' => 'users#review'
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
     end
 
     get '/chats/exit' => 'chats#exit'
-    resources :chats, only: [:index, :show, :create]
+    resources :chats, only: [:index, :show, :create, :destroy]
     get '/shops/search' => 'shops#search'
+
     resources :shops, only: [:index, :show] do
       resources :reviews, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
     end
+
     resources :reviews do
       resource :favorites, only: [:create, :destroy]
     end
+
   end
 
   devise_for :owners, controllers: {
@@ -36,10 +46,16 @@ Rails.application.routes.draw do
     registrations: 'owners/registrations'
   }
 
+   devise_scope :owner do
+    get "sign_in", :to => "owners/sessions#new"
+    get "sign_out", :to => "owners/sessions#destroy"
+    post 'owners/guest_sign_in', to: 'owners/sessions#new_guest'
+  end
+
    namespace :owner do
     get 'homes/top' =>'homes/top'
-    get 'homes/about' => 'homes#about'
-    resources :shops, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resource :owner_contacts, only: [:create]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

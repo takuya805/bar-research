@@ -1,0 +1,9 @@
+<%= form_with model: @shop, url: shops_path, method: :get, local: true do |f| %>
+<span class="input-group">
+<%= f.select :search , options_for_select([['キーワードで検索', '1'], ['駅名', '2'], ['店名', '3']]), style: "border-radius: 0.5em;" %>
+<%= f.text_field :word, placeholder: "駅名、キーワードなどを入力", size: "30x10",class: "search-word" ,style: "border-radius: 0.5em;" %>
+<%= f.button :type => "submit", class: 'submit ml-3 search-word', style: "box-sizing: border-box; border-radius: 0.5em; width: 30px;" do %>
+   <i class="fas fa-search"></i>
+  <% end %>
+</span>
+<% end %>

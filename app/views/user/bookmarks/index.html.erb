@@ -1,10 +1,43 @@
-<% unless @bookmarks == [] %>
-  <% @bookmarks.each do |bookmark| %>
-    <% bookmark.shop.shop_pictures.each do |shop_picture| %>
-    <%= attachment_image_tag bookmark.shop.shop_picture, :image, size: '100x100' %>
-    <% end %>
-    <%= link_to bookmark.shop.name, shop_path(bookmark.shop.id) %>
-  <% end %>
-<% else %>
-<p>まだブックマークはありません。</p>
-<% end %>
+<div class="mypage page-top">
+  <%= render 'user/users/sidebar', user: @user %>
+<main class="bookmarks">
+  <nav class="mb-2" style="height:30px;">
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bookmarks', user_bookmarks_path %>
+  </nav>
+    <h3>ブックマーク一覧</h3>
+  <div class="row">
+
+      <% if @bookmarks.present? %>
+        <% @bookmarks.each do |bookmark| %>
+          <div class="favorite-review col-md-4" style="padding-left: 0px;">
+               <div class="favorites">Bar
+               </div>
+               <div><%= bookmark.shop.name %></div>
+               <div class="favorites">Genre</div>
+               <div><%= bookmark.shop.category.category %></div>
+                <div class="favorites">Station</div>
+                <div><%= bookmark.shop.station %></div>
+               <div class="favorites"> Link<%= link_to shop_path(bookmark.shop.id) do %>
+                 <i class="fas fa-external-link-alt ml-2" style="color:#6600FF;"></i>
+                <% end %></div>
+              <% @shop = bookmark.shop %>
+              <div id="bookmarks_buttons_<%=@shop.id %>" style="text-align:center; padding-right:20px; margin-top:10px;">
+                <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
+              </div>
+            </div>
+        <% end %>
+      <% else %>
+      <p style="margin: 0 auto; margin-top:70px;">まだブックマークはありません。<br >バーを検索してブックマークをしてみよう！</p>
+      <% end %>
+  </div>
+   <div class="row">
+            <div class="col">
+              <div>
+               <%= paginate @bookmarks, style: "color:white;" %>
+              </div>
+            </div>
+          </div>
+  </main>
+</div>
+
+

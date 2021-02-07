@@ -1,3 +1,199 @@
-// Place all the styles related to the users controller here.
+// Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.mypage{
+  display: flex;
+  min-height: 100vh;
+}
+main{
+  // flex: 1;
+  width: 700px;
+  margin: 0 auto;
+}
+aside{
+  width: 15%;
+  min-width: 50px;
+  display: flex;
+  flex-direction: column;
+}
+ul li{
+  text-align: left;
+  list-style: none;
+}
+
+aside{
+  font-size: 30px;
+  font-family: 'Monotype Corsiva';
+}
+.mysidebar > a{
+  color:#A2CA36;
+}
+
+.sidefotter{
+  height: 300px;
+  margin-top: 150px;
+}
+
+
+.profile{
+  font-size: 20px;
+  display: inline-block;
+  width: 40%;
+  font-weigh: bold;
+
+}
+
+.table{
+  width: 60%;
+  display: flex-end;
+}
+.table tr{
+  border-bottom: solid;
+}
+
+.mine{
+  display: flex;
+  font-size: 20px;
+  font-family: 'Monotype Corsiva';
+  width: 600px;
+  background-color: #DDDDDD;
+  color: black;
+  padding: 30px;
+  border-radius: 40px;
+}
+.mine a{
+  color: black;
+}
+.myprofile{
+  color:#A2CA36;
+  font-size: 35px;
+  font-family: 'Monotype Corsiva';
+  margin: 0 auto;
+  margin-right: auto;
+  display: block;
+  text-align: left;
+}
+
+.siteform{
+  margin-right: 100px;
+  background-color: #DDDDDD;
+  color: black;
+  border-radius: 20px;
+  padding: 15px;
+}
+.siteform > form{
+  padding-left: 20px;
+}
+#sp-menu{
+    display: none;
+}
+.notification{
+  color: red;
+}
+
+@media screen and (min-width: 601px){
+  #sp-menu{
+    display: none !important;
+  }
+
+}
+
+@media screen and (max-width: 600px){
+  #sp-menu > nav > ul,li{
+    color: #A2CA36;
+  }
+   #hm-icon {
+    position: fixed;
+    left: 20px;
+    top: 20px;
+    z-index: 10;
+    display: flex;
+  }
+  .menu-trigger,
+  .menu-trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+  .menu-trigger {
+    position: relative;
+    width: 50px;
+    height: 44px;
+  }
+  .menu-trigger span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #138496;
+    border-radius: 4px;
+  }
+  .menu-trigger span:nth-child(1) {
+    top: 0;
+  }
+  .menu-trigger span:nth-child(2) {
+    top: 20px;
+  }
+  .menu-trigger span:nth-child(3) {
+    bottom: 0;
+  }
+  .menu-trigger.active span:nth-child(1) {
+    -webkit-transform: translateY(20px) rotate(-45deg);
+    transform: translateY(20px) rotate(-45deg);
+    background-color: #138496;
+  }
+  .menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-trigger.active span:nth-child(3) {
+    -webkit-transform: translateY(-20px) rotate(45deg);
+    transform: translateY(-20px) rotate(45deg);
+    background-color: #138496;
+  }
+
+  /* ------------------------ */
+  /* ------ spメニュー ------ */
+  /* ------------------------ */
+
+  #sp-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #06101B;
+    color: #fff;
+    width: 100%;
+    min-height: 100%;
+    display: none;
+    z-index: 9;
+  }
+  #sp-menu li {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #sp-menu a {
+
+    text-decoration: none;
+    font-weight: bold;
+  }
+  #desktop-menu{
+    display: none;
+  }
+  .mine{
+    display: block;
+    text-align: center;
+    width: 90%;
+    font-size: 18px;
+    margin: 0 auto;
+  }
+  .profile{
+    width: 100%;
+  }
+  .siteform{
+    margin: 0 auto;
+    width: 90%;
+  }
+  .profile-left{
+    padding-left: 0 !important;
+  }
+}

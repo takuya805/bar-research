@@ -1,3 +1,5 @@
 /*global $*/
-$('.message').append("<p style='text-align: right;'><%= @chat.message %></p>");
+if ('<%= @chat.message %>' != ""){
+$('#message').append("<p style='text-align: left; font-size: 12px; color:white; font-weight:bold;'><%= @chat.message %>&emsp;<a data-confirm='送信を取り消しますか？' data-method='delete' href='<%= @chat.id %>'><i style='color:red;' class='far fa-trash-alt' aria-hidden='true'></i></a></p>");
 $('input[type=text]').val("");
+}

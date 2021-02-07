@@ -1,46 +1,88 @@
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <%= link_to 'チャット一覧', chats_path %><br />
-            <%= link_to 'ブックマーク一覧', user_bookmarks_path(@user) %><br />
-            <%= link_to '記事一覧', user_favorites_path(@user) %>
-            <div class="field">
-                <%= label_tag :プロフィール画像 %><br />
-                <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
-            </div>
-            <div class="field">
-                <%= link_to follows_user_path do %>
-                <span>フォロー</span><%= @user.followings.count %>
-                <% end %>
-                <%= link_to followers_user_path do %>
-                <span>フォロワー</span><%= @user.followers.count %>
-                <% end %>
-            </div>
-            <div class="field">
-                <%= label_tag :ニックネーム： %>
-                <%= @user.name %>
-            </div>
-            <div class="field">
-                <%= label_tag :自己紹介： %>
-                <%= @user.introduction %>
-            </div>
-            <div class="field">
-                <%= link_to 'バーを探す', shops_search_path %>
-            </div>
-            <% unless @user == current_user %>
-                <% if user.followed_by?(current_user) %>
-                <%= link_to 'チャットを始める', chat_path(@user), "data-turbolinks":false %>
-                <% end %>
-            <% end %>
-
-            <% if @user == current_user %>
-            <div class="field">
-                <%= link_to '編集', edit_user_path %>
-            </div>
-            <div class="field">
-                <%= link_to '退会はこちらから', user_path, method: :delete, "data-confirm" => '本当に退会しますか？' %>
-            </div>
-            <% end %>
+<div class=mypage>
+  <%= render 'user/users/sidebar', user: @user %>
+<main>
+   <div class="field mb-5 mt-5" style="color:#A2CA36; font-size:50px;font-family: 'Monotype Corsiva';">Mypage</div>
+   <div class="myprofile">MyProfile<i class="fas fa-id-badge ml-3"></i></div>
+    <div class="mine">
+     <div class="profile">
+        <div class="field mb-3">
+            <%= label_tag :'イメージ' %><br />
+            <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
         </div>
+         <div class="field">
+            <%= link_to follows_user_path do %>
+            <span>フォロー</span><%= @user.followings.count %>
+            <% end %>
+            <%= link_to followers_user_path do %>
+            <span>フォロワー</span><%= @user.followers.count %>
+            <% end %>
+            </div>
+        <div class="field mb-3" style= "border-bottom: solid;">
+            <%= label_tag :'ニックネーム' %><br />
+            <%= @user.name %>
+        </div>
+        <div class="field mb-3" style="border-bottom: solid;">
+            <%= label_tag :'自己紹介' %><br />
+            <div style="font-size: 13px;"><%= @user.introduction %></div>
+        </div>
+        <% unless @user == current_user %>
+        <div class="field mb-3" style="border-bottom: solid;">
+             <%= link_to 'チャットする',chat_path(@user), style: "color: black;", "data-turbolinks": false %>
+        </div>
+        <% end %>
+
+        <% if @user == current_user %>
+        <div class="field">
+            <%= link_to '編集', edit_user_path(current_user.id), class: "btn btn-edit mb-3", style: "color: white;" %>
+        </div>
+        <% end %>
+         </div>
+
+        <table class="table ml-3">
+            <tr>
+                <td>投稿したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
+            </tr>
+            <tr>
+                <td>お気に入り登録したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.favorites.count %>件</td>
+            </tr>
+            <tr>
+                <td>ブックマークした店舗</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>
+            </tr>
+            <tr>
+                <td>チャットした人数</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.rooms.count %>件</td>
+            </tr>
+        </table>
     </div>
+    <div class="user-form mt-5">
+      <% if @user_contact.errors.any? %>
+      <div class="notification">
+        <h2><%= @user_contact.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @user_contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    <h2 style="color:#A2CA36; font-family: Monotype Corsiva;">Information about site</h2>
+
+    <div class="siteform">
+    <%= form_with model: @user_contact, url: user_user_contacts_path(user_id: current_user), local: true do |f| %>
+    <div class="field">
+        <div><%= f.label :'タイトル' %></div>
+        <div><%= f.text_field :title, placeholder: 'タイトルを入力してください',style: 'width:40%;' %></div>
+    </div>
+    <div class="field">
+        <div><%= f.label :'問い合わせ内容' %></div>
+        <div><%= f.text_area :message, placeholder: '内容を入力してください',style: 'width:70%;' %></div>
+    </div>
+    <% if @user == current_user %>
+    <div class="field" style="text-align: right; margin-top: 20px; margin-right:160px;">
+        <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+    </div>
+</main>
 </div>

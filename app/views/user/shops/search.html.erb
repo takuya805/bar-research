@@ -1,6 +1,67 @@
-<h2>検索</h2>
-<%= form_with model: @shop, url: shops_path, method: :get, local: true do |f| %>
-<%= f.select :search , options_for_select([['キーワードで検索', '1'], ['駅名', '2'], ['店名', '3']]) %>
-<%= f.text_field :word, placeholder: "駅名、キーワードなどを入力" %>
-<%= f.submit '検索' %>
-<% end %>
+ <div class="mypage page-top">
+    <%= render 'user/users/sidebar', user: @user %>
+  <main style="margin:0 auto;">
+    <nav class="mb-2" style="height:30px;">
+     <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %>
+   </nav>
+  <div class="row">
+   <div>
+  <div class="mysearch">
+    <%= image_tag asset_path('search.jpg'),size: '600x300', class: "search-image",style: "opacity: 0.6;" %>
+    <div style="margin-left: 50px;">
+    <h2 class="myprofile reseach mt-5" style="font-size:60px; text-align:center;">Search</h2>
+     <%= render 'user/shops/search', shop: @shop, style: "text-align:center;" %>
+    </div>
+    </div>
+  </div>
+  </div>
+   <%= render 'user/shops/genre' %>
+    <p class="mt-5" style="font-size: 30px; text-align: center;">ランキングから探す</p>
+      <div class="row">
+      <% @all_ranks.each.with_index(1) do |shop, i| %>
+      <div class="col-md-4">
+        <%= link_to shop_path(shop) do %>
+        <div style="text-align: center;">
+          <% if i==1 %>
+            <div class="ranking" style="color:#DBB400;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% elsif i==2 %>
+            <div class="ranking" style="color:#AEB3B5;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% elsif i==3 %>
+            <div class="ranking" style="color:#BA6E40;">
+              <div><i class="fas fa-crown"></i></div>
+              <div>第<%= i %>位</div>
+              <div><%= shop.name %></div>
+            </div>
+          <% end %>
+        </div>
+         <% end %>
+      </div>
+      <% end %>
+      </div>
+  <p class="mt-5 word-mouth" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
+  <div class="row mt-5 mb-5 mouth-review">
+        <% @reviews.each do |review| %>
+          <div class="col-md-4 favorite-review mouth-search">
+            <% if review.image.present? %>
+              <div><%= attachment_image_tag(review, :image, size: '150x120') %></div>
+            <% end %>
+            <div class="favorites">Bar</div>
+            <div><%= review.shop.name %>
+                <%= link_to shop_path(review.shop) do %>
+                  <i class="fas fa-external-link-alt" style="color:#6600FF;"></i></div>
+                <% end %>
+            <div class="favorites">Title</div><div><%= review.title %></div>
+            <div class="favorites">Content</div><div><%= review.post %></div>
+          </div>
+        <% end %>
+  </div>
+  </main>
+</div>

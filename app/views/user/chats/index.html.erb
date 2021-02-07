@@ -1,11 +1,25 @@
-<% @rooms.each do |room| %>
-  <% other_user = room.user_rooms.where.not(user_id: current_user.id).first.user %>
-    <% latest_chat = room.chats.last %>
-      <% if @chat.nil? %>
-          <%= link_to chat_path(other_user) do %>
-            <h5><%= other_user.name %></h5>
-                <%= latest_chat.message %>
-          <% end %>
-          <%= link_to "削除", chats_exit_path(id: room.id), "data-confirm" => "本当に削除しますか？" %>
-      <% end %>
-<% end %>
+ <div class="mypage page-top">
+  <%= render 'user/users/sidebar', user: @user %>
+  <main>
+   <nav class="mb-2" style="height:30px;">
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %>
+  </nav>
+    <div class="row chat-index">
+      <div class="col-md-4">
+       <h3>チャット一覧</h3>
+        <div style="border-bottom:solid;">
+         <%= current_user.name %>
+         </div>
+         <%= render 'user/chats/index', rooms: @rooms, chat: @chat, class: 'mt-5'%>
+      </div>
+      <div class="col-md-8">
+        <h1 class="chat-res"><i class="fas fa-envelope" style="text-align:center;"></i></h1>
+        <h2 class="chat-message">メッセージ</h2>
+        <span>Barのreviewを書いた人にメッセージを送信できます。<br/>
+              送信済みのメッセージを削除したい場合はメッセージ横のゴミ箱から
+              送信取り消しをしてください。</span>
+      </div>
+
+    </div>
+    </main>
+  </div>

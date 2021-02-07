@@ -1,14 +1,25 @@
 class Shop < ApplicationRecord
 
-  def self.search(search, word)
-    if search == '1'
-      @shops = Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%")
+  scope :search_by_keyword, -> (search, word) {
+    shop = if search == '1'
+      Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%")
     elsif search == '2'
-      @shops = Shop.where('station LIKE ?', "%#{word}%")
+      Shop.where('station LIKE ?', "%#{word}%")
     elsif search == '3'
-      @shops = Shop.where('name LIKE ?', "%#{word}%")
+      Shop.where('name LIKE ?', "%#{word}%")
     end
-  end
+    shop if shop.present?
+  }
+
+  # def self.search(search, word)
+  #   if search == '1'
+  #     @shops = Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%")
+  #   elsif search == '2'
+  #     @shops = Shop.where('station LIKE ?', "%#{word}%")
+  #   elsif search == '3'
+  #     @shops = Shop.where('name LIKE ?', "%#{word}%")
+  #   end
+  # end
 
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -46,4 +57,30 @@ class Shop < ApplicationRecord
   def bookmarked_by?(user)
     bookmarks.where(user_id: user.id).exists?
   end
+
+  def avg_score
+    unless self.reviews.empty?
+      reviews.average(:star).round(1).to_f
+    else
+      0.0
+    end
+  end
+
+  with_options presence: true do
+    validates :category_id
+    validates :name
+    validates :postcode
+    validates :address
+    validates :station
+    validates :phone
+    validates :holiday
+    validates :budget
+    validates :seat
+    validates :explain
+    validates :open_time
+    validates :close_time
+  end
+
+
+
 end

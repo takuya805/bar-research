@@ -1,12 +1,8 @@
 class User::ChatsController < ApplicationController
-  def index
+  before_action :authenticate_user!
+   def index
       @rooms = current_user.rooms
-       @rooms.each do |room|
-        room.chats.each do |chat|
-          @chat  = chat.chat_deletes.find_by(user_id: current_user.id)
-        end
-      end
-  end
+   end
 
   def show
     @user = User.find(params[:id])
@@ -39,6 +35,13 @@ class User::ChatsController < ApplicationController
       chat.chat_deletes.find_or_create_by(user: current_user) #each文の中で作成されてないchatだけを選択して作成する
     end
     redirect_to chats_path
+  end
+
+  def destroy
+    chat = Chat.find(params[:id])
+    chat.user_id = current_user.id
+    chat.destroy
+    redirect_to request.referer, notice: "Your message deleted successfully"
   end
 
   private

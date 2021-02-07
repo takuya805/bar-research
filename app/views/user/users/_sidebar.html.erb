@@ -1,0 +1,122 @@
+
+<aside id="desktop-menu" style="margin-left:50px;">
+    <nav style="color:#A2CA36;">
+        <ul class="mysidebar" style="list-style:none;">
+            <%= link_to user_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-home"></i>Home</span>
+            </li>
+            <% end %>
+            <%= link_to  chats_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-sms"></i>Chats</span>
+            </li>
+            <% end %>
+            <%= link_to user_bookmarks_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-bookmark"></i>Bookmarks</span>
+            </li>
+            <% end %>
+            <%= link_to user_reviews_path(current_user.id) do %>
+            <li class="menu mb-5">
+             <span><i class="fas fa-file-pdf"></i>My reviews</span>
+            </li>
+            <% end %>
+            <%= link_to user_favorites_path(current_user) do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-heart"></i>Favorites</span>
+            </li>
+            <% end %>
+            <%= link_to shops_search_path do %>
+            <li class="menu mb-5">
+              <span><i class="fas fa-search-dollar"></i>Bar search</span>
+            </li>
+            <% end %>
+        </ul>
+    </nav>
+    <div class="sidefotter">
+       <% unless current_user.email == "test@gmail.com" %>
+        <%= link_to user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva'; color:#A2CA36;" do %>
+          <span><i style="color:#A2CA36;"class="fas fa-times-circle"></i>Quit</span>
+        <% end %>
+       <% end %>
+    </div>
+</aside>
+
+<aside id="sp-menu" style="margin-left:50px;">
+    <nav>
+        <ul class="mysidebar" style="list-style:none;">
+            <% if user_signed_in? %>
+            <li class="menu mb-3">
+              <%= link_to destroy_user_session_path, method: :delete, style: "color:#A2CA36;" do %>
+              <span><i class="fas fa-sign-out-alt"></i>Log out</span>
+              <% end %>
+            </li>
+            <% else %>
+            <li class="menu mb-3">
+              <%= link_to new_user_registration_path, style: "color:#A2CA36;" do %>
+              <span><i class="fas fa-user-plus"></i>Sign up</span>
+              <% end %>
+            </li>
+            <li class="menu mb-3">
+              <%= link_to new_user_session_path, style: "color:#A2CA36;" do %>
+              <span><i class="fas fa-sign-in-alt"></i>Sign in</span>
+              <% end %>
+            </li>
+            <li class="menu mb-3">
+              <%= link_to users_guest_sign_in_path, method: :post, style: "color:#A2CA36;" do %>
+              <span><i class="fab fa-intercom"></i>Guest Sign in</span>
+              <% end %>
+            </li>
+            <% end %>
+            <%= link_to user_path(current_user) do %>
+            <li class="menu mb-3">
+              <span><i class="fas fa-home"></i>Home</span>
+            </li>
+            <% end %>
+            <%= link_to  chats_path do %>
+            <li class="menu mb-3">
+              <span><i class="fas fa-sms"></i>Chats</span>
+            </li>
+            <% end %>
+            <%= link_to user_bookmarks_path(current_user) do %>
+            <li class="menu mb-3">
+              <span><i class="fas fa-bookmark"></i>Bookmarks</span>
+            </li>
+            <% end %>
+            <%= link_to user_reviews_path(current_user.id) do %>
+            <li class="menu mb-3">
+             <span><i class="fas fa-file-pdf"></i>My reviews</span>
+            </li>
+            <% end %>
+            <%= link_to user_favorites_path(current_user) do %>
+            <li class="menu mb-3">
+              <span><i class="fas fa-heart"></i>Favorites</span>
+            </li>
+            <% end %>
+            <%= link_to shops_search_path do %>
+            <li class="menu mb-3">
+              <span><i class="fas fa-search-dollar"></i>Bar search</span>
+            </li>
+            <% end %>
+
+            <li><% unless current_user.email == "test@gmail.com" %>
+                  <%= link_to user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva'; color:#A2CA36;" do %>
+                    <span><i style="color:#A2CA36;"class="fas fa-times-circle"></i>Quit</span>
+                  <% end %>
+                <% end %>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+
+<div id="hm-icon">
+  <a class="menu-trigger" href="">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
+</div>
+
+

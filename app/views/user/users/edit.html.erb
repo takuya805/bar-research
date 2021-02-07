@@ -1,6 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-md-4" style="margin: auto;">
+       <% if @user.errors.any? %>
+      <div style="color:red;">
+        <h2><%= @user.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
     <%= form_with model: @user, url: user_path, method: :patch, local: true do |f| %>
       <div class="form-group">
         <%= f.label :プロフィール画像 %><br />
@@ -8,14 +18,14 @@
       </div>
       <div class="form-group">
         <%= f.label :ニックネーム %><br />
-        <%= f.text_field :name %>
+        <%= f.text_field :name, style: "width:70%;" %>
       </div>
       <div class="form-group">
         <%= f.label :自己紹介 %><br />
-        <%= f.text_field :introduction %>
+        <%= f.text_area :introduction, style: "width:70%;" %>
       </div>
       <div class="form-group">
-        <%= f.submit '更新' %>
+        <%= f.submit '更新', class: "btn btn-success" %>
       </div>
     <% end %>
     </div>

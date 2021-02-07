@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable #:confirmable
+         :recoverable, :rememberable, :validatable, :confirmable
   attachment :image
   has_many :user_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
@@ -22,5 +22,13 @@ class User < ApplicationRecord
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
   end
+  def self.guest
+    find_or_create_by(email: ENV['TEST_USER']) do |user|
+      user.password = ENV['TEST_PASSWORD']
+    end
+  end
+
+  validates :name, presence: true
+
 end
 

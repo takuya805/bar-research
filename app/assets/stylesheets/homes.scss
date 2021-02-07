@@ -1,3 +1,80 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top-main{
+      background-image: image-url('bar-top.jpg');
+      height: 600px;
+      background-size: cover;
+      background-position: 55% 25%;
+      margin-left: 0;
+}
+.container{
+  margin: 0;
+}
+#main-visual {
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
+}
+.search {
+    padding-top: 10px;
+    padding-left: 550px;
+}
+.submit {
+    background-color: #87CEFA;
+}
+.fa-search{
+    color: white;
+}
+.title {
+      font-family: 'Monotype Corsiva';
+      margin-top: 50px;
+      padding-left: 550px;
+      display        : inline-block;
+      color          : white;            /* 文字の色 */
+      font-size      : 70pt;               /* 文字のサイズ */
+      letter-spacing : 4px;                /* 文字間 */
+      text-shadow    :
+       2px  2px 1px black,
+      -2px  2px 1px black,
+       2px -2px 1px black,
+      -2px -2px 1px black,
+       2px  0px 1px black,
+       0px  2px 1px black,
+      -2px  0px 1px black,
+       0px -2px 1px black;
+}
+.user-top{
+    font-size: 30px;
+    text-align: center;
+}
+.user-icon{
+    font-size: 45px;
+    text-align: center;
+}
+.top-letter{
+    font-size: 20px;
+    text-align: center;
+}
+.btn-owner, a.btn-owner{
+  color: white;
+  font-weight: bold;
+  background-color: #9966FF;
+}
+.btn-edit, a.btn-edit{
+  color: white;
+  background-color: green;
+}
+
+@media screen and (max-width: 600px){
+.title{
+  padding-left: 0px !important;
+  text-align: center;
+ }
+ .search{
+   padding-left: 0px !important;
+ }
+
+ .search-word{
+   margin-top: 20px;
+ }
+}

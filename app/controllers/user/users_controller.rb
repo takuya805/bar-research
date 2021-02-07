@@ -1,7 +1,13 @@
 class User::UsersController < ApplicationController
+  before_action :authenticate_user!
+
+  def review
+    @reviews = current_user.reviews.page(params[:page]).order(created_at: :desc).per(9)
+  end
 
   def show
     @user = User.find(params[:id])
+    @user_contact = UserContact.new
   end
 
   def edit
@@ -11,17 +17,19 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: "You have updated user successfully"
     else
-      render 'edit'
+      render 'user/users/edit'
     end
   end
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to root_path
+    if @user.destroy
+      redirect_to root_path, notice: 'See you again'
+    else
+      render 'user/users/show'
+    end
   end
 
   def follows

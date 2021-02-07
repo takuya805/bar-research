@@ -1,17 +1,95 @@
-<% if @shops == [] %>
-  <p><%= link_to '店舗の新規登録を始める', new_owner_shop_path %></p>
-<% else %>
-  <% @shops.each do |shop| %><br />
-  <p>店舗名：<%= shop.name %></p>
-              <% if shop.shop_pictures == [] %>
-                <p>写真：写真はありません</p>
-              <% else %>
-          写真：<% shop.shop_pictures.each do |shop_picture| %>
-              <%= attachment_image_tag shop_picture, :image, size: '50x50' %>
-              <% end %><br />
-              <% end %>
-            <%= link_to '編集する', edit_owner_shop_path(shop) %>
-            <%= link_to '店舗情報を削除する', owner_shop_path(shop), method: :delete, "data-confirm" =>'本当に削除しますか？'%>
-            <p><%= link_to '店舗情報を追加する', new_owner_shop_path %></p>
-  <% end %>
-<% end %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6" style="margin:0 auto;">
+        <div>
+           <div style="display:flex;"><h2 style="inline-block">現在の登録店舗数</h2>&emsp;<h2 style="inline-block"><strong><%= current_owner.shops.count %></strong>件</h2></div>
+            <% if @owner_contact.errors.any? %>
+            <div class="notification">
+              <h2><%= @owner_contact.errors.count %>件のエラーがあります。</h2>
+              <ul>
+                <% @owner_contact.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
+        <% if @shops.present? %>
+          <% @shops.each do |shop| %><br />
+          <div class="owner-shop p-3">
+            <div class="owner-shopcontent">
+            <div style="text-align: right;">
+              <%= link_to 'レビューを見る', owner_shop_path(shop.id), class: 'btn btn-sm btn-success' %>
+            </div>
+            <div>
+              <span>店舗名&emsp;</span><%= shop.name %>
+            </div>
+            <div>
+              <span>ジャンル</span><%= shop.category.category %>
+            </div>
+            <% if shop.shop_pictures.present? %>
+            <span style="font-weight:bold;">写真</span>
+            <div class="shop-image">
+            <% shop.shop_pictures.each do |shop_picture| %>
+             <%= attachment_image_tag shop_picture, :image, size: '160x160', class: "shop-image" %>
+            <% end %>
+            </div>
+            <% else %>
+             <p>写真：写真はありません</p>
+            <% end %>
+          <div class="mt-3"><span class="count">住所</span><%= shop.postcode %>&emsp;<%= shop.address %></div>
+          <div><span>最寄り駅</span><%= shop.station %></div>
+          <div><span>電話番号</span><%= shop.phone %></div>
+          <div><span>営業時間</span><%= shop.open_time %>~<%= shop.close_time %></div>
+          <div><span class="count">休日</span><%= shop.holiday %></div>
+          <div><span class="count">予算</span><%= shop.budget %></div>
+          <div><span class="count">座席</span><%= shop.seat %>席</div>
+          <div><span class="count">説明</span><%= shop.explain %></div>
+          <div><span>HPリンク</span><%= shop.hplink %></div>
+          <div><span>予約可否</span>
+          <% if shop.booking == false%>
+          予約可
+          <% else %>
+          予約不可
+          <% end %>
+          </div>
+                   <p><%= link_to '店舗情報を編集する', edit_owner_shop_path(shop), class: 'btn btn-sm btn-info mt-3' %></p>
+                   <p> <%= link_to '店舗情報を削除する', owner_shop_path(shop), method: :delete, "data-confirm" =>'本当に削除しますか？', class: 'btn btn-sm btn-danger' %></p>
+          </div>
+          </div>
+            <p style="text-align: right;"><%= link_to '店舗情報を追加する', new_owner_shop_path, class: 'btn btn-sm btn-success mt-3 mb-3' %></p>
+          <% end %>
+          <% else %>
+           <p><%= link_to '店舗の新規登録を始める', new_owner_shop_path, class: 'btn btn-outline-info mt-3' %></p>
+        <% end %>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-6" style="margin:0 auto;">
+       <h2>管理者へお問い合わせ</h2>
+     <div class="ownerform mb-5">
+    <%= form_with model: @owner_contact, url: owner_owner_contacts_path, local: true do |f| %>
+    <div class="field">
+        <div><%= f.label :'タイトル' %></div>
+        <div><%= f.text_field :title, placeholder: 'タイトルを入力してください', class: 'owner-title', style: 'width: 100%;' %></div>
+    </div>
+    <div class="field mt-4">
+        <div><%= f.label :'問い合わせ内容' %></div>
+        <div><%= f.text_area :message, placeholder: '内容を入力してください', class: 'owner-title', style: 'width: 100%;' %></div>
+    </div>
+    <div class="field mt-2" style="text-align: right;">
+        <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-sm btn-success' %>
+    </div>
+    <% end %>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div>
+       <%= paginate @shops, style: "color:white;" %>
+      </div>
+    </div>
+  </div>
+</div>

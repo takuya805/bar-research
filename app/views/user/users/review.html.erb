@@ -1,0 +1,39 @@
+<div class="mypage page-top">
+  <%= render 'user/users/sidebar', user: @user %>
+    <main>
+      <nav class="mb-2" style="height:30px;">
+        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'My reviews', user_reviews_path %>
+      </nav>
+      <h3>私のレビュー一覧</h3>
+       <div class="row">
+        <% if @reviews.present? %>
+        <% @reviews.each do |review| %>
+          <div class="col-md-4 favorite-review">
+            <% if review.image.present? %>
+              <div><%= attachment_image_tag(review, :image, size: '150x120') %></div>
+            <% end %>
+            <div class="favorites">Bar</div>
+            <div><%= review.shop.name %>
+                <%= link_to shop_path(review.shop) do %>
+                  <i class="fas fa-external-link-alt" style="color:#6600FF;"></i></div>
+                <% end %>
+            <div class="favorites">Title</div><div><%= review.title %></div>
+            <div class="favorites">Content</div><div><%= review.post %></div>
+            <div class="mt-3" style="text-align:right; margin:5px;">
+             <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger", style: "color:white;" %>
+            </div>
+          </div>
+        <% end %>
+        <% else %>
+          <p style="margin: 0 auto; margin-top:70px;">バーへ行ってレビューを書いてみよう！！</p>
+        <% end %>
+        </div>
+         <div class="row">
+            <div class="col">
+              <div>
+               <%= paginate @reviews, style: "color:white;" %>
+              </div>
+            </div>
+          </div>
+    </main>
+</div>

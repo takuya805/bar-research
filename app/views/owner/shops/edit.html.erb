@@ -1,74 +1,96 @@
-<%= form_with model: @shop, url: owner_shop_path(@shop), method: :patch, local: true do |f| %>
-<div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label 'カテゴリー' %><br />
-    <%= f.collection_select :category_id, @categories, :id, :category, {include_blank: 'カテゴリーを選択してください'} %>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-2 mb-5 shop-edit">
+        <nav class="mb-2" style="height:30px;">
+          <%= link_to '店舗一覧ページ', owner_shops_path %><span class="mr-3 ml-3">/</span><%= link_to '店舗編集ページ', edit_owner_shop_path %>
+        </nav>
+        <div class="owner-new">
+           <% if @shop.errors.any? %>
+            <div class="notification">
+              <h2><%= @shop.errors.count %>件のエラーがあります。</h2>
+              <ul>
+                <% @shop.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+           <% end %>
+            <%= form_with model: @shop, url: owner_shop_path(@shop), class: "shop-new", method: :patch, local: true do |f| %>
+            <div class="form-group mb-3 pb-4">
+            <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label 'カテゴリー' %><br />
+                <%= f.collection_select :category_id, @categories, :id, :category, {include_blank: 'カテゴリーを選択してください'}, style: 'width:50%;' %>
+            </div>
+            <div class="form-group mb-3 pb-4">
+              <div class="need"><%= f.label '(任意項目)' %></div>
+                <%= f.label '店舗トップ写真' %><br />
+                <%= f.attachment_field :shop_pictures_images, multiple: true %>
+            </div>
+            <div class="form-group mb-3 pb-4">
+             <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '店舗名' %><br />
+                <%= f.text_field :name , placeholder: '店舗名を入力してください', style: "width:60%;" %>
+            </div>
+            <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '郵便番号' %><br />
+                <%= f.text_field :postcode , placeholder: '郵便番号をハイフン有で入力してください' , style: "width:60%;" %><br />
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '住所' %><br />
+                <%= f.text_field :address, placeholder: '住所を入力してください', style: "width:60%;" %>
+           </div>
+            <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '最寄り駅' %><br />
+                <%= f.text_field :station, placeholder: '最寄り駅を入力してください', style: "width:60%;" %>
+              </div>
+            <div class="form-group mb-3 pb-4">
+               <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '電話番号' %><br />
+                <%= f.text_field :phone, placeholder: '電話番号をハイフン有りで入力して下さい', style: "width:60%;" %>
+            </div>
+            <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '営業時間' %><br />
+                <%= f.time_field :open_time %> ~ <%= f.time_field :close_time %>
+            </div>
+                <div class="form-group mb-3 pb-4">
+                <%= f.label '(必須項目)' %><br />
+                <%= f.label '定休日' %><br />
+                <%= f.select :holiday, Shop.holidays.keys.to_a, {}, style: "width:50%;" %>
+              </div>
+             <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '予算' %><br />
+                <%= f.select :budget, Shop.budgets.keys.to_a, {}, style: "width:50%;" %>
+              </div>
+             <div class="form-group mb-3 pb-4">
+               <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '座席数' %><br />
+                <%= f.text_field :seat, style: "width:40%;" %>席
+              </div>
+              <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '店舗の説明' %><br />
+                <%= f.text_area :explain, style: "width:60%;" %>
+              </div>
+              <div class="form-group mb-3 pb-4">
+                <div class="need"><%= f.label '(任意項目)' %></div>
+                <%= f.label 'ホームページリンク' %><br />
+                <%= f.url_field :hplink %>
+              </div>
+              <div class="form-group mb-3 pb-4">
+                <div class="must"><%= f.label '(必須項目)' %></div>
+                <%= f.label '予約可否' %><br />
+                <%= f.label '予約可' %>&thinsp;<%= f.radio_button :booking, :false %>&emsp;
+                <%= f.label '予約不可' %>&thinsp;<%= f.radio_button :booking, :true %>
+              </div>
+              <div class="form-group mb-3">
+                <%= f.submit '編集する' %>
+              </div>
+            <% end %>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label '(任意項目)' %><br />
-    <%= f.label '店舗トップ写真' %><br />
-    <%= f.attachment_field :shop_pictures_images, multiple: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '店舗名' %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '郵便番号(ハイフン有り)' %><br />
-    <%= f.text_field :postcode %><br />
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '住所' %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '最寄り駅' %><br />
-    <%= f.text_field :station %>&nbsp;<span>駅</span>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '電話番号(ハイフン有り)' %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '営業時間' %><br />
-    <%= f.time_field :open_time %> ~ <%= f.time_field :close_time %>
-  </div>
-    <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '定休日' %><br />
-    <%= f.select :holiday, Shop.holidays.keys.to_a, {} %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '予算' %><br />
-    <%= f.select :budget, Shop.budgets.keys.to_a, {} %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '座席数' %><br />
-    <%= f.text_field :seat %>席
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '店舗の説明' %><br />
-    <%= f.text_area :explain %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(任意項目)' %><br />
-    <%= f.label 'ホームページリンク' %><br />
-    <%= f.url_field :hplink %>
-  </div>
-  <div class="form-group">
-    <%= f.label '(必須項目)' %><br />
-    <%= f.label '予約可否' %><br />
-    <%= f.label '予約可' %>&thinsp;<%= f.radio_button :booking, :false %>&emsp;
-    <%= f.label '予約不可' %>&thinsp;<%= f.radio_button :booking, :true %>
-  </div>
-  <div class="form-group">
-    <%= f.submit '編集する' %>
-  </div>
-<% end %>
+</div>
+

@@ -1,3 +1,79 @@
 // Place all the styles related to the owner::shops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.owner-new{
+background-color: #AAAAAA;
+width: 80%;
+padding-top: 30px;
+padding-bottom: 30px;
+margin: 0 auto;
+color: black;
+border-radius: 30px;
+}
+.owner-new > .shop-new{
+  text-align: center;
+}
+.owner-new > .form-group{
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+.form-group > .must{
+  color: red;
+  font-weight: bold;
+}
+.form-group > .need{
+  color: #666666;
+  font-weight: bold;
+}
+.owner-shop{
+  background-color: #AAAAAA;
+  border-radius: 20px;
+  width: 100%;
+  color: black;
+  margin: 0 auto;
+
+}
+.owner-shopcontent > div > span{
+  margin-right: 20px;
+  font-weight: bold;
+}
+.owner-shopcontent > div > .count{
+  margin-right: 55px;
+  font-weight: bold;
+}
+.owner-shopcontent > div{
+ margin-top: 5px;
+}
+.ownerform{
+  background-color: #AAAAAA;
+  color: black;
+  border-radius: 20px;
+  padding: 15px;
+}
+.ownerform > form{
+  padding-left: 20px;
+  width: 70%;
+}
+
+@media screen and (max-width: 600px){
+  .shop-image{
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .owner-shop{
+    font-size: 11px;
+  }
+  .owner-title{
+    width: 220px !important;
+  }
+  .owner-new{
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .shop-edit{
+    margin-left: 0px !important;
+  }
+  .shop-text{
+    width: 80% !important;
+  }
+}

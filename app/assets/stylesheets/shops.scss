@@ -2,3 +2,147 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.mysearch{
+  margin: 0 auto;
+}
+.shop-index{
+  border-bottom: 1px solid gray;
+
+}
+.shop-index span{
+  padding-right: 30px;
+}
+.shop-border{
+  background-color: white;
+  margin-bottom: 50px;
+  color: #06101B;
+  border-radius: 10px;
+}
+.shop-border div{
+  padding: 5px;
+}
+.shopbtn {
+ text-align: right;
+}
+.shopshow{
+   background-color: white;
+   border-radius: 10px;
+   color: black;
+   padding: 5px;
+}
+
+.table .info{
+  background-color: gray;
+}
+.table .book{
+  border: none;
+}
+
+#map{
+  margin: 0 auto;
+}
+.bookmark{
+  margin-left: auto;
+}
+
+.favorite{
+  color: #FF3366;
+}
+.review-delete{
+  text-align: right;
+}
+
+.review-form > h2{
+  margin-top: 40px;
+}
+.bookmark > a{
+  color: #FFA500;
+}
+.bookmark > p{
+  color: black;
+}
+.review-view{
+  display: flex;
+}
+.star-count{
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px){
+  .shoptop{
+    width: 95%;
+    margin: 0 auto;
+  }
+  .shopshow{
+    width: 95%;
+  }
+  .infomartion > .table{
+    font-size: 12px;
+  }
+  #map{
+    height: 300px !important;
+    width: 80%;
+  }
+  .new-review {
+    width: 100%;
+    margin: 0px !important;
+  }
+  .review-view{
+    display: block;
+  }
+  .review-new{
+    width: 100% !important;
+  }
+  .review-month{
+    display: block;
+  }
+  .review-favorite{
+    display: flex;
+  }
+  .review-chat{
+    margin-left: 10px;
+  }
+
+  .shop-review{
+    width: 200px !important;
+  }
+  #star{
+    width: 200px;
+  }
+  .form-content{
+    width: 200px !important;
+  }
+  .textarea{
+    width: 200px !important;
+  }
+  .shop-list{
+    width: 95%;
+  }
+  .search-image{
+    display: none;
+  }
+  .reseach{
+    text-align: left !important;
+  }
+
+  .search-genre{
+    text-align: center !important;
+  }
+  .genre-image{
+    width: 90% !important;
+  }
+  .ranking{
+    margin-bottom: 20px;
+  }
+  .word-mouth{
+    font-size: 25px !important;
+  }
+  .mouth-review{
+    margin: 0 auto;
+  }
+  .mouth-search{
+    margin-bottom: 15px !important;
+  }
+}

@@ -1,23 +1,53 @@
-<div class="container">
-    <div class="row">
-        <div class="col-xs-6">
+<div class="mypage page-top">
+<%= render 'user/users/sidebar', user: @user %>
+<main>
+  <nav class="mb-2" style="height:30px;">
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %><span class="mr-3 ml-3">/</span><%= link_to "#{@user.name}さんとのチャット", chat_path(@room.id) %>
+  </nav>
+   <div class="row chat-index">
+       <div class="col-md-8" style="width:100%;">
             <div class="message">
               <h3 id="room" data-room="<%= @room.id %>" data-user="<%= current_user %>"><%= @user.name %>さんとのチャット</h3>
               <div>
               <%= form_with model: @chat do |chat| %>
                 <%= chat.text_field :message %>
                 <%= chat.hidden_field :room_id %>
-                <%= chat.submit "送信" %>
+                <%= chat.submit "送信", class: "btn btn-outline-info" %>
               <% end %>
               </div>
+               <table id="message" class="mt-5" style="width:100%; margin:0 auto;">
+              <thead>
+                <tr>
+                  <th style="text-align: left; font-size: 20px;"><%= attachment_image_tag current_user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= current_user.name %></th>
+                  <th style="text-align: right; font-size: 20px; "><%= attachment_image_tag @user, :image, size: '50x50', fallback: "no_image.jpg" %><br /><%= @user.name %></th>
+                </tr>
+              </thead>
+              <tbody id="mymessage">
               <% @chats.each do |chat| %>
                 <% if chat.user_id == current_user.id %>
-                  <p style="text-align: right;"><%= chat.message %></p>
+
+                  <tr>
+                    <th>
+                  <p style="text-align: left; font-size: 12px; color:white;"><%= chat.message %></p>
+                   </th>
+                    <th></th>
+                  </tr>
+
                 <% else %>
-                  <p style="text-align: left;"><%= chat.message %></p>
+
+                  <tr>
+                    <th></th>
+                    <th>
+                  <p style="font-size: 12px; text-align: right; color:white;"><%= chat.message %></p>
+                     </th>
+                  </tr>
+
                 <% end %>
               <% end %>
+              </tbody>
+              </table>
             </div>
         </div>
-    </div>
+        </div>
+  </main>
 </div>

@@ -8,5 +8,11 @@ class Review < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
+  with_options presence: true do
+    validates :title
+    validates :post
+    validates :star
+  end
+
 
 end

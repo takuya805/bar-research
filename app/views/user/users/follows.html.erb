@@ -3,9 +3,8 @@
        <% if current_user != review.user %>
      <div id="relationships_buttons_<%= review.user.id %>">
       <%= review.user.name %>
-      <%= render partial: 'user/relationships/relationship', locals: {review: review, i: 2} %>
+      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
     </div>
-
       <% end %>
   <% end %>
 <% end %>
