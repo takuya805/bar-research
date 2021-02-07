@@ -22,8 +22,8 @@ User.create!(
   )
   User.create!(
   name: "ゲスト",
-  email: "test@gmail.com",
-  password: "123456"
+  email: ENV['TEST_USER'],
+  password: ENV['TEST_PASSWORD']
   )
 
 Category.create!(
@@ -67,8 +67,8 @@ Category.create!(
   )
   Owner.create!(
   name: 'ゲスト',
-  email: 'owner_test@example.com',
-  password: 'abcdef'
+  email: ENV['TEST_USER'],
+  password: ENV['TEST_PASSWORD']
   )
 
 Shop.create!(
