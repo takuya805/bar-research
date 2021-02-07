@@ -7,7 +7,7 @@
   <div class="row">
    <div>
   <div class="mysearch">
-    <%= image_tag 'search.jpg',size: '600x300', class: "search-image",style: "opacity: 0.6;" %>
+    <%= image_tag asset_path('search.jpg'),size: '600x300', class: "search-image",style: "opacity: 0.6;" %>
     <div style="margin-left: 50px;">
     <h2 class="myprofile reseach mt-5" style="font-size:60px; text-align:center;">Search</h2>
      <%= render 'user/shops/search', shop: @shop, style: "text-align:center;" %>

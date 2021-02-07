@@ -2,7 +2,7 @@ class Owner < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable #:confirmable
   has_many :shops, dependent: :destroy
   validates :name, presence: true
 
