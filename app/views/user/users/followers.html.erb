@@ -1,10 +1,10 @@
 <% @users.each do |user| %>
   <% unless current_user == user %>
     <% user.reviews.each do |review| %>
-     <span id="relationships_buttons_<%= review.user.id %>">
+     <div id="relationships_buttons_<%= review.user.id %>">
+      <%= review.user.name %>
       <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
-    </span>
-    <p style="color: black;"><%= review.user.name %></p>
+    </div>
     <% end %>
   <% end %>
 <% end %>
