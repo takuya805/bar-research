@@ -1,6 +1,5 @@
 class Owner::ShopsController < ApplicationController
   before_action :authenticate_owner!
-   layout 'owner'
 
   def index
     @shops = current_owner.shops.page(params[:page]).order(created_at: :desc).per(5)

@@ -21,43 +21,25 @@
         <% end %>
         </span>
       <ul class="navbar-nav ml-auto" id="desktop-menu">
-    <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-5"  %>
-        </li>
-        <li>
-          <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-info ml-5" %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info ml-5" %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info ml-5" %>
-        </li>
-         <li>
-          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
-        </li>
-      <% end %>
+        <% if user_signed_in? %>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-5"  %>
+            </li>
+            <li>
+              <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-info ml-5" %>
+            </li>
+        <% else %>
+            <li>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info ml-5" %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info ml-5" %>
+            </li>
+             <li>
+              <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
+            </li>
+        <% end %>
       </ul>
-       <ul class="navbar-nav ml-auto" id="sp-menu">
-        <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info ml-5" %>
-        </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info ml-5" %>
-        </li>
-         <li>
-          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
-        </li>
-      </ul>
-        <div id="hm-icon">
-          <a class="menu-trigger" href="">
-            <span></span>
-            <span></span>
-            <span></span>
-          </a>
-        </div>
       </nav>
     </header>
      <div class="flash-message">
