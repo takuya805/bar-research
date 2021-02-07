@@ -13,4 +13,6 @@ class Review < ApplicationRecord
     validates :post
     validates :star
   end
+
+
 end
