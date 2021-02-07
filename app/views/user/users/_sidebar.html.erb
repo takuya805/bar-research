@@ -35,7 +35,7 @@
         </ul>
     </nav>
     <div class="sidefotter">
-       <% unless current_user.email == "test@gmail.com" %>
+       <% unless current_user.email == ENV['TEST_USER'] %>
         <%= link_to user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva'; color:#A2CA36;" do %>
           <span><i style="color:#A2CA36;"class="fas fa-times-circle"></i>Quit</span>
         <% end %>
@@ -100,7 +100,7 @@
             </li>
             <% end %>
 
-            <li><% unless current_user.email == "test@gmail.com" %>
+            <li><% unless current_user.email == ENV['TEST_USER'] %>
                   <%= link_to user_path(current_user), method: :delete, "data-confirm" => '本当に退会しますか？', style: "font-size:30px; font-family: 'Monotype Corsiva'; color:#A2CA36;" do %>
                     <span><i style="color:#A2CA36;"class="fas fa-times-circle"></i>Quit</span>
                   <% end %>
@@ -109,14 +109,5 @@
         </ul>
     </nav>
 </aside>
-
-
-<div id="hm-icon">
-  <a class="menu-trigger" href="">
-    <span></span>
-    <span></span>
-    <span></span>
-  </a>
-</div>
 
 
