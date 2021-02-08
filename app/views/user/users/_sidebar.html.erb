@@ -32,7 +32,6 @@
               <span><i class="fas fa-search-dollar"></i>Bar search</span>
             </li>
             <% end %>
-          <% end %>
         </ul>
     </nav>
     <div class="sidefotter">
@@ -42,11 +41,12 @@
         <% end %>
        <% end %>
     </div>
+     <% end %>
 </aside>
 
 <aside id="sp-menu" style="margin-left:50px;">
     <nav>
-        <ul class="mysidebar" style="list-style:none;">
+        <ul class="mysidebar mt-5" style="list-style:none;">
           <% unless user_signed_in? %>
           <li class="menu mb-3">
             <%= link_to  new_user_registration_path ,style: "color:#A2CA36;" do %>
@@ -107,7 +107,7 @@
                   <% end %>
                 <% end %>
             </li>
-             <% end %>
+            <% end %>
         </ul>
 
     </nav>

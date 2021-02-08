@@ -1,0 +1,13 @@
+<% if user_signed_in? %>
+  <% if review.user.followed_by?(current_user) %>
+    <p><span>フォロー</span><%= link_to user_relationships_path(user_id: review.user.id, review_id: review.id), remote: true, method: :delete, style: 'color:#0099FF;' do %>
+    <i class="fas fa-thumbs-up"></i>
+    </p>
+    <% end %>
+  <% else %>
+    <p><span>フォロー</span><%= link_to user_relationships_path(user_id: review.user.id, review_id: review.id), remote: true, method: :post, style: 'color:#0099FF;' do %>
+    <i class="far fa-thumbs-up"></i>
+    </p>
+    <% end %>
+  <% end %>
+<% end %>

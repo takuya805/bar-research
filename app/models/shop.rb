@@ -66,6 +66,12 @@ class Shop < ApplicationRecord
     end
   end
 
+  validate :shop_picture_limit
+
+  def shop_picture_limit
+     errors.add(:shop_id, "4 sheets impossible") if self.shop_pictures.length >= 4
+  end
+
   with_options presence: true do
     validates :category_id
     validates :name

@@ -1,4 +1,5 @@
 class Owner::ShopsController < ApplicationController
+   layout 'owner'
   before_action :authenticate_owner!
 
   def index

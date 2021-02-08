@@ -40,23 +40,33 @@
         </li>
       <% end %>
       </ul>
-      <ul class="navbar-nav ml-auto" id="sp-menu">
+      <ul class="navbar-nav ml-auto mysidebar mt-5" id="sp-menu">
     <% if user_signed_in? %>
-        <li>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info ml-5"  %>
+        <li class="menu mb-3">
+          <%= link_to destroy_user_session_path, method: :delete, style: "color:#A2CA36;" do %>
+           <span><i class="fas fa-sign-out-alt"></i>Log out</span>
+          <% end %>
         </li>
-        <li>
-          <%= link_to "マイページ", user_path(current_user), class: "btn btn-outline-info ml-5" %>
+        <li class="menu mb-3">
+          <%= link_to user_path(current_user), style: "color:#A2CA36;" do %>
+          <span><i class="fas fa-home"></i>Home</span>
+          <% end %>
         </li>
       <% else %>
-        <li>
-          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info ml-5" %>
+        <li class="menu mb-3">
+          <%= link_to new_user_registration_path, style: "color:#A2CA36;" do %>
+            <span><i class="fas fa-user-plus"></i>Sign up</span>
+          <% end %>
         </li>
-        <li>
-          <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info ml-5" %>
+        <li class="menu mb-3">
+          <%= link_to new_user_session_path, style: "color:#A2CA36;" do %>
+           <span><i class="fas fa-sign-in-alt"></i>Sign in</span>
+          <% end %>
         </li>
-         <li>
-          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info ml-5" %>
+         <li class="menu mb-3">
+          <%= link_to users_guest_sign_in_path, method: :post, style: "color:#A2CA36;" do  %>
+             <span><i class="fab fa-invision"></i>Guest Sign in</span>
+          <% end %>
         </li>
       <% end %>
       </ul>

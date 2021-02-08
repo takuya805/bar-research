@@ -1,0 +1,40 @@
+<div class=mypage>
+  <%= render 'user/users/sidebar', user: @user %>
+<main>
+  <nav class="mb-2" style="height:30px;">
+   <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'フォロー一覧', follows_user_path %>
+  </nav>
+  <table class="table follow" style="color:white;">
+    <tbody style="border-bottom: 1px solid white;">
+<% @users.each do |user| %>
+    <% user.reviews.each do |review| %>
+    <tr>
+        <td>
+        <%= link_to user_path(review.user.id) do %>
+          <%= attachment_image_tag review.user, :image, size: '60x60', fallback: "no_image.jpg" %>
+        <% end %>
+        </td>
+        <td>
+        <%= link_to user_path(review.user.id) do %>
+        <%= review.user.name %>
+        <% end %>
+        </td>
+    <% unless current_user == user %>
+    <td>
+    <span id="relationships_buttons_<%= review.user.id %>">
+      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
+    </span>
+    </td>
+    <td>
+    <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
+    <span style="color:#17A2B8; font-weight: bold;"><i class="fas fa-sms"></i><%= review.user.name %>さんにチャットする</span>
+    <% end %>
+    </td>
+    <% end %>
+    </tr>
+<% end %>
+<% end %>
+</tbody>
+</table>
+</main>
+</div>
