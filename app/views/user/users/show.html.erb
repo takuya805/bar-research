@@ -5,10 +5,18 @@
    <div class="myprofile">MyProfile<i class="fas fa-id-badge ml-3"></i></div>
     <div class="mine">
      <div class="profile">
-        <div class="field mb-3">
+        <div class="field mb-3" style="text-align: center;">
             <%= label_tag :'イメージ' %><br />
-            <%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %>
+            <div><%= attachment_image_tag(@user, :image, size: '100x100', fallback: "no_image.jpg") %></div>
         </div>
+         <div class="field mb-3" style="font-size:14px;">
+            <%= link_to follows_user_path do %>
+            <span>フォロー</span><%= @user.followings.count %>
+            <% end %>
+            <%= link_to followers_user_path do %>
+            <span>フォロワー</span><%= @user.followers.count %>
+            <% end %>
+            </div>
         <div class="field mb-3" style= "border-bottom: solid;">
             <%= label_tag :'ニックネーム' %><br />
             <%= @user.name %>
@@ -18,11 +26,14 @@
             <div style="font-size: 13px;"><%= @user.introduction %></div>
         </div>
         <% unless @user == current_user %>
-        <div class="field mb-3" style="border-bottom: solid;">
-             <%= link_to 'チャットする',chat_path(@user), style: "color: black;", "data-turbolinks": false %>
+        <div>
+         <% if @user.followed_by?(current_user) %>
+           <%= link_to chat_path(@user), style: "color: black;", "data-turbolinks": false do %>
+              <span style=" font-size: 15px;"><i class="fas fa-sms"></i>チャットする</span>
+           <% end %>
+         <% end %>
         </div>
         <% end %>
-
         <% if @user == current_user %>
         <div class="field">
             <%= link_to '編集', edit_user_path(current_user.id), class: "btn btn-edit mb-3", style: "color: white;" %>
@@ -30,7 +41,7 @@
         <% end %>
          </div>
 
-        <table class="table ml-3">
+        <table class="table ml-3 myreview-list">
             <tr>
                 <td>投稿したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
             </tr>
