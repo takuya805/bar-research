@@ -119,9 +119,15 @@
     <% if review.image.present? %>
      <div><%= attachment_image_tag(review, :image, size: '100x100') %></div>
     <% end %>
-    <div><%= link_to user_path(review.user), style: "color:black;" do %>
-         <%= review.user.name %>さん
-         <% end %>
+    <div style="display:flex;">
+      <%= link_to user_path(review.user), style: "color:black;" do %>
+         <%= review.user.name %>さん&emsp;
+           <% end %>
+          <% unless review.user_id == current_user.id %>
+         <span id="relationships_buttons_<%= review.user.id %>">
+          <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
+         </span>
+      <% end %>
     </div>
       <div id="star-rate-<%= review.id %>" style="display:inline-block;"></div><span class="star-count ml-1"><%= review.star %></span><span class="review-month" style="margin-left:20px;"><%= review.created_at.strftime('%Y/%m/%d') %>に投稿</span>
       <div><%= review.post %></div>
@@ -137,8 +143,10 @@
     <div id="favorites_buttons_<%= review.id %>">
       <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
     </div>
-     <div id="relationships_buttons_<%= review.user.id %>">
-      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
+    <div>
+      <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
+        <span style="color:#17A2B8; font-weight: bold;"><i class="fas fa-sms"></i><%= review.user.name %>さんに<br />チャットで聞く</span>
+      <% end %>
     </div>
     </div>
     <% end %>
