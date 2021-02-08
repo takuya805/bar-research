@@ -137,14 +137,9 @@
     <div id="favorites_buttons_<%= review.id %>">
       <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
     </div>
-    <div id="relationships_buttons_<%= review.user.id %>">
-      <%= render partial: 'user/relationships/relationship', locals: {review: review, i: 1} %>
+     <div id="relationships_buttons_<%= review.user.id %>">
+      <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
     </div>
-     <div class="review-chat">
-        <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
-        <span style="color:#228B22; font-weight: bold;"><i class="fas fa-sms"></i><%= review.user.name %>さんに<br />&emsp;チャットする</span>
-        <% end %>
-      </div>
     </div>
     <% end %>
 </div>

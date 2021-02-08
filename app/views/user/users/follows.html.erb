@@ -1,10 +1,16 @@
 <% @users.each do |user| %>
+ <% unless current_user == user %>
     <% user.reviews.each do |review| %>
-       <% if current_user != review.user %>
-     <div id="relationships_buttons_<%= review.user.id %>">
-      <%= review.user.name %>
+        <%= attachment_image_tag review.user, :image, size: '100x100', fallback: "no_image.jpg" %>
+        <%= review.user.name %>
+    <span id="relationships_buttons_<%= review.user.id %>">
       <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
-    </div>
-      <% end %>
-  <% end %>
+    </span>
+    <% if review.user.followed_by?(current_user) %>
+    <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
+    <span style="color:#228B22; font-weight: bold;"><i class="fas fa-sms"></i><%= review.user.name %>さんに<br />&emsp;チャットする</span>
+    <% end %>
+    <% end %>
+    <% end %>
+<% end %>
 <% end %>
