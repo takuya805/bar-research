@@ -1,7 +1,5 @@
 <div class="mypage page-top">
-  <% if user_signed_in? %>
-    <%= render 'user/users/sidebar', user: @user %>
-  <% end %>
+    <%= render 'user/users/sidebar' %>
 <main class="shop-list">
   <% if user_signed_in? %>
   <nav class="mb-2" style="height:30px;">
@@ -17,11 +15,11 @@
     </div>
     <div>【<%= shop.category.category %>】</div>
     <div>
-    <% unless shop.shop_pictures == [] %>
+    <% if shop.shop_pictures.present? %>
         <% shop.shop_pictures.each do |shop_picture| %>
         <%= attachment_image_tag shop_picture, :image, size: '100x100' %>
         <% end %><br />
-        <% end %>
+     <% end %>
     </div>
     <h5><%= shop.explain %></h5>
     <div class="shop-index"><span>アクセス</span><%= shop.station %></div>
