@@ -6,6 +6,7 @@
   </nav>
 <table class="table follow" style="color:white;">
   <tbody style="border-bottom: 1px solid white;">
+<% if @users.present? %>
 <% @users.each do |user| %>
     <% user.reviews.each do |review| %>
      <tr>
@@ -33,6 +34,9 @@
     </tr>
     <% end %>
   <% end %>
+<% end %>
+<% else %>
+<div>まだフォロワーはいません。</div>
 <% end %>
  </tbody>
  </table>
