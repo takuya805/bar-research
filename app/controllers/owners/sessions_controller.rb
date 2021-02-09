@@ -7,7 +7,7 @@ class Owners::SessionsController < Devise::SessionsController
    def new_guest
     owner = Owner.guest
     sign_in owner
-    redirect_to owner_shops_path(owner), notice: "Thank you for your testing!"
+    redirect_to owner_shops_path, notice: "Thank you for your testing!"
    end
 
   # GET /resource/sign_in
