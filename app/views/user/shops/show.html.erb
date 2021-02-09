@@ -1,7 +1,5 @@
 <div class="mypage page-top">
-<% if user_signed_in? %>
-<%= render 'user/users/sidebar', user: @user %>
-<% end %>
+<%= render 'user/users/sidebar'%>
 <div class="shoptop" style="margin:0 auto;">
 <% if user_signed_in? %>
 <nav class="mb-2" style="height:30px;">
@@ -24,6 +22,13 @@
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
 </div>
 </span>
+<div>
+  <% if @shop.shop_pictures.present? %>
+    <% @shop.shop_pictures.each do |shop_picture| %>
+    <%= attachment_image_tag shop_picture, :image, size: '100x100' %>
+    <% end %><br />
+  <% end %>
+</div>
 <p>【<%= @shop.category.category %>】</p>
 <p><%= @shop.explain %></p>
 <div class="infomartion">
