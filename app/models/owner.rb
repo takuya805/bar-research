@@ -26,4 +26,5 @@ class Owner < ApplicationRecord
       owner.password = ENV['TEST_PASSWORD']
     end
    end
+
 end
