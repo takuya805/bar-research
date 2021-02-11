@@ -5,5 +5,4 @@ class User::UserContactsControllerTest < ActionDispatch::IntegrationTest
     get user_user_contacts_create_url
     assert_response :success
   end
-
 end

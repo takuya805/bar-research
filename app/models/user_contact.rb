@@ -5,5 +5,4 @@ class UserContact < ApplicationRecord
     validates :title
     validates :message
   end
-
 end

@@ -1,5 +1,5 @@
 class Owner::ShopsController < ApplicationController
-   layout 'owner'
+  layout 'owner'
   before_action :authenticate_owner!
 
   def index
@@ -19,12 +19,12 @@ class Owner::ShopsController < ApplicationController
 
   def create
     @shop = current_owner.shops.build(shop_params)
-      if @shop.save
-        redirect_to owner_shops_path, notice: "Registration was successful your bar"
-      else
-        @categories = Category.all
-        render 'owner/shops/new'
-      end
+    if @shop.save
+      redirect_to owner_shops_path, notice: "Registration was successful your bar"
+    else
+      @categories = Category.all
+      render 'owner/shops/new'
+    end
   end
 
   def edit
@@ -46,7 +46,7 @@ class Owner::ShopsController < ApplicationController
   def destroy
     @shop = current_owner.shops.find_by(id: params[:id])
     if @shop.destroy
-     redirect_to owner_shops_path, notice: "Delete was successful your bar"
+      redirect_to owner_shops_path, notice: "Delete was successful your bar"
     else
       @shops = current_owner.shops
       render 'owner/shops/index'
@@ -54,10 +54,12 @@ class Owner::ShopsController < ApplicationController
   end
 
   private
-    def shop_params
-      params.require(:shop).permit(:category_id, :name, :postcode,
-                                   :address, :phone, :station,
-                                   :holiday, :budget, :seat, :explain,
-                                   :hplink,:booking, :open_time, :close_time, shop_pictures_images: [])
-    end
+
+  def shop_params
+    params.require(:shop).permit(:category_id, :name, :postcode,
+                                 :address, :phone, :station,
+                                 :holiday, :budget, :seat, :explain,
+                                 :hplink, :booking, :open_time, :close_time,
+                                 shop_pictures_images: [])
+  end
 end

@@ -11,11 +11,11 @@ class Owner::OwnerContactsController < ApplicationController
       @shops = current_owner.shops.page(params[:page]).order(created_at: :desc).per(5)
       render 'owner/shops/index'
     end
-
   end
 
   private
-    def owner_contact_params
-      params.permit(:title, :message)
-    end
+
+  def owner_contact_params
+    params.permit(:title, :message)
+  end
 end

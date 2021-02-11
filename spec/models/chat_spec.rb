@@ -6,10 +6,10 @@ RSpec.describe Chat, "モデルに関するテスト", type: :model do
   user = FactoryBot.create(:user)
   describe 'モデルのテスト' do
     it "有効なチャットの場合は保存されるか" do
-       expect(FactoryBot.build(:chat, user_id: user.id, room_id: room.id )).to be_valid
-
+      expect(FactoryBot.build(:chat, user_id: user.id, room_id: room.id)).to be_valid
     end
   end
+
   context "メッセージのバリデーションチェック" do
     it "メッセージが空白の場合バリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       chat = Chat.new(message: '')
