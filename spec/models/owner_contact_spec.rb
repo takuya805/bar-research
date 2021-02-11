@@ -9,13 +9,14 @@ RSpec.describe OwnerContact, "モデルに関するテスト", type: :model do
       expect(FactoryBot.build(:owner_contact, owner_id: owner.id)).to be_valid
     end
   end
+
   context "空白のバリデーションチェック" do
     it "タイトルが空白の場合バリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       owner_contact = OwnerContact.new(title: '', message: 'hoge')
       expect(owner_contact).to be_invalid
       expect(owner_contact.errors[:title]).to include("can't be blank")
     end
-     it "メッセージが空白の場合バリデーションチェックされ空白のエラーメッセージが返ってきているか" do
+    it "メッセージが空白の場合バリデーションチェックされ空白のエラーメッセージが返ってきているか" do
       owner_contact = OwnerContact.new(title: 'hoge', message: '')
       expect(owner_contact).to be_invalid
       expect(owner_contact.errors[:message]).to include("can't be blank")

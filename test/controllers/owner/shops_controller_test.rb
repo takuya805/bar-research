@@ -25,5 +25,4 @@ class Owner::ShopsControllerTest < ActionDispatch::IntegrationTest
     get owner_shops_exit_url
     assert_response :success
   end
-
 end

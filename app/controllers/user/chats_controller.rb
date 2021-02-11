@@ -1,8 +1,8 @@
 class User::ChatsController < ApplicationController
   before_action :authenticate_user!
-   def index
-      @rooms = current_user.rooms
-   end
+  def index
+    @rooms = current_user.rooms
+  end
 
   def show
     @user = User.find(params[:id])
@@ -17,7 +17,7 @@ class User::ChatsController < ApplicationController
       @room = user_rooms.room
     end
 
-    @chats = @room.chats.reject do |chat| #rejectでchat_deleteが作成されてないchatを選択（偽であるものを集めて返す）
+    @chats = @room.chats.reject do |chat| # rejectでchat_deleteが作成されてないchatを選択（偽であるものを集めて返す）
       chat.chat_deletes.find_by(user: current_user)
     end
     @chat = Chat.new(room_id: @room.id)
@@ -32,7 +32,7 @@ class User::ChatsController < ApplicationController
     @room = Room.find(params[:id])
     @chats = @room.chats
     @chats.each do |chat|
-      chat.chat_deletes.find_or_create_by(user: current_user) #each文の中で作成されてないchatだけを選択して作成する
+      chat.chat_deletes.find_or_create_by(user: current_user) # each文の中で作成されてないchatだけを選択して作成する
     end
     redirect_to chats_path
   end
@@ -45,7 +45,8 @@ class User::ChatsController < ApplicationController
   end
 
   private
-    def chat_params
-      params.require(:chat).permit(:message, :room_id)
-    end
+
+  def chat_params
+    params.require(:chat).permit(:message, :room_id)
+  end
 end

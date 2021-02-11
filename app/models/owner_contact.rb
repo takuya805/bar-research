@@ -5,5 +5,4 @@ class OwnerContact < ApplicationRecord
     validates :title
     validates :message
   end
-
 end

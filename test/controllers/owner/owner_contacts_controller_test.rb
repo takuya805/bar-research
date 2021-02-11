@@ -5,5 +5,4 @@ class Owner::OwnerContactsControllerTest < ActionDispatch::IntegrationTest
     get owner_owner_contacts_create_url
     assert_response :success
   end
-
 end

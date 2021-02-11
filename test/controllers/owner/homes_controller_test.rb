@@ -10,5 +10,4 @@ class Owner::HomesControllerTest < ActionDispatch::IntegrationTest
     get owner_homes_about_url
     assert_response :success
   end
-
 end

@@ -1,25 +1,15 @@
 class Shop < ApplicationRecord
-
   scope :search_by_keyword, -> (search, word) {
     shop = if search == '1'
-      Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%")
-    elsif search == '2'
-      Shop.where('station LIKE ?', "%#{word}%")
-    elsif search == '3'
-      Shop.where('name LIKE ?', "%#{word}%")
-    end
+             Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%",
+                        "%#{word}%")
+           elsif search == '2'
+             Shop.where('station LIKE ?', "%#{word}%")
+           elsif search == '3'
+             Shop.where('name LIKE ?', "%#{word}%")
+           end
     shop if shop.present?
   }
-
-  # def self.search(search, word)
-  #   if search == '1'
-  #     @shops = Shop.where('name LIKE ? OR address LIKE ? OR station LIKE ?', "%#{word}%", "%#{word}%", "%#{word}%")
-  #   elsif search == '2'
-  #     @shops = Shop.where('station LIKE ?', "%#{word}%")
-  #   elsif search == '3'
-  #     @shops = Shop.where('name LIKE ?', "%#{word}%")
-  #   end
-  # end
 
   has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
@@ -37,7 +27,7 @@ class Shop < ApplicationRecord
     '4,000円以上~5,000円未満': 3,
     '5,000円以上~10,000円未満': 4,
     '10,000円以上~20,000円未満': 5,
-    '20,000円以上~': 6
+    '20,000円以上~': 6,
   }
 
   enum holiday: {
@@ -51,7 +41,7 @@ class Shop < ApplicationRecord
     '日曜日': 7,
     '日曜日、祝日': 8,
     '日曜日、月曜日、祝日': 9,
-    '特に無し': 10
+    '特に無し': 10,
   }
 
   def bookmarked_by?(user)
@@ -59,17 +49,17 @@ class Shop < ApplicationRecord
   end
 
   def avg_score
-    unless self.reviews.empty?
-      reviews.average(:star).round(1).to_f
-    else
+    if reviews.empty?
       0.0
+    else
+      reviews.average(:star).round(1).to_f
     end
   end
 
   validate :shop_picture_limit
 
   def shop_picture_limit
-     errors.add(:shop_id, "4 sheets impossible") if self.shop_pictures.length >= 4
+    errors.add(:shop_id, "4 sheets impossible") if shop_pictures.length >= 4
   end
 
   with_options presence: true do
@@ -86,7 +76,4 @@ class Shop < ApplicationRecord
     validates :open_time
     validates :close_time
   end
-
-
-
 end

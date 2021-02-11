@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-   layout 'home'
+  layout 'home'
   def top
   end
 end

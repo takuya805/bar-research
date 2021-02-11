@@ -70,7 +70,7 @@ gem "refile-mini_magick"
 gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.13'
-gem 'kaminari','~> 1.2.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'dotenv-rails'
 gem 'pry-byebug'
 gem 'enum_help'
@@ -81,6 +81,7 @@ gem 'geocoder'
 gem 'gon'
 gem 'rails-i18n'
 gem 'omniauth-google-oauth2'
+gem 'rubocop-airbnb'
 
 group :test do
   gem 'rspec-rails'
