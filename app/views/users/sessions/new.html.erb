@@ -32,6 +32,12 @@
       </div>
     <% end %>
 
+     <div class="field">
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success mb-3" do %>
+        <span><i class="fab fa-google-plus-g"></i>&emsp;google認証</span>
+      <% end %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Log in", class: "btn btn-outline-info mb-3" %>
     </div>
@@ -40,6 +46,6 @@
   <%= render "users/shared/links" %>
     </div>
     </div>
-    
+
   </div>
 </section>

@@ -80,6 +80,7 @@ gem 'gmaps4rails'
 gem 'geocoder'
 gem 'gon'
 gem 'rails-i18n'
+gem 'omniauth-google-oauth2'
 
 group :test do
   gem 'rspec-rails'
