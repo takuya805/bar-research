@@ -13,15 +13,15 @@
       <% end %>
     <%= form_with model: @user, url: user_path, method: :patch, local: true do |f| %>
       <div class="form-group">
-        <%= f.label :プロフィール画像 %><br />
+        <%= f.label :'プロフィール画像' %><br />
         <%= f.attachment_field :image %>
       </div>
       <div class="form-group">
-        <%= f.label :ニックネーム %><br />
+        <%= f.label :'ニックネーム' %><br />
         <%= f.text_field :name, style: "width:70%;" %>
       </div>
       <div class="form-group">
-        <%= f.label :自己紹介 %><br />
+        <%= f.label :'自己紹介' %><br />
         <%= f.text_area :introduction, style: "width:70%;" %>
       </div>
       <div class="form-group">

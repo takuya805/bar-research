@@ -28,7 +28,7 @@
           <%= link_to "店舗一覧", owner_shops_path, class: "btn btn-outline-info ml-5" %>
         </li>
         <% unless current_owner.email == ENV['TEST_USER'] %>
-        <li>
+        <li class="owner-menu">
           <%= link_to '退会する', owner_registration_path, method: :delete,  "data-confirm" => '本当に退会しますか？', class: "btn btn-outline-info ml-5" %>
         </li>
         <% end %>
