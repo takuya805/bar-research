@@ -27,11 +27,9 @@
         </div>
         <% unless @user == current_user %>
         <div>
-         <% if @user.followed_by?(current_user) %>
            <%= link_to chat_path(@user), style: "color: black;", "data-turbolinks": false do %>
               <span style=" font-size: 15px;"><i class="fas fa-sms"></i>チャットする</span>
            <% end %>
-         <% end %>
         </div>
         <% end %>
         <% if @user == current_user %>
@@ -46,7 +44,13 @@
                 <td>投稿したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
             </tr>
             <tr>
-                <td>お気に入り登録したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.favorites.count %>件</td>
+                <td>レビューのお気に入り獲得数</td><td class="profile-left"><i class="fas fa-flag"></i>
+                    <% favorites_count = 0 %>
+                    <% @reviews.each do |review| %>
+                      <% favorites_count += review.favorites.count %>
+                    <% end %>
+                    <%= favorites_count %>件
+                </td>
             </tr>
             <tr>
                 <td>ブックマークした店舗</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>

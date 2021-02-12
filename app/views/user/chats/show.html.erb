@@ -2,7 +2,7 @@
 <%= render 'user/users/sidebar', user: @user %>
 <main>
   <nav class="mb-2" style="height:30px;">
-    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %><span class="mr-3 ml-3">/</span><%= link_to "#{@user.name}さんとのチャット", chat_path(@room.id) %>
+    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Chats', chats_path %><span class="mr-3 ml-3">/</span><%= "#{@user.name}さんとのチャット" %>
   </nav>
    <div class="row chat-index">
        <div class="col-md-8" style="width:100%;">
@@ -28,7 +28,13 @@
 
                   <tr>
                     <th>
-                  <p style="text-align: left; font-size: 12px; color:white;"><%= chat.message %></p>
+                      <p style="text-align: left; font-size: 12px; color:white;"><%= chat.message %>&emsp;
+                      <% if chat == chat.room.chats.last %>
+                        <%= link_to chat_path(chat), method: :delete, "data-confirm" => '本当に取り消しますか?' do %>
+                          <i class='far fa-trash-alt'></i>
+                        <% end %>
+                      <% end %>
+                      </p>
                    </th>
                     <th></th>
                   </tr>
