@@ -25,7 +25,7 @@
 <div>
   <% if @shop.shop_pictures.present? %>
     <% @shop.shop_pictures.each do |shop_picture| %>
-    <%= attachment_image_tag shop_picture, :image, size: '100x100' %>
+    <%= attachment_image_tag shop_picture, :image, size: '220x220' %>
     <% end %><br />
   <% end %>
 </div>

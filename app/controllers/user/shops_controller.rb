@@ -1,6 +1,6 @@
 class User::ShopsController < ApplicationController
   def search
-    @reviews = Review.all.first(6)
+    @reviews = Review.all.last(6)
     shop_review = Review.group(:shop_id)
     shop_score = {}
     shop_review.each do |review|
