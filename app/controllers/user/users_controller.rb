@@ -7,6 +7,7 @@ class User::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reviews = @user.reviews
     @user_contact = UserContact.new
   end
 
