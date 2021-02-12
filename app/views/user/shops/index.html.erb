@@ -8,7 +8,9 @@
   <% end %>
     <% @shops.each do |shop| %>
     <div class="shop-border">
-    <h4><%= shop.name %></h4>
+    <%= link_to shop_path(shop), style: 'color:black;' do %>
+      <h4><%= shop.name %></h4>
+    <% end %>
     <div><%= shop.avg_score %>点(<%= shop.reviews.count %>件のレビュー)</div>
     <div class="shopbtn">
     <%= link_to '詳細を見る', shop_path(shop), class: 'btn btn-warning' %>
@@ -17,11 +19,11 @@
     <div>
     <% if shop.shop_pictures.present? %>
         <% shop.shop_pictures.each do |shop_picture| %>
-        <%= attachment_image_tag shop_picture, :image, size: '100x100' %>
+        <%= attachment_image_tag shop_picture, :image, size: '150x150' %>
         <% end %><br />
      <% end %>
     </div>
-    <h5><%= shop.explain %></h5>
+    <h6><%= shop.explain %></h6>
     <div class="shop-index"><span>アクセス</span><%= shop.station %></div>
     <div class="shop-index"><span>電話番号</span><%= shop.phone %></div>
     <div class="shop-index"><span>営業時間</span><%= shop.open_time %>~<%= shop.close_time %></div>
