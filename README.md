@@ -8,13 +8,13 @@
 仕上げたサイトになります。
 
 「bar-research」は店舗検索、口コミ投稿、お気に入り、ブックマーク、チャット、ランキングを活用し、行きたいお店へ
-効率よく訪れることが可能です。
+効率よく訪問することが可能です。
 
 店舗を経営しているオーナーも店舗を登録することができ、口コミも閲覧することが可能です。
 
 ユーザーもオーナーも「bar-research」を活用することによってwin-winの関係になるようなサイトを目指しています。
 
-# 作成において意識をしたこと
+## 作成において意識をしたこと
 ユーザー、オーナー、管理者とdeviseが3つ存在するため、URLのエンドポイントはこだわりを持って作成しました。
 基本的なことではありますが、スコープとネームスペース、URLのネストなど必要に応じて使用しています。
 railsの1つ1つの機能はとてもシンプルなものばかりですが、実際にリリースされて運用後のことも視野にいれながら
@@ -31,16 +31,16 @@ railsの1つ1つの機能はとてもシンプルなものばかりですが、�
 
 ## ER図
 ![bar-research](https://user-images.githubusercontent.com/73866971/107846156-e4b6df00-6e24-11eb-9cca-2455ecc5b241.png)
-*https://app.diagrams.net/#G115vqiVhrjZdZwjBZaCUUVVPAjkSslJ4d
+リンク：https://app.diagrams.net/#G115vqiVhrjZdZwjBZaCUUVVPAjkSslJ4d
 
 ## テーブル定義
-*https://docs.google.com/spreadsheets/d/1rNdNEBlheH6Bb6mQGHpOWYyYcdKFIpz9DnPuCx4vQX0/edit#gid=0
+リンク：https://docs.google.com/spreadsheets/d/1rNdNEBlheH6Bb6mQGHpOWYyYcdKFIpz9DnPuCx4vQX0/edit#gid=0
 
 ## 詳細設計図
-*https://docs.google.com/spreadsheets/d/12iote3ggFBUZOFDjRXSGxFajgqEtcYYEzCJJjykoNzc/edit#gid=0
+リンク：https://docs.google.com/spreadsheets/d/12iote3ggFBUZOFDjRXSGxFajgqEtcYYEzCJJjykoNzc/edit#gid=0
 
 ## チャレンジ要素一覧
-*https://docs.google.com/spreadsheets/d/1fJtzsWF3Lze7gZq9Cak0vdvZvlFt_Ub7u7pfVLzGBBc/edit#gid=0
+リンク：https://docs.google.com/spreadsheets/d/1fJtzsWF3Lze7gZq9Cak0vdvZvlFt_Ub7u7pfVLzGBBc/edit#gid=0
 
 ## 開発環境
 * OS：Linux(CentOS)
