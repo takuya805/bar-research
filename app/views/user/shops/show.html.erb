@@ -2,7 +2,7 @@
 <%= render 'user/users/sidebar'%>
 <div class="shoptop" style="margin:0 auto;">
 <% if user_signed_in? %>
-<nav class="mb-2" style="height:30px;">
+<nav class="mb-2 phone-navi" style="height:30px;">
    <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Bar Search', shops_search_path %><span class="mr-3 ml-3">/</span><%= link_to 'Bar一覧', shops_path %><span class="mr-3 ml-3">/</span><%= link_to @shop.name, shop_path(@shop.id) %>
 </nav>
 <% end %>
@@ -22,10 +22,10 @@
   <%= render partial: 'user/bookmarks/bookmark', locals: {shop: @shop} %>
 </div>
 </span>
-<div>
+<div class="shop-phone">
   <% if @shop.shop_pictures.present? %>
     <% @shop.shop_pictures.each do |shop_picture| %>
-    <%= attachment_image_tag shop_picture, :image, size: '220x220' %>
+    <%= attachment_image_tag shop_picture, :image, size: '220x220', class: 'shop-pictures1' %>
     <% end %><br />
   <% end %>
 </div>
