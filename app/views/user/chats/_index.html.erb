@@ -13,7 +13,7 @@
             </div>
             <% end %>
           <div class="mt-4" style="margin-left:auto;">
-            <%= link_to "削除", chats_exit_path(id: latest_chat.room.id), class: 'btn btn-sm btn-danger' %>
+            <%= link_to "削除", chats_exit_path(id: latest_chat.room.id), "data-confirm" => '本当に削除しますか？', class: 'btn btn-sm btn-danger' %>
           </div>
           </div>
           <% end %>
