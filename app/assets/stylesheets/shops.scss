@@ -94,12 +94,17 @@
   }
   .review-new{
     width: 100% !important;
+    margin-left: 50px;
   }
   .review-month{
     display: block;
+    margin: 5px;
   }
   .review-favorite{
-    display: flex;
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    margin-left: 50px;
   }
   .review-chat{
     margin-left: 10px;
@@ -143,6 +148,19 @@
     margin: 0 auto;
   }
   .mouth-search{
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
+  }
+  .shop-pictures{
+    margin-bottom: 5px !important;
+  }
+  .shop-pictures1{
+    margin-bottom: 5px !important;
+    text-align: center !important;
+  }
+  .shop-phone{
+    text-align: center;
+  }
+  .phone-navi{
+    font-size: 11px;
   }
 }

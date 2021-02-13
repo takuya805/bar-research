@@ -49,7 +49,7 @@
   <p class="mt-5 word-mouth" style="font-size: 30px; text-align: center;">口コミから探す（新着6件）</p>
   <div class="row mt-5 mb-5 mouth-review">
         <% @reviews.each do |review| %>
-          <div class="col-md-4 favorite-review mouth-search mb-5">
+          <div class="col-md-4 favorite-review mouth-search mb-3">
             <% if review.image.present? %>
               <div><%= attachment_image_tag(review, :image, size: '150x120') %></div>
             <% end %>
