@@ -19,7 +19,7 @@ describe 'レビューのテスト' do
       it 'レビュー投稿後のいダイレクト先は正しいか' do
         fill_in 'review[title]', with: review.title
         attach_file 'review[image]', "#{Rails.root}/spec/factories/no_image.jpg"
-        find('#review_star', visible: false).set(5)
+        find('#review_star').find("img[alt='5']").click
         #fill_in 'review[star]', with: 5
         fill_in 'review[post]', with: review.post
         click_button '投稿する'
