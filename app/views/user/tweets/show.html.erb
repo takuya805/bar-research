@@ -1,0 +1,67 @@
+<div class="mypage page-top">
+  <%= render 'user/users/sidebar'%>
+    <main>
+      <nav class="mb-2" style="height:30px;">
+        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'tweets', tweets_path %><span class="mr-3 ml-3">/</span><%= link_to 'comment', tweet_path(@tweet) %>
+      </nav>
+       <div class="row">
+          <div class="favorite-review" style="width: 70%;">
+           <div style="display: flex; justify-content: center; align-items: center;">
+             <div><%= attachment_image_tag(@tweet.user, :image, size: '70x70', fallback: "no_image.jpg") %><p><%= @tweet.user.name %></p></div>
+             <div>
+              <% unless @tweet.user_id == current_user.id %>
+                 &ensp;<span id="relationships_buttons_<%= @tweet.user.id %>">
+                  <%= render partial: 'user/relationships/relationship', locals: {tweet: @tweet} %>
+                 </span>
+              <% end %>
+             &ensp;<%= @tweet.created_at.strftime('%m月%d日') %>
+             </div>
+           </div>
+           <div style="display: flex; justify-content: center;">
+            <% if @tweet.image.present? %>
+              <div><%= attachment_image_tag(@tweet, :image, size: '300x200') %></div>
+            <% end %>
+             <div>店舗名：<%= @tweet.shop %><br /><%= @tweet.content %></div>
+           </div>
+            <div style="display: flex; justify-content: center;">
+              <div id="favorites_buttons_<%= @tweet.id %>">
+                <%= render partial: 'user/favorites/favorite', locals: {tweet: @tweet} %>
+              </div>
+              <div>
+                &emsp;<a href="#commentform"><i class="fas fa-comment-dots"></i><%= @tweet.comments.count %></a>
+              </div>
+            </div>
+          </div>
+          <% if @comments.present? %>
+          <div class="favorite-review mt-2" style="width: 70%;">
+            <% @comments.each do |comment| %>
+              <div class="tweet-comment">
+              <%= link_to user_path(comment.user) do %>
+                <%= attachment_image_tag(@comment.user, :image, size: '30x30', fallback: "no_image.jpg") %>
+                <%= comment.user.name %>
+              <% end %>
+              <%= comment.comment %>
+              <% if comment.user.id == current_user.id %>
+                <%= link_to tweet_comment_path(comment.tweet.id, comment.id), method: :delete, "data-confirm" => 'コメントを削除しますか？' do %>
+                  <span style="color: red;"><i class='far fa-trash-alt'></i></span>
+                <% end %>
+              <% end %>
+              <div style="text-align: right;"><%= comment.created_at.strftime('%Y年%m月%d日') %></div>
+              </div>
+            <% end %>
+          </div>
+          <% end %>
+      </div>
+      <div class="row" style="margin-top:100px;">
+        <div id="commentform" class="siteform" style="width: 70%;">
+        <%= form_with(model:[@tweet, @comment], url: tweet_comments_path(tweet_id: @tweet), local: true) do |f| %>
+          <div class="field">
+            <div><%= f.label :'コメント' %></div>
+            <%= f.text_area :comment, placeholder: 'コメントを入力', style: 'width: 90%' %><br />
+            </div>
+        <%= f.submit "コメントする", class: 'btn btn-outline-success mt-2' %>
+        <% end %>
+        </div>
+        </div>
+    </main>
+</div>

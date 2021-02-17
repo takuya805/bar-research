@@ -1,13 +1,9 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
 
-  def review
-    @reviews = current_user.reviews.page(params[:page]).order(created_at: :desc).per(9)
-  end
-
   def show
     @user = User.find(params[:id])
-    @reviews = @user.reviews
+    @tweets = @user.tweets
     @user_contact = UserContact.new
   end
 

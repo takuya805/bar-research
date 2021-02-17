@@ -46,8 +46,8 @@
             <tr>
                 <td>レビューのお気に入り獲得数</td><td class="profile-left"><i class="fas fa-flag"></i>
                     <% favorites_count = 0 %>
-                    <% @reviews.each do |review| %>
-                      <% favorites_count += review.favorites.count %>
+                    <% @tweets.each do |tweet| %>
+                      <% favorites_count += tweet.favorites.count %>
                     <% end %>
                     <%= favorites_count %>件
                 </td>

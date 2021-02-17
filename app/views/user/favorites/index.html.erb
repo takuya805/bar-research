@@ -4,30 +4,27 @@
    <nav class="mb-2" style="height:30px;">
      <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'Favorites', user_favorites_path %>
    </nav>
-    <h3>お気に入りレビュー</h3>
+    <h3>お気に入りツイート</h3>
   <div class="row">
       <% if @favorites.present? %>
       <% @favorites.each do |favorite| %>
       <div class="col-md-4 favorite-review">
-        <% if favorite.review.image.present? %>
-         <div><%= attachment_image_tag(favorite.review, :image, size: '150x120') %></div>
+        <% if favorite.tweet.image.present? %>
+         <div><%= attachment_image_tag(favorite.tweet, :image, size: '150x120') %></div>
         <% end %>
         <div class="favorites">Nickname</div>
-          <div><%= favorite.review.user.name %>
+          <div><%= favorite.tweet.user.name %>
              <%= link_to user_path(favorite.user) do %>
                <i class="fas fa-external-link-alt" style="color:#6600FF;"></i>
              <% end %>
           </div>
           <div class="favorites">Bar</div>
-         <div><%= favorite.review.shop.name %>
-            <%= link_to shop_path(favorite.review.shop) do %>
-             <i class="fas fa-external-link-alt" style="color:#6600FF;"></i></div>
-            <% end %>
-        <div class="favorites">Title</div><div><%= favorite.review.title %></div>
-        <div class="favorites">Content</div><div><%= favorite.review.post %></div>
-        <% review = favorite.review %>
-         <div id="favorites_buttons_<%= review.id %>" style="margin-top: 10px;">
-          <%= render partial: 'user/favorites/favorite', locals: {review: review} %>
+         <div><%= favorite.tweet.shop %></div>
+        <div class="favorites">Title</div><div><%= favorite.tweet.shop %></div>
+        <div class="favorites">Content</div><div><%= favorite.tweet.content %></div>
+        <% tweet = favorite.tweet %>
+         <div id="favorites_buttons_<%= tweet.id %>" style="margin-top: 10px;">
+          <%= render partial: 'user/favorites/favorite', locals: {tweet: tweet} %>
         </div>
       </div>
       <% end %>

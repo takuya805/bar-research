@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
       get '/bookmarks' => 'bookmarks#index'
       get '/favorites' => 'favorites#index'
       resource :user_contacts, only: [:create]
-      get '/reviews' => 'users#review'
+      get '/mytweets' => 'tweets#mytweet'
       resource :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
@@ -35,9 +36,11 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
     end
 
-    resources :reviews do
+    resources :tweets, only: [:index, :show, :create, :destroy] do
+      resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
+
   end
 
   devise_for :owners, controllers: {

@@ -1,0 +1,62 @@
+<div class="mypage page-top">
+  <%= render 'user/users/sidebar'%>
+    <main>
+      <nav class="mb-2" style="height:30px;">
+        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'tweets', tweets_path %>
+      </nav>
+      <h3>みんなのツイート一覧</h3>
+       <div class="row">
+        <% if @tweets.present? %>
+        <% @tweets.each do |tweet| %>
+          <div class="col-md-4 favorite-review">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div class="favorites">
+                 Name
+                </div>
+                <div style="text-align: right;">
+                  &emsp;
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <div>
+                <%= tweet.user.name %>&ensp;
+              </div>
+                <% unless tweet.user_id == current_user.id %>
+                   <div id="relationships_buttons_<%= tweet.user.id %>">
+                    <%= render partial: 'user/relationships/relationship', locals: {tweet: tweet} %>
+                   </div>
+                <% end %>
+            </div>
+
+            <div class="favorites">Bar</div>
+            <div><%= tweet.shop %></div>
+            <div class="favorites">Content</div><div><%= tweet.content %></div>
+            <% if tweet.image.present? %>
+              <div><%= attachment_image_tag(tweet, :image, size: '150x120') %></div>
+            <% end %>
+            <div style="display: flex; justify-content: center;">
+              <div id="favorites_buttons_<%= tweet.id %>">
+                <%= render partial: 'user/favorites/favorite', locals: {tweet: tweet} %>
+              </div>
+              <div>
+          &emsp;<%= link_to tweet_path(tweet) do %>
+                  <i class="fas fa-comment-dots"></i><%= tweet.comments.count %>
+                <% end %>
+              </div>
+              </div>
+              <div style="text-align: right;">
+                <%= tweet.created_at.strftime('%Y年%m月%d日') %>
+              </div>
+          </div>
+        <% end %>
+        <% end %>
+          </div>
+         <div class="row">
+            <div class="col">
+              <div>
+               <%=paginate @tweets, style: "color:white;" %>
+              </div>
+            </div>
+          </div>
+    </main>
+</div>
