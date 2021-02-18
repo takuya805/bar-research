@@ -46,7 +46,16 @@
                   <span style="color: red;"><i class='far fa-trash-alt'></i></span>
                 <% end %>
               <% end %>
-              <div style="text-align: right;"><%= comment.created_at.strftime('%Y年%m月%d日') %></div>
+              <div style="text-align: right;">
+                <span class="sentiment-score">
+                  <% if comment.score >= 0.4 %>
+                    score：<i class="far fa-grin-beam"></i><%= comment.score %>
+                  <% elsif (-0.3..0.3).cover?(comment.score) %>
+                    score：<i class="far fa-grin"></i><%= comment.score %>
+                  <% elsif comment.score <= -0.4 %>
+                    score: <i class="far fa-tired"></i><%= comment.score %>
+                  <% end %>
+                </span><%= comment.created_at.strftime('%Y年%m月%d日') %>投稿</div>
               </div>
             <% end %>
           </div>
