@@ -724,3 +724,24 @@ ShopPicture.create!(
   shop_id: 16,
   image: File.open('./app/assets/images/shop-image/alchol4.jpg')
 )
+
+Tweet.create!(
+  user_id: 1,
+  shop: 'グランシャリオ',
+  image: File.open('./app/assets/images/shotbar1.jpg'),
+  content: '落ち着きあるbarを見つけた'
+  )
+Tweet.create!(
+  user_id: 2,
+  shop: 'シリウス',
+  image: File.open('./app/assets/images/shop-image/shotbar3.jpg'),
+  content: '良いお店だった。最高だった'
+  )
+Tweet.create!(
+  user_id: 5,
+  shop: 'レガリス',
+  image: File.open('./app/assets/images/shop-image/alchol1.jpg'),
+  content: 'おいしい酒を見つけた'
+  )
+
+
