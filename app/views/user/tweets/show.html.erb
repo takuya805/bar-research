@@ -49,11 +49,11 @@
               <div style="text-align: right;">
                 <span class="sentiment-score">
                   <% if comment.score >= 0.4 %>
-                    score：<i class="far fa-grin-beam"></i><%= comment.score %>
+                    Emotion_score：<span style="color:#FF3333;"><i class="far fa-grin-beam"></i></span>&ensp;<%= comment.score %>
                   <% elsif (-0.3..0.3).cover?(comment.score) %>
-                    score：<i class="far fa-grin"></i><%= comment.score %>
+                    Emotion_score：<span style="color:#FF9900;"><i class="far fa-grin"></i></span>&ensp;<%= comment.score %>
                   <% elsif comment.score <= -0.4 %>
-                    score: <i class="far fa-tired"></i><%= comment.score %>
+                    Emotion_score: <span style="color:#C71585;"><i class="far fa-tired"></i></span>&ensp;<%= comment.score %>
                   <% end %>
                 </span><%= comment.created_at.strftime('%Y年%m月%d日') %>投稿</div>
               </div>

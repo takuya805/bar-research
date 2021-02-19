@@ -31,13 +31,23 @@
             <% if tweet.image.present? %>
               <div><%= attachment_image_tag(tweet, :image, size: '150x120') %></div>
             <% end %>
+             <div style="text-align: center;">
+               <div class="favorites">Emotion Score</div>
+                <% if tweet.avg_score >= 0.4 %>
+                  <span style="color:#FF3333;"><i class="far fa-grin-beam"></i></span>&ensp;<%= tweet.avg_score %>
+                <% elsif (-0.3..0.3).cover?(tweet.avg_score) %>
+                 <span style="color:#FF9900;"><i class="far fa-grin"></i></span>&ensp;<%= tweet.avg_score %>
+                <% elsif tweet.avg_score <= -0.4 %>
+                  <span style="color:#C71585;"><i class="far fa-tired"></i></span>&ensp;<%= tweet.avg_score %>
+                <% end %>
+              </div>
             <div style="display: flex; justify-content: center;">
               <div id="favorites_buttons_<%= tweet.id %>">
                 <%= render partial: 'user/favorites/favorite', locals: {tweet: tweet} %>
               </div>
               <div>
           &emsp;<%= link_to tweet_path(tweet) do %>
-                  <i class="fas fa-comment-dots"></i><%= tweet.comments.count %>
+                  コメント<i class="fas fa-comment-dots"></i><%= tweet.comments.count %>
                 <% end %>
               </div>
               </div>
