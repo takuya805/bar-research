@@ -161,10 +161,10 @@ ActiveRecord::Schema.define(version: 2021_02_16_084049) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "shop"
+    t.integer "user_id", null: false
+    t.string "shop", null: false
     t.string "image_id"
-    t.string "content"
+    t.string "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
