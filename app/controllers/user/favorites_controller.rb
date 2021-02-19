@@ -6,14 +6,14 @@ class User::FavoritesController < ApplicationController
   end
 
   def create
-    @review = Review.find(params[:review_id])
-    favorite = current_user.favorites.build(review_id: @review.id)
+    @tweet = Tweet.find(params[:tweet_id])
+    favorite = current_user.favorites.build(tweet_id: @tweet.id)
     favorite.save
   end
 
   def destroy
-    @review = Review.find(params[:review_id])
-    favorite = current_user.favorites.find_by(review_id: @review.id)
+    @tweet = Tweet.find(params[:tweet_id])
+    favorite = current_user.favorites.find_by(tweet_id: @tweet.id)
     favorite.destroy
   end
 end

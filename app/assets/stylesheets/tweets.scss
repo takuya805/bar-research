@@ -1,0 +1,12 @@
+// Place all the styles related to the user::tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tweet-comment{
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.sentiment-score{
+  margin-right: 30px;
+}

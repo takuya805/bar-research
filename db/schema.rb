@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_005333) do
+ActiveRecord::Schema.define(version: 2021_02_16_084049) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -66,9 +66,18 @@ ActiveRecord::Schema.define(version: 2021_02_01_005333) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "tweet_id", null: false
+    t.string "comment", null: false
+    t.decimal "score", precision: 5, scale: 3
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "review_id", null: false
+    t.integer "tweet_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -147,6 +156,15 @@ ActiveRecord::Schema.define(version: 2021_02_01_005333) do
     t.boolean "booking", default: true
     t.string "open_time", null: false
     t.string "close_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "shop"
+    t.string "image_id"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

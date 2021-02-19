@@ -1,0 +1,69 @@
+<div class="mypage page-top">
+  <%= render 'user/users/sidebar'%>
+    <main>
+      <nav class="mb-2" style="height:30px;">
+        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'tweets', tweets_path %>
+      </nav>
+      <h3>みんなのツイート一覧</h3>
+       <div class="row">
+        <% if @tweets.present? %>
+        <% @tweets.each do |tweet| %>
+          <div class="col-md-4 favorite-review">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <div class="favorites">
+                 Name
+                </div>
+                <div style="text-align: right;">
+                  &emsp;
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center;">
+              <div>
+                <%= link_to user_path(tweet.user) do %>
+                <%= tweet.user.name %>&ensp;
+                <% end %>
+              </div>
+            </div>
+
+            <div class="favorites">Bar</div>
+            <div><%= tweet.shop %></div>
+            <div class="favorites">Content</div><div><%= tweet.content %></div>
+            <% if tweet.image.present? %>
+              <div><%= attachment_image_tag(tweet, :image, size: '150x120') %></div>
+            <% end %>
+             <div style="text-align: center;">
+               <div class="favorites">Emotion Score</div>
+                <% if tweet.avg_score >= 0.4 %>
+                  <span style="color:#FF3333;"><i class="far fa-grin-beam"></i></span>&ensp;<%= tweet.avg_score %>
+                <% elsif (-0.3..0.3).cover?(tweet.avg_score) %>
+                 <span style="color:#FF9900;"><i class="far fa-grin"></i></span>&ensp;<%= tweet.avg_score %>
+                <% elsif tweet.avg_score <= -0.4 %>
+                  <span style="color:#C71585;"><i class="far fa-tired"></i></span>&ensp;<%= tweet.avg_score %>
+                <% end %>
+              </div>
+            <div style="display: flex; justify-content: center;">
+              <div id="favorites_buttons_<%= tweet.id %>">
+                <%= render partial: 'user/favorites/favorite', locals: {tweet: tweet} %>
+              </div>
+              <div>
+          &emsp;<%= link_to tweet_path(tweet) do %>
+                  コメント<i class="fas fa-comment-dots"></i><%= tweet.comments.count %>
+                <% end %>
+              </div>
+              </div>
+              <div style="text-align: right;">
+                <%= tweet.created_at.strftime('%Y年%m月%d日') %>
+              </div>
+          </div>
+        <% end %>
+        <% end %>
+          </div>
+         <div class="row">
+            <div class="col">
+              <div>
+               <%=paginate @tweets, style: "color:white;" %>
+              </div>
+            </div>
+          </div>
+    </main>
+</div>

@@ -20,10 +20,10 @@
             <% end %>
           </td>
        <% unless current_user == user %>
-        <% user.reviews.first(1).each do |review| %>
+        <% user.tweets.first(1).each do |tweet| %>
         <td>
-         <span id="relationships_buttons_<%= review.user.id %>">
-          <%= render partial: 'user/relationships/relationship', locals: {review: review} %>
+         <span id="relationships_buttons_<%= tweet.user.id %>">
+          <%= render partial: 'user/relationships/relationship', locals: {tweet: tweet} %>
          </span>
         </td>
         <% end %>
