@@ -5,9 +5,9 @@ require 'net/https'
 module Language
   class << self
     def get_data(text)
-      # APIのURL作成
+      # APIのURL作成(送信先のURLを指定)
        api_url = "https://language.googleapis.com/v1beta1/documents:analyzeSentiment?key=#{ENV['API_KEY']}"
-      # APIリクエスト用のJSONパラメータ
+      # APIリクエスト用のJSONパラメータ(送信するデータを選択)
       params = {
         document: {
           type: 'PLAIN_TEXT',
