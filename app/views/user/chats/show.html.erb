@@ -30,7 +30,7 @@
                     <th>
                       <p style="text-align: left; font-size: 12px; color:white;"><%= chat.message %>&emsp;
                       <% if chat == chat.room.chats.last %>
-                        <%= link_to chat_path(chat), method: :delete, "data-confirm" => '本当に取り消しますか?' do %>
+                        <%= link_to chat_path(chat), method: :delete, "data-confirm" => '本当に取り消しますか?', class: "message-delete" do %>
                           <i class='far fa-trash-alt'></i>
                         <% end %>
                       <% end %>
