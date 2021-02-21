@@ -3,37 +3,37 @@
         <ul class="mysidebar" style="list-style:none;">
           <% if user_signed_in? %>
             <%= link_to user_path(current_user) do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-home"></i>Home</span>
             </li>
             <% end %>
             <%= link_to  chats_path do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-sms"></i>Chats</span>
             </li>
             <% end %>
              <%= link_to user_bookmarks_path(current_user) do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-bookmark"></i>Bookmarks</span>
             </li>
             <% end %>
             <%= link_to tweets_path do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-retweet"></i>Tweets</span>
             </li>
             <% end %>
             <%= link_to user_mytweets_path(current_user) do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
              <span><i class="fas fa-file-pdf"></i>My Tweets</span>
             </li>
             <% end %>
             <%= link_to user_favorites_path(current_user) do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-heart"></i>Favorites</span>
             </li>
             <% end %>
             <%= link_to shops_search_path do %>
-            <li class="menu mb-5">
+            <li class="menu mb-4">
               <span><i class="fas fa-search-dollar"></i>Bar search</span>
             </li>
             <% end %>

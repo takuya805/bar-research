@@ -14,7 +14,7 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(current_user), notice: "You have updated user successfully"
+      redirect_to user_path(current_user), notice: "編集しました"
     else
       render 'user/users/edit'
     end
@@ -23,7 +23,7 @@ class User::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if @user.destroy
-      redirect_to root_path, notice: 'See you again'
+      redirect_to root_path, notice: 'またのご利用お待ちしてます'
     else
       render 'user/users/show'
     end

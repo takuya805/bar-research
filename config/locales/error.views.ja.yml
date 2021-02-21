@@ -1,0 +1,48 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        review:
+          attributes:
+            title:
+              blank: "タイトルが入力されていません"
+            post:
+              blank: "口コミ内容が入力されていません"
+            star:
+              blank: "評価がされておりません"
+        user_contact:
+          attributes:
+            title:
+              blank: "タイトルが入力されていません"
+            message:
+              blank: "メッセージ内容が入力されていません"
+        owner_contact:
+          attributes:
+            title:
+              blank: "タイトルが入力されていません"
+            message:
+              blank: "メッセージ内容が入力されていません"
+        shop:
+          attributes:
+            category:
+              required: ""
+            category_id:
+              blank: "カテゴリーが選択されていません"
+            name:
+              blank: "店舗名の記載がありません"
+            postcode:
+              blank: "郵便番号の記載がありません"
+            address:
+              blank: "住所の記載がありません"
+            station:
+              blank: "最寄り駅の記載がありません"
+            phone:
+              blank: "電話番号の記載がありません"
+            seat:
+              blank: "座席数の記載がありません"
+            explain:
+              blank: "店舗の説明を記載がありません"
+            open_time:
+              blank: "開店時間が選択されていません"
+            close_time:
+              blank: "閉店時間が選択されていません"

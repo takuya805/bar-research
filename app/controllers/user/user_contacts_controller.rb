@@ -6,9 +6,11 @@ class User::UserContactsController < ApplicationController
     @user_contact.user_id = @user.id
     if @user_contact.save
       UserContactMailer.user_mail(@user_contact).deliver
-      redirect_to user_path(current_user)
+      redirect_to user_path(current_user), notice: 'メールを送信しました'
     else
+
       @user = User.find(params[:user_id])
+      @tweets = @user.tweets
       render 'user/users/show'
     end
   end

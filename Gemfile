@@ -79,9 +79,10 @@ gem 'activeadmin'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'gon'
-gem 'rails-i18n'
 gem 'omniauth-google-oauth2'
 gem 'rubocop-airbnb'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 
 group :test do
   gem 'rspec-rails'
