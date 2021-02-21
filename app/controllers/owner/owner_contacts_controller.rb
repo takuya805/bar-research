@@ -6,7 +6,7 @@ class Owner::OwnerContactsController < ApplicationController
     @owner_contact.owner_id = current_owner.id
     if @owner_contact.save
       UserContactMailer.owner_mail(@owner_contact).deliver
-      redirect_to owner_shops_path(current_owner), notice: "Your message send successful!!"
+      redirect_to owner_shops_path(current_owner), notice: "メッセージを送信しました"
     else
       @shops = current_owner.shops.page(params[:page]).order(created_at: :desc).per(5)
       render 'owner/shops/index'

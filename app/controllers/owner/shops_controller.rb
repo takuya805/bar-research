@@ -20,7 +20,7 @@ class Owner::ShopsController < ApplicationController
   def create
     @shop = current_owner.shops.build(shop_params)
     if @shop.save
-      redirect_to owner_shops_path, notice: "Registration was successful your bar"
+      redirect_to owner_shops_path, notice: "店舗情報を登録しました"
     else
       @categories = Category.all
       render 'owner/shops/new'
@@ -36,7 +36,7 @@ class Owner::ShopsController < ApplicationController
     @shop = current_owner.shops.find_by(id: params[:id])
 
     if @shop.update(shop_params)
-      redirect_to owner_shops_path, notice: "Update was successful your bar"
+      redirect_to owner_shops_path, notice: "店舗情報を更新しました"
     else
       @categories = Category.all
       render 'owner/shops/edit'
@@ -46,7 +46,7 @@ class Owner::ShopsController < ApplicationController
   def destroy
     @shop = current_owner.shops.find_by(id: params[:id])
     if @shop.destroy
-      redirect_to owner_shops_path, notice: "Delete was successful your bar"
+      redirect_to owner_shops_path, notice: "店舗情報を削除しました"
     else
       @shops = current_owner.shops
       render 'owner/shops/index'

@@ -15,5 +15,8 @@ class Tweet < ApplicationRecord
      comments.average(:score).round(1).to_f
     end
   end
-
+  with_options presence: true do
+    validates :shop
+    validates :content
+  end
 end
