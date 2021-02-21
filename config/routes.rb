@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     omniauth_callbacks: 'users/omniauth_callbacks',
+    confirmations: 'users/confirmations'
   }
   devise_scope :user do
     get "sign_in", :to => "users/sessions#new"
