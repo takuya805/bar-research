@@ -25,9 +25,7 @@ ja:
         shop:
           attributes:
             category:
-              required: ""
-            category_id:
-              blank: "カテゴリーが選択されていません"
+              required: "カテゴリーが選択されていません"
             name:
               blank: "店舗名の記載がありません"
             postcode:

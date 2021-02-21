@@ -63,7 +63,6 @@ class Shop < ApplicationRecord
   end
 
   with_options presence: true do
-    validates :category_id
     validates :name
     validates :postcode
     validates :address
