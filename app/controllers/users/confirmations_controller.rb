@@ -16,15 +16,15 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-   def show
-     self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token])
+  # def show
+  #   self.resource = resource_class.find_by_confirmation_token(params[:confirmation_token])
 
-    if resource.nil? || resource.confirmed?
-      # トークンが不正な場合、アカウント登録(パスワード登録)が済んでいる場合
-      self.resource = resource_class.confirm_by_token(params[:confirmation_token])
-      resend_confirmation_instructions
-    end
-   end
+  #   if resource.nil? || resource.confirmed?
+  #     # トークンが不正な場合、アカウント登録(パスワード登録)が済んでいる場合
+  #     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
+  #     resend_confirmation_instructions
+  #   end
+  # end
 
   # protected
 

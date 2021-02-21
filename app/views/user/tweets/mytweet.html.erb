@@ -43,6 +43,7 @@
           </div>
         <div class="row" style="margin-top:100px;">
         <div class="siteform">
+          <h3 class="mb-4">ツイートしよう</h3>
         <%= form_with model: @tweet, url: tweets_path, local: true do |f| %>
           <div class="field">
             <%= f.attachment_field :image, size: '100x100',class: 'mb-4' %><br />
