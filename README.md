@@ -30,7 +30,7 @@ railsの1つ1つの機能はとてもシンプルなものばかりですが、�
 ※詳細は下記のチャレンジ機能を確認いただければと思います。
 
 ## ER図
-![bar-research](https://user-images.githubusercontent.com/73866971/107846156-e4b6df00-6e24-11eb-9cca-2455ecc5b241.png)
+![ER-figure](https://user-images.githubusercontent.com/73866971/108630277-4a4f3f00-74a7-11eb-8047-ecdab12be63a.png)
 リンク：https://app.diagrams.net/#G115vqiVhrjZdZwjBZaCUUVVPAjkSslJ4d
 
 ## テーブル定義
