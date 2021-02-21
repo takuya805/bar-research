@@ -34,14 +34,14 @@ class User::ChatsController < ApplicationController
     @chats.each do |chat|
       chat.chat_deletes.find_or_create_by(user: current_user) # each文の中で作成されてないchatだけを選択して作成する
     end
-    redirect_to chats_path
+    redirect_to chats_path, notice: "トーク履歴を削除しました"
   end
 
   def destroy
     chat = Chat.find(params[:id])
     chat.user_id = current_user.id
     chat.destroy
-    redirect_to request.referer, notice: "Your message deleted successfully"
+    redirect_to request.referer, notice: "メッセージの送信を取り消しました"
   end
 
   private

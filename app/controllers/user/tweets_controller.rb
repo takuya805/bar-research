@@ -18,14 +18,22 @@ class User::TweetsController < ApplicationController
 
   def create
     @tweet = current_user.tweets.build(tweet_params)
-    @tweet.save
-    redirect_to user_mytweets_path(user_id: current_user)
+    if @tweet.save
+      redirect_to user_mytweets_path(user_id: current_user), notice: 'ツイートしました'
+    else
+      @tweets = current_user.tweets.page(params[:page]).order(created_at: :desc).per(9)
+      render 'user/tweets/mytweet'
+    end
   end
 
   def destroy
     @tweet = Tweet.find(params[:id])
-    @tweet.destroy
-    redirect_to user_mytweets_path(user_id: current_user)
+    if @tweet.destroy
+      redirect_to user_mytweets_path(user_id: current_user), notice: 'ツイートを削除しました'
+    else
+      @tweets = current_user.tweets.page(params[:page]).order(created_at: :desc).per(9)
+      render 'user/tweets/mytweet'
+    end
   end
   private
 

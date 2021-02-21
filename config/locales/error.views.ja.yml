@@ -44,3 +44,9 @@ ja:
               blank: "開店時間が選択されていません"
             close_time:
               blank: "閉店時間が選択されていません"
+        tweet:
+          attributes:
+            shop:
+              blank: "店舗名または場所が記載されていません"
+            content:
+              blank: "ツイート内容が記載されていません"

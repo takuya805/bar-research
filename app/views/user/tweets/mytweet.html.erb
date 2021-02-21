@@ -2,7 +2,7 @@
   <%= render 'user/users/sidebar', user: @user %>
     <main>
       <nav class="mb-2" style="height:30px;">
-        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'My tweets', user_mytweets_path %>
+        <%= link_to 'Home', user_path(current_user.id) %><span class="mr-3 ml-3">/</span><%= link_to 'My tweets', user_mytweets_path(user_id: current_user.id) %>
       </nav>
       <h3>私のツイート一覧</h3>
        <div class="row">
@@ -43,6 +43,16 @@
           </div>
         <div class="row" style="margin-top:100px;">
         <div class="siteform">
+          <% if @tweet.errors.any? %>
+          <div class="notification">
+            <h2><%= @tweet.errors.count %>件のエラーがあります。</h2>
+            <ul>
+              <% @tweet.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
           <h3 class="mb-4">ツイートしよう</h3>
         <%= form_with model: @tweet, url: tweets_path, local: true do |f| %>
           <div class="field">
