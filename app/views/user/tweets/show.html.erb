@@ -35,9 +35,10 @@
           <% if @comments.present? %>
           <div class="favorite-review mt-2" style="width: 70%;">
             <% @comments.each do |comment| %>
+
               <div class="tweet-comment">
               <%= link_to user_path(comment.user) do %>
-                <%= attachment_image_tag(@comment.user, :image, size: '30x30', fallback: "no_image.jpg") %>
+                <%= attachment_image_tag(comment.user, :image, size: '30x30', fallback: "no_image.jpg") %>
                 <%= comment.user.name %>
               <% end %>
               <%= comment.comment %>
@@ -63,16 +64,16 @@
       </div>
       <div class="row" style="margin-top:100px;">
         <div id="commentform" class="siteform" style="width: 70%;">
-          <% if @comment.errors.any? %>
-          <div class="notification">
-            <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
-            <ul>
-              <% @comment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+         <% if @comment.errors.any? %>
+              <div class="notification">
+                <h2><%= @comment.errors.count %>件のエラーがあります。</h2>
+                <ul>
+                  <% @comment.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
               <% end %>
-            </ul>
-          </div>
-          <% end %>
         <%= form_with(model:[@tweet, @comment], url: tweet_comments_path(tweet_id: @tweet), local: true) do |f| %>
           <div class="field">
             <div><%= f.label :'コメント' %></div>
