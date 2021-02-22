@@ -9,7 +9,7 @@ class User::CommentsController < ApplicationController
       redirect_to tweet_path(id: tweet), notice: 'コメントしました'
     else
       @tweet = Tweet.find(params[:tweet_id])
-      @comment = Comment.new(comment_params)
+      @comment = comment
       @comments = @tweet.comments
       render 'user/tweets/show'
     end
@@ -21,7 +21,7 @@ class User::CommentsController < ApplicationController
       redirect_to tweet_path(id: params[:tweet_id]), notice: 'コメントを削除しました'
     else
       @tweet = Tweet.find(params[:id])
-      @comment = Comment.new
+      @comment = comment
       @comments = @tweet.comments
       render 'user/tweets/show'
     end
