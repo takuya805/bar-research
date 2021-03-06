@@ -1,3 +1,6 @@
 /*global $*/
-$('#relationships_buttons_<%= @tweet.user.id %>').html("<%= j(render partial: 'user/relationships/relationship', locals: {tweet: @tweet}) %>");
-
+<% if @tweet.present? %>
+  $('#relationships_buttons_<%= @tweet.user.id %>').html("<%= j(render partial: 'user/relationships/relationship', locals: {tweet: @tweet}) %>");
+<% else %>
+  $('#relationships_buttons_<%= @user.id %>').html("<%= j(render partial: 'user/relationships/user', locals: {user: @user}) %>");
+<% end %>

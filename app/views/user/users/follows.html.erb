@@ -20,13 +20,13 @@
           <% end %>
           </td>
       <% unless current_user == user %>
-       <% user.tweets.first(1).each do |tweet| %>
+
         <td>
-        <span id="relationships_buttons_<%= tweet.user.id %>">
-          <%= render partial: 'user/relationships/relationship', locals: {tweet: tweet} %>
-        </span>
+       <span id="relationships_buttons_<%= user.id %>">
+            <%= render partial: 'user/relationships/user', locals: {user: user} %>
+          </span>
         </td>
-       <% end %>
+
       <td>
       <%= link_to chat_path(user), style: "color: black;", "data-turbolinks": false do %>
       <span style="color:#17A2B8; font-weight: bold;"><i class="fas fa-sms"></i><%= user.name %>さんにチャットする</span>
