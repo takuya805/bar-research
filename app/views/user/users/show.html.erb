@@ -65,6 +65,27 @@
             </tr>
         </table>
     </div>
+    <div>
+      <%= form_with model: @plan, local: true do |f| %>
+        <%= f.label :'日付選択' %>
+        <%= f.datetime_field :start_time %>
+        <%= f.label :'行くお店' %>
+        <%= f.collection_select :shop_id, @shops, :id, :name, {include_blank: '店舗を選択して下さい'} %>
+        <%= f.label :'店舗が無い場合こちらを記入' %>
+        <%= f.text_field :othershop %>
+      <% end %>
+    </div>
+    <div class="mt-5 calender">
+      <%= month_calendar events: @plans do |date, plans| %>
+        <%= date.day %>
+
+        <% plans.each do |plan| %>
+          <div>
+            <%= link_to plan.start_time, plan_path(plan) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
     <div class="user-form mt-5">
       <% if @user_contact.errors.any? %>
       <div class="notification">
