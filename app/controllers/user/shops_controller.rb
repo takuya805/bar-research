@@ -6,7 +6,7 @@ class User::ShopsController < ApplicationController
     shop_review.each do |review|
       shop_score[review.shop_id] = review.shop.avg_score
     end
-    @all_ranks = Shop.find(shop_score.sort { |(k1, v1), (k2, v2)| v2 <=> v1 }.to_h.keys)
+    @all_ranks = Shop.find(Review.group(:shop_id).order('avg(star) desc').limit(3).pluck(:shop_id))
   end
 
   def index
