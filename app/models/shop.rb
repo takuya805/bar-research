@@ -48,14 +48,6 @@ class Shop < ApplicationRecord
     bookmarks.where(user_id: user.id).exists?
   end
 
-  def avg_score
-    if reviews.empty?
-      0.0
-    else
-      reviews.average(:star).round(1).to_f
-    end
-  end
-
   validate :shop_picture_limit
 
   def shop_picture_limit
