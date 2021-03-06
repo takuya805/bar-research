@@ -83,6 +83,7 @@ gem 'rubocop-airbnb'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+
 group :test do
   gem 'rspec-rails'
   gem "factory_bot_rails"
