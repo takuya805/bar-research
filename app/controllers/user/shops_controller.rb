@@ -1,11 +1,6 @@
 class User::ShopsController < ApplicationController
   def search
     @reviews = Review.all.last(6)
-    shop_review = Review.group(:shop_id)
-    shop_score = {}
-    shop_review.each do |review|
-      shop_score[review.shop_id] = review.shop.avg_score
-    end
     @all_ranks = Shop.find(Review.group(:shop_id).order('avg(star) desc').limit(3).pluck(:shop_id))
   end
 
