@@ -43,27 +43,8 @@
         </div>
         <% end %>
          </div>
-
-        <table class="table ml-3 myreview-list">
-            <tr>
-                <td>投稿したレビュー</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.reviews.count %>件</td>
-            </tr>
-            <tr>
-                <td>ツイートのお気に入り獲得数</td><td class="profile-left"><i class="fas fa-flag"></i>
-                    <% favorites_count = 0 %>
-                    <% @tweets.each do |tweet| %>
-                      <% favorites_count += tweet.favorites.count %>
-                    <% end %>
-                    <%= favorites_count %>件
-                </td>
-            </tr>
-            <tr>
-                <td>ブックマークした店舗</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.bookmarks.count %>件</td>
-            </tr>
-            <tr>
-                <td>チャットした人数</td><td class="profile-left"><i class="fas fa-flag"></i><%= current_user.rooms.count %>件</td>
-            </tr>
-        </table>
+        <%= render 'user/users/formtable' %>
+       
     </div>
     <div class="myprofile mt-5">Schedule</div>
     <div class="calendar-all">
@@ -79,6 +60,7 @@
           <% end %>
         <% end %>
       <% end %>
+    </div>
     </div>
   <% @plans.each do |plan| %>
      <div class="modal1" id="<%= plan.id %>" style="display: none">
@@ -103,69 +85,7 @@
    <% end %>
    <div class="overlay"></div>
    <%= render 'user/users/calendar' %>
-    <div class="myprofile">Schedule Form</div>
-    <div style="width:75%;">
-      <% if @plan.errors.any? %>
-        <div class="notification">
-          <h2><%= @plan.errors.count %>件のエラーがあります。</h2>
-          <ul>
-            <% @plan.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= form_with model: @plan, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :'日付選択' %><br />
-        <%= f.datetime_field :start_time %>
-      </div>
-      <div class="calendar-form"style="display:flex; width:100%;">
-        <div class="form-group">
-          <%= f.label :'行くお店' %><br />
-          <%= f.text_field :shop_name %>
-        </div>
-        <div class="form-group calendar-small" style="width:100%;">
-          <%= f.label :'メモを記入' %><br />
-          <%= f.text_field :memo, style: "width:100%;" %>
-        </div>
-      </div>
-      <div class="form-group" style="text-align:right">
-        <%= f.submit "記入", class: 'btn btn-outline-info' %>
-      </div>
-      <% end %>
-    </div>
-    </div>
-    <div class="user-form mt-5">
-      <% if @user_contact.errors.any? %>
-      <div class="notification">
-        <h2><%= @user_contact.errors.count %>件のエラーがあります。</h2>
-        <ul>
-          <% @user_contact.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-      <% end %>
-    <h2 style="color:#A2CA36; font-family: Monotype Corsiva;">Information about site</h2>
-
-    <div class="siteform">
-    <%= form_with model: @user_contact, url: user_user_contacts_path(user_id: current_user), local: true do |f| %>
-    <div class="field">
-        <div><%= f.label :'タイトル' %></div>
-        <div><%= f.text_field :title, placeholder: 'タイトルを入力してください',style: 'width:40%;' %></div>
-    </div>
-    <div class="field">
-        <div><%= f.label :'問い合わせ内容' %></div>
-        <div><%= f.text_area :message, placeholder: '内容を入力してください',style: 'width:70%;' %></div>
-    </div>
-    <% if @user == current_user %>
-    <div class="field" style="text-align: right; margin-top: 20px; margin-right:160px;">
-        <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
-    </div>
-    <% end %>
-    <% end %>
-    </div>
-    </div>
+   <%= render 'user/users/calendarform', plan: @plan %>
+   <%= render 'user/users/adminform' %>
 </main>
 </div>

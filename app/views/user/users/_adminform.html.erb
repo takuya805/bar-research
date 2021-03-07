@@ -1,0 +1,31 @@
+<div class="user-form mt-5">
+      <% if @user_contact.errors.any? %>
+      <div class="notification">
+        <h2><%= @user_contact.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @user_contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    <h2 style="color:#A2CA36; font-family: Monotype Corsiva;">Information about site</h2>
+
+    <div class="siteform">
+    <%= form_with model: @user_contact, url: user_user_contacts_path(user_id: current_user), local: true do |f| %>
+    <div class="field">
+        <div><%= f.label :'タイトル' %></div>
+        <div><%= f.text_field :title, placeholder: 'タイトルを入力してください',style: 'width:40%;' %></div>
+    </div>
+    <div class="field">
+        <div><%= f.label :'問い合わせ内容' %></div>
+        <div><%= f.text_area :message, placeholder: '内容を入力してください',style: 'width:70%;' %></div>
+    </div>
+    <% if @user == current_user %>
+    <div class="field" style="text-align: right; margin-top: 20px; margin-right:160px;">
+        <%= f.submit '送信する', "data-confirm" => 'この内容で送信しますか？', style: 'margin-top:10px;', class: 'btn btn-outline-success', style: 'color:black;' %>
+    </div>
+    <% end %>
+    <% end %>
+    </div>
+    </div>

@@ -1,0 +1,32 @@
+<div class="myprofile">Schedule Form</div>
+    <div class="calendar-formall" style="width:75%;">
+      <% if plan.errors.any? %>
+        <div class="notification">
+          <h2><%= plan.errors.count %>件のエラーがあります。</h2>
+          <ul>
+            <% plan.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_with model: plan, local: true do |f| %>
+      <div class="form-group">
+        <%= f.label :'日付選択' %><br />
+        <%= f.datetime_field :start_time %>
+      </div>
+      <div class="calendar-form"style="display:flex; width:100%;">
+        <div class="form-group">
+          <%= f.label :'行くお店' %><br />
+          <%= f.text_field :shop_name, placeholder: '行くお店を記載下さい' %>
+        </div>
+        <div class="form-group calendar-small" style="width:100%;">
+          <%= f.label :'メモを記入' %><br />
+          <%= f.text_field :memo, placeholder: 'メモを記載して下さい', class: 'calendarform2' ,style: "width:100%;" %>
+        </div>
+      </div>
+      <div class="form-group" style="text-align:right">
+        <%= f.submit "記入", class: 'btn btn-outline-info calendarform3' %>
+      </div>
+      <% end %>
+    </div>
