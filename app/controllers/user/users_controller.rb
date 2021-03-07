@@ -6,7 +6,6 @@ class User::UsersController < ApplicationController
     @tweets = @user.tweets
     @plans  = current_user.plans
     @plan = Plan.new
-    @shops = Shop.all
     @user_contact = UserContact.new
   end
 
