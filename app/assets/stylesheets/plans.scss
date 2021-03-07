@@ -39,3 +39,35 @@
   font-weight: bold;
   color: #777777;
 }
+.calendar-small{
+  margin-left: 40px;
+}
+
+@media screen and (max-width: 600px){
+ .calendar-form{
+   display: block !important;
+ }
+ .calendar-small{
+  margin-left: 0 !important;
+ }
+ .calendar-all{
+   text-align: center;
+   width: 90%;
+   margin: 0 auto;
+ }
+ .modal1{
+  border-radius: 10px;
+  position: absolute;
+  border: 1px solid #000000;
+  background-color: #fff;
+  color: black;
+  padding: 5px;
+  margin: auto;
+  width: 50% !important;
+  top: 1200px !important;
+  left: 50px !important;
+  right: 0;
+  z-index: 2;
+}
+
+}

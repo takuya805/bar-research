@@ -54,3 +54,9 @@ ja:
           attributes:
             comment:
               blank: "コメントの記載がありません"
+        plan:
+          attributes:
+            shop_name:
+              blank: "行先の店舗名が登録されていません"
+            start_time:
+              blank: "時間が選択されていません"
