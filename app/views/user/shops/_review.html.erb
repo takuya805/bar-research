@@ -1,0 +1,32 @@
+<% @reviews.each do |review| %>
+<div class="review-view">
+  <div class="review-new" style="width:75%;">
+    <h5 style="font-weight:bold;">”<%= review.title %>”</h5>
+    <% if review.image.present? %>
+     <div><%= attachment_image_tag(review, :image, size: '100x100') %></div>
+    <% end %>
+    <div style="display:flex;">
+      <%= link_to user_path(review.user), style: "color:black;" do %>
+        <%= review.user.name %>さん&emsp;
+      <% end %>
+    </div>
+      <div id="star-rate-<%= review.id %>" style="display:inline-block;"></div><span class="star-count ml-1"><%= review.star %></span><span class="review-month" style="margin-left:20px;"><%= review.created_at.strftime('%Y/%m/%d') %>に投稿</span>
+      <div><%= review.post %></div>
+      <%= render 'user/reviews/star', review: review %>
+  </div>
+    <% if current_user == review.user %>
+    <div class="review-delete mt-3" >
+      <%= link_to '削除する', shop_review_path(id: review.id, shop_id: review.shop_id, user_id: current_user.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn-sm btn-danger" %>
+    </div>
+    <% end %>
+    <% unless review.user_id == current_user.id %>
+    <div class="review-favorite">
+    <div>
+      <%= link_to chat_path(review.user), style: "color: black;", "data-turbolinks": false do %>
+        <span style="color:#17A2B8; font-weight: bold; font-size: 13px;"><i class="fas fa-sms"></i><%= review.user.name %>さんに<br />チャットで聞く</span>
+      <% end %>
+    </div>
+    </div>
+    <% end %>
+</div>
+<% end %>
