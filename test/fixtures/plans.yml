@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  shop_id: 1
+  othershop: MyString
+  start_time: 2021-03-06 14:02:24
+  memo: MyString
+
+two:
+  user_id: 1
+  shop_id: 1
+  othershop: MyString
+  start_time: 2021-03-06 14:02:24
+  memo: MyString

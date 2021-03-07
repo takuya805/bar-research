@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
 
+    resources :plans, only: [:show, :create, :destroy]
   end
 
   devise_for :owners, controllers: {

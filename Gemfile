@@ -82,7 +82,7 @@ gem 'omniauth-google-oauth2'
 gem 'rubocop-airbnb'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
+gem 'simple_calendar', '~> 2.0'
 
 group :test do
   gem 'rspec-rails'

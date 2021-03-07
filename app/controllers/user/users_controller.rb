@@ -4,6 +4,9 @@ class User::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @tweets = @user.tweets
+    @plans  = current_user.plans
+    @plan = Plan.new
+    @shops = Shop.all
     @user_contact = UserContact.new
   end
 
