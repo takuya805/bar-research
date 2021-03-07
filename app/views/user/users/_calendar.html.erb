@@ -1,0 +1,15 @@
+ <script>
+  $(document).ready(function() {
+    $('.btnModalShow').click(function(){
+      var plan_id = $(this).data('id')
+      var modal_id = '#' + plan_id
+      // $(modal_id).show();
+      $(modal_id).css('display', 'block')
+      $('.overlay').show();
+    });
+    $('.btnModalClose').click(function(){
+       $('.modal1').hide();
+       $('.overlay').hide();
+    });
+  });
+</script>

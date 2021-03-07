@@ -16,6 +16,7 @@ class Shop < ApplicationRecord
   belongs_to :category
   belongs_to :owner
   has_many :shop_pictures, dependent: :destroy
+
   accepts_attachments_for :shop_pictures, attachment: :image
   geocoded_by :address
   after_validation :geocode, if: :address_changed?

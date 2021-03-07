@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_06_140224) do
+ActiveRecord::Schema.define(version: 2021_03_06_145924) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -82,17 +82,6 @@ ActiveRecord::Schema.define(version: 2021_03_06_140224) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer "visiter_id", null: false
-    t.integer "visited_id", null: false
-    t.integer "tweet_id"
-    t.integer "comment_id"
-    t.string "action", null: false
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "owner_contacts", force: :cascade do |t|
     t.integer "owner_id", null: false
     t.string "title", null: false
@@ -121,8 +110,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_140224) do
 
   create_table "plans", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "shop_id"
-    t.string "othershop"
+    t.string "shop_name", null: false
     t.datetime "start_time", null: false
     t.string "memo"
     t.datetime "created_at", null: false
