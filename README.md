@@ -23,14 +23,15 @@ railsの1つ1つの機能はとてもシンプルなものばかりですが、�
 * オーナーだけがアクセスできる店舗側画面
 * 管理者だけがアクセスできる管理者画面
 * いたずら登録を防ぐためのメール認証機能
+* フォロー、お気に入り、ブックマーク、チャットのAjaxを用いた非同期通信
 * チャットの論理削除、送信取り消し（物理削除）を利用したユーザー同士のメッセージ機能
-* 各種APIを利用した機能（googleログインやGoogleマップなど）
+* 各種APIを利用した機能（googleログインやGoogleマップ、Natural Languageなど）
 * 不具合が起きた時に管理者へ問い合わせができるメール機能
 * CI/CDツールを使った自動デプロイ
 ※詳細は下記のチャレンジ機能を確認いただければと思います。
 
 ## ER図
-![ER-figure](https://user-images.githubusercontent.com/73866971/108630277-4a4f3f00-74a7-11eb-8047-ecdab12be63a.png)
+![bar-researchER図](https://user-images.githubusercontent.com/73866971/110244663-172aa680-7fa3-11eb-9742-74a3b29cf39c.png)
 リンク：https://app.diagrams.net/#G115vqiVhrjZdZwjBZaCUUVVPAjkSslJ4d
 
 ## テーブル定義
