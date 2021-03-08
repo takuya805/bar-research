@@ -52,7 +52,7 @@
       <%= month_calendar events: @plans do |date, plans| %>
         <%= date.day %>
         <% plans.each do |plan| %>
-          <% if plan.user == current_user %>
+          <% if @user == current_user %>
             <div class="btn btn-sm btn-outline-info btnModalShow" data-id="<%= plan.id %>"><%= plan.start_time.strftime('%H:%M') %></div>
           <% end %>
         <% end %>

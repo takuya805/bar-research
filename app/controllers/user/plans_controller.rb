@@ -1,9 +1,5 @@
 class User::PlansController < ApplicationController
   before_action :authenticate_user!
-  def show
-    @plan = Plan.find(params[:id])
-  end
-
   def create
     @plan = current_user.plans.build(plan_params)
     if @plan.save
