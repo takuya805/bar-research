@@ -42,6 +42,10 @@
 .calendar-small{
   margin-left: 40px;
 }
+.calendar-delete{
+  text-align: right;
+  display: flex;
+}
 
 @media screen and (max-width: 600px){
  .calendar-form{

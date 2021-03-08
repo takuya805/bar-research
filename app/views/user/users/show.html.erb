@@ -44,7 +44,7 @@
         <% end %>
          </div>
         <%= render 'user/users/formtable' %>
-       
+
     </div>
     <div class="myprofile mt-5">Schedule</div>
     <div class="calendar-all">
@@ -54,9 +54,6 @@
         <% plans.each do |plan| %>
           <% if plan.user == current_user %>
             <div class="btn btn-sm btn-outline-info btnModalShow" data-id="<%= plan.id %>"><%= plan.start_time.strftime('%H:%M') %></div>
-            <%= link_to plan_path(plan), method: :delete, "data-confirm" => '本当に削除しますか？' do %>
-              <i class="far fa-trash-alt" style="color:red;"></i>
-            <% end %>
           <% end %>
         <% end %>
       <% end %>
@@ -80,7 +77,14 @@
               <%= plan.memo %>
             </div>
            </div>
-          <button class="btn btn-sm btn-outline-info btnModalClose">close</button>
+           <div class="calendar-delete">
+              <button class="btn btn-sm btn-outline-info btnModalClose">close</button>
+              <div style="margin-left: auto;">
+              <%= link_to plan_path(plan), method: :delete, "data-confirm" => '本当に削除しますか？' do %>
+                  <span style="color:red;"><i class="far fa-trash-alt" ></i>削除</span>
+              <% end %>
+              </div>
+          </div>
      </div>
    <% end %>
    <div class="overlay"></div>
