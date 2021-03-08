@@ -35,31 +35,9 @@
           </div>
           <% if @comments.present? %>
           <div class="favorite-review mt-2" style="width: 70%;">
-            <% @comments.each do |comment| %>
-
-              <div class="tweet-comment">
-              <%= link_to user_path(comment.user) do %>
-                <%= attachment_image_tag(comment.user, :image, size: '30x30', fallback: "no_image.jpg") %>
-                <%= comment.user.name %>
-              <% end %>
-              <%= comment.comment %>
-              <% if comment.user.id == current_user.id %>
-                <%= link_to tweet_comment_path(comment.tweet.id, comment.id), method: :delete, "data-confirm" => 'コメントを削除しますか？' do %>
-                  <span style="color: red;"><i class='far fa-trash-alt'></i></span>
-                <% end %>
-              <% end %>
-              <div style="text-align: right;">
-                <span class="sentiment-score">
-                  <% if comment.score > 0.3 %>
-                    Emotion_score：<span style="color:#FF3333;"><i class="far fa-grin-beam"></i></span>&ensp;<%= comment.score %>
-                  <% elsif (-0.3..0.3).cover?(comment.score) %>
-                    Emotion_score：<span style="color:#FF9900;"><i class="far fa-grin"></i></span>&ensp;<%= comment.score %>
-                  <% elsif comment.score < -0.3 %>
-                    Emotion_score: <span style="color:#C71585;"><i class="far fa-tired"></i></span>&ensp;<%= comment.score %>
-                  <% end %>
-                </span><%= comment.created_at.strftime('%Y年%m月%d日') %>投稿</div>
-              </div>
-            <% end %>
+           <div id="new-comment">
+             <%= render partial: 'user/comments/comment', locals: {comments: @comments} %>
+           </div>
           </div>
           <% end %>
       </div>
@@ -75,7 +53,7 @@
                 </ul>
               </div>
               <% end %>
-        <%= form_with(model:[@tweet, @comment], url: tweet_comments_path(tweet_id: @tweet), local: true) do |f| %>
+        <%= form_with(model:[@tweet, @comment], url: tweet_comments_path(tweet_id: @tweet), remote: true) do |f| %>
           <div class="field">
             <div><%= f.label :'コメント' %></div>
             <%= f.text_area :comment, placeholder: 'コメントを入力', style: 'width: 90%' %><br />
