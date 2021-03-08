@@ -32,10 +32,17 @@
       </div>
     <% end %>
 
-     <div class="field">
+     <div class="field" style="display: flex;">
+      <div>
       <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success mb-3" do %>
         <span><i class="fab fa-google-plus-g"></i>&emsp;google認証</span>
       <% end %>
+      </div>
+      <div style="margin-left: 20px;">
+      <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-outline-success mb-3" do %>
+        <span><i class="fab fa-facebook"></i>&emsp;Facebook認証</span>
+      <% end %>
+      </div>
     </div>
 
     <div class="actions">
