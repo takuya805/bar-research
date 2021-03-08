@@ -7,15 +7,6 @@ class User::CommentsController < ApplicationController
     comment.tweet_id = tweet.id
     comment.save
     @comments = tweet.comments
-
-    # if comment.save
-    #   redirect_to tweet_path(id: tweet), notice: 'コメントしました'
-    # else
-    #   @tweet = Tweet.find(params[:tweet_id])
-    #   @comment = comment
-    #   @comments = @tweet.comments
-    #   render 'user/tweets/show'
-    # end
   end
 
   def destroy
@@ -23,14 +14,6 @@ class User::CommentsController < ApplicationController
     @comments = tweet.comments
     @comment = Comment.find_by(id: params[:id], tweet_id: params[:tweet_id])
     @comment.destroy
-    # if comment.destroy
-    #   redirect_to tweet_path(id: params[:tweet_id]), notice: 'コメントを削除しました'
-    # else
-    #   @tweet = Tweet.find(params[:id])
-    #   @comment = comment
-    #   @comments = @tweet.comments
-    #   render 'user/tweets/show'
-    # end
   end
 
   private
