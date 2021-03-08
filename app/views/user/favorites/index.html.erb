@@ -14,7 +14,7 @@
         <% end %>
         <div class="favorites">Nickname</div>
           <div><%= favorite.tweet.user.name %>
-             <%= link_to user_path(favorite.user) do %>
+             <%= link_to user_path(favorite.tweet.user) do %>
                <i class="fas fa-external-link-alt" style="color:#6600FF;"></i>
              <% end %>
           </div>
