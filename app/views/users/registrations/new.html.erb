@@ -49,20 +49,16 @@
       </span>
      </p>
   </div>
-  <div class="field" style="display: flex;">
-    <div>
-    <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-outline-success mb-3" do %>
-      <span><i class="fab fa-google-plus-g"></i>&emsp;google認証</span>
+    <div class="field mb-3">
+    <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+      <%= image_tag asset_path('google-btn.png') %>
     <% end %>
     </div>
-    <div style="margin-left: 20px;">
-    <%= link_to user_facebook_omniauth_authorize_path, class: "btn btn-outline-success mb-3" do %>
-      <span><i class="fab fa-facebook"></i>&emsp;Facebook認証</span>
+    <div class="field">
+    <%= link_to user_facebook_omniauth_authorize_path, class: 'btn facebook' do %>
+      <%= image_tag asset_path('facebook.png'), size: '25x25' %><span style="margin-left:8px; font-size:14px;">Sign in with Facebook</span>
     <% end %>
-    </div>
-  </div>
-
-  <div class="actions">
+  <div class="actions mt-3">
     <%= f.submit "新規登録", class: 'btn btn-outline-info mb-3' %>
   </div>
 <% end %>
