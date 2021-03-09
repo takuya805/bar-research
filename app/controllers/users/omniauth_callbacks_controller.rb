@@ -14,11 +14,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     callback_for(:twitter)
   end
 
-   # callback for line
-  def line
-    callback_for(:line)
-  end
-
   # callback for google
   def google_oauth2
     callback_for(:google)
