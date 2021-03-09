@@ -60,6 +60,11 @@
             <%= link_to user_twitter_omniauth_authorize_path, class: 'btn twitter mt-3' do %>
                 <%= image_tag asset_path('twitter.png'), size: '25x25' %><span style="margin-left:8px; font-size:14px;">Sign in with Twitter</span>
             <% end %>
+            <div>
+            <%= link_to user_line_omniauth_authorize_path, class: 'btn line mt-3' do %>
+                <%= image_tag asset_path('btn_press.png'), size: '25x25' %><span style="margin-left:8px; font-size:14px;">Sign in with Line</span>
+            <% end %>
+            </div>
             </div>
 
           <div class="actions mt-3">
