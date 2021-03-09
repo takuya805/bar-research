@@ -85,7 +85,7 @@ gem 'devise-i18n-views'
 gem 'simple_calendar', '~> 2.0'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
-gem 'omniauth-line'
+
 
 group :test do
   gem 'rspec-rails'
