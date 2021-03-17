@@ -1,6 +1,7 @@
 <% if rooms.present? %>
 <% rooms.each do |room| %>
-<% other_user = room.user_rooms.where.not(user_id: current_user.id).first.user %>
+  <% if room.user_rooms.where.not(user_id: current_user.id).first.present? %>
+  <% other_user = room.user_rooms.where.not(user_id: current_user.id).first.user %>
     <% if room.chats.present? %>
     <% latest_chat = room.chats.last %>
         <% chat = latest_chat.chat_deletes.find_by(user_id: current_user.id) %>
@@ -18,6 +19,7 @@
           </div>
           <% end %>
     <% end %>
+  <% end %>
 
 <% end %>
 <% end %>
